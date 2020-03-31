@@ -34,12 +34,12 @@ def base_pods
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 end
 
-target 'ReactNativeBase' do
-  # Pods for ReactNativeBase
+Target 'Target' do
+  # Pods for Target
   base_pods
 
 
-  target 'ReactNativeBaseTests' do
+  Target 'TargetTests' do
     inherit! :search_paths
     # Pods for testing
   end
@@ -47,26 +47,26 @@ target 'ReactNativeBase' do
   use_native_modules!
 end
 
-target 'ReactNativeBase-Staging' do
-    # Pods for ReactNativeBase
+Target 'Target-Staging' do
+    # Pods for Target
     base_pods
 
 
     use_native_modules!
 end
 
-target 'ReactNativeBase-Develop' do
-  # Pods for ReactNativeBase
+Target 'Target-Develop' do
+  # Pods for Target
   base_pods
 
 
   use_native_modules!
 end
 
-target 'ReactNativeBase-tvOS' do
-  # Pods for ReactNativeBase-tvOS
+Target 'Target-tvOS' do
+  # Pods for Target-tvOS
 
-  target 'ReactNativeBase-tvOSTests' do
+  Target 'Target-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end
