@@ -1,4 +1,4 @@
-package com.reactnativebase;
+package com.targetinduction;
 
 import android.app.Application;
 
