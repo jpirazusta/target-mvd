@@ -8,6 +8,9 @@
       "actions/*": [
         "src/actions/*"
       ],
+      "assets/*": [
+        "src/assets/*"
+      ],
       "httpClient/*": [
         "src/httpClient/*"
       ],

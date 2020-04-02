@@ -1,9 +1,9 @@
 export default {
   SIGN_IN: {
-    title: 'Iniciar sesión',
-    email: 'Email',
-    password: 'Contraseña',
-    button: 'Iniciar sesión',
+    title: 'TARGET MVD',
+    email: 'EMAIL',
+    password: 'CONTRASEÑA',
+    button: 'INICIAR SESIÓN',
   },
 
   MAIN_SCREEN: {

@@ -1,2 +1,3 @@
-export const WHITE = '#FAFAFA';
-export const ERROR = '#FF5252';
+export const WHITE = '#FFFFFF';
+export const ERROR = '#E02424';
+export const BLACK = '#000000';
