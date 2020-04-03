@@ -10,10 +10,10 @@ const ErrorView = ({ errors = {} }) => {
       acc.push(error);
       return acc;
     }, []);
-  if (!errorMessages.length) return null;
+  const additionalStyles = errorMessages.length < 2 ? styles.height : styles.padding;
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, additionalStyles]}>
       {errorMessages.map(error => (
         <Text key={error} accessibilityLabel="form-error" style={styles.error}>
           {error}

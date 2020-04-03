@@ -1,16 +1,18 @@
 import { StyleSheet } from 'react-native';
+import typography from 'constants/typography';
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#F5FCFF',
     flex: 1,
     justifyContent: 'center',
-    paddingHorizontal: 50,
+    alignItems: 'center',
+    paddingHorizontal: 66,
   },
   welcome: {
-    fontSize: 20,
-    margin: 10,
+    ...typography.title,
     textAlign: 'center',
+    marginBottom: 68,
   },
 });
 

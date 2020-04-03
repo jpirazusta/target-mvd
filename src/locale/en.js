@@ -1,14 +1,14 @@
 export default {
   COMMON: {
-    loading: 'Loading',
-    somethingWentWrong: 'Something Went Wrong',
+    loading: 'LOADING',
+    somethingWentWrong: 'something went wrong',
   },
 
   SIGN_IN: {
-    title: 'Sign in',
-    email: 'Email',
-    password: 'Password',
-    button: 'Sign in',
+    title: 'TARGET MVD',
+    email: 'EMAIL',
+    password: 'PASSWORD',
+    button: 'SIGN IN',
   },
 
   MAIN_SCREEN: {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { func } from 'prop-types';
-import { Button, View } from 'react-native';
+import { View } from 'react-native';
 import { useStatus, LOADING } from '@rootstrap/redux-tools';
 
 import { login } from 'actions/userActions';
@@ -9,6 +9,7 @@ import useForm from 'hooks/useForm';
 import useValidation from 'hooks/useValidation';
 import loginValidations from 'validations/loginValidations';
 import ErrorView from 'components/common/ErrorView';
+import Button from 'components/common/Button';
 import useTextInputProps from 'hooks/useTextInputProps';
 import strings from 'locale';
 import styles from './styles';
@@ -33,29 +34,33 @@ const LoginForm = ({ onSubmit }) => {
   const inputProps = useTextInputProps(handleValueChange, handleBlur, values);
 
   return (
-    <>
+    <View style={styles.container}>
       <Input
         label={strings.SIGN_IN.email}
         keyboardType="email-address"
         autoCapitalize="none"
         testID="email-input"
+        invalid={error || errors.email}
         {...inputProps(FIELDS.email)}
       />
-      <Input
-        label={strings.SIGN_IN.password}
-        testID="password-input"
-        secureTextEntry
-        {...inputProps(FIELDS.password)}
-      />
-      <ErrorView errors={{ ...errors, error }} />
-      <View style={styles.button}>
-        <Button
-          testID="login-submit-button"
-          title={status === LOADING ? strings.COMMON.loading : strings.SIGN_IN.button}
-          onPress={handleSubmit}
+      <View style={styles.inputContainer}>
+        <Input
+          label={strings.SIGN_IN.password}
+          testID="password-input"
+          secureTextEntry
+          invalid={error || errors.password}
+          {...inputProps(FIELDS.password)}
         />
       </View>
-    </>
+      <ErrorView errors={{ ...errors, error }} />
+      <Button
+        testID="login-submit-button"
+        handleOnPress={handleSubmit}
+        additionalStyles={styles.button}
+        title={strings.SIGN_IN.button}
+        isLoading={status === LOADING}
+      />
+    </View>
   );
 };
 
