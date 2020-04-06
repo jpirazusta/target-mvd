@@ -23,6 +23,7 @@ export default StyleSheet.create({
     fontSize: 10,
     lineHeight: 14,
     color: ERROR,
+    textAlign: 'center',
   },
   buttonTitle: {
     ...fonts.semibold,

@@ -1,16 +1,20 @@
 import { StyleSheet } from 'react-native';
+import common from 'constants/commonStyles';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#F5FCFF',
-    flex: 1,
-    justifyContent: 'center',
-    paddingHorizontal: 50,
+    ...common.formContainer,
   },
   welcome: {
-    fontSize: 20,
-    margin: 10,
-    textAlign: 'center',
+    ...common.title,
+    marginBottom: 25,
+  },
+  signinButton: {
+    ...common.linkButton,
+    marginTop: 19,
+  },
+  signinButtonText: {
+    ...common.linkButtonText,
   },
 });
 

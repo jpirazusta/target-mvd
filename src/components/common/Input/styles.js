@@ -1,24 +1,23 @@
 import { StyleSheet } from 'react-native';
-import { BLACK, ERROR } from 'constants/colors';
+import common from 'constants/commonStyles';
 import typography from 'constants/typography';
 
 const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+  },
   label: {
-    ...typography.inputLabel,
-    textAlign: 'center',
-    marginBottom: 4,
+    ...common.inputLabel,
   },
   input: {
-    height: 37,
-    textAlign: 'center',
-    borderColor: BLACK,
-    borderWidth: 0.5,
-    ...typography.input,
+    ...common.input,
   },
-  inputBorderError: {
-    borderColor: ERROR,
-    borderWidth: 1.5,
+  inputBorderError: common.inputBorderError,
+  errorContainer: {
+    height: 17,
+    justifyContent: 'center',
   },
+  error: typography.inputError,
 });
 
 export default styles;
