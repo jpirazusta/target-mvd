@@ -40,7 +40,7 @@ const LoginForm = ({ onSubmit }) => {
         keyboardType="email-address"
         autoCapitalize="none"
         testID="email-input"
-        invalid={error || errors.email}
+        invalid={error || errors[FIELDS.email]}
         {...inputProps(FIELDS.email)}
       />
       <View style={styles.inputContainer}>
@@ -48,7 +48,7 @@ const LoginForm = ({ onSubmit }) => {
           label={strings.SIGN_IN.password}
           testID="password-input"
           secureTextEntry
-          invalid={error || errors.password}
+          invalid={error || errors[FIELDS.password]}
           {...inputProps(FIELDS.password)}
         />
       </View>

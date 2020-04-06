@@ -1,18 +1,19 @@
 import { StyleSheet } from 'react-native';
-import typography from 'constants/typography';
+import common from 'constants/commonStyles';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#F5FCFF',
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingHorizontal: 66,
+    ...common.formContainer,
   },
   welcome: {
-    ...typography.title,
-    textAlign: 'center',
+    ...common.title,
     marginBottom: 68,
+  },
+  signupButton: {
+    ...common.linkButton,
+  },
+  signupButtonText: {
+    ...common.linkButtonText,
   },
 });
 
