@@ -1,10 +1,13 @@
 import React, { memo, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
+import { LOADING } from '@rootstrap/redux-tools';
 import { Text, View, TouchableOpacity } from 'react-native';
 import { object } from 'prop-types';
 
 import LoginForm from 'components/LoginForm';
+import ErrorView from 'components/common/ErrorView';
 import { login } from 'actions/userActions';
+import useFacebook from 'hooks/useFacebook';
 import strings from 'locale';
 import { LOGIN_SCREEN, SIGN_UP_SCREEN } from 'constants/screens';
 import Ovals from 'components/common/Ovals';
@@ -15,11 +18,22 @@ const LoginScreen = ({ navigation }) => {
   const loginRequest = useCallback(user => dispatch(login(user)), [dispatch]);
   const handleLogin = useCallback(() => navigation.push(SIGN_UP_SCREEN), [navigation]);
 
+  const { error, status, facebookError, handleFacebookLogin } = useFacebook();
+
   return (
     <View style={styles.container} testID={LOGIN_SCREEN}>
       <Ovals />
       <Text style={styles.welcome}>{strings.COMMON.title}</Text>
       <LoginForm onSubmit={loginRequest} />
+      <TouchableOpacity
+        testID="facebook-button"
+        onPress={handleFacebookLogin}
+        style={styles.facebookButton}>
+        <Text style={styles.facebookButtonText}>
+          {status === LOADING ? strings.COMMON.loading : strings.FACEBOOK.buttonTitle}
+        </Text>
+      </TouchableOpacity>
+      <ErrorView errors={{ facebookError, error }} />
       <TouchableOpacity testID="sign-up-button" onPress={handleLogin} style={styles.signupButton}>
         <Text style={styles.signupButtonText}>{strings.SIGN_UP.title}</Text>
       </TouchableOpacity>

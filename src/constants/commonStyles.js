@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   linkButton: {
-    marginTop: 90,
+    marginTop: 54,
     borderTopWidth: 0.5,
     padding: 15,
     width: 121,
