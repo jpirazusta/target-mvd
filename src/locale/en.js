@@ -30,4 +30,9 @@ export default {
     male: 'MALE',
     button: 'SIGN UP',
   },
+
+  FACEBOOK: {
+    buttonTitle: 'CONNECT WITH FACEBOOK',
+    loginError: 'Login failed with error:',
+  },
 };

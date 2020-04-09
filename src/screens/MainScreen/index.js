@@ -1,16 +1,14 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { View, Text, Button } from 'react-native';
-import { useDispatch } from 'react-redux';
 
-import { logout } from 'actions/userActions';
 import { MAIN_SCREEN } from 'constants/screens';
+import useLogout from 'hooks/useLogout';
 import strings from 'locale';
 import useSession from 'hooks/useSession';
 import styles from './styles';
 
 const MainScreen = () => {
-  const dispatch = useDispatch();
-  const logoutRequest = useCallback(() => dispatch(logout()), [dispatch]);
+  const { logoutRequest } = useLogout();
 
   const { user: email } = useSession();
 
