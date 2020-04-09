@@ -16,7 +16,7 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* targetInductionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* targetInductionTests.m */; };
-		58D2595AAF38E65BD994883D /* libPods-targetInduction-Staging.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2208B4BC6FD13C3655D436F2 /* libPods-targetInduction-Staging.a */; };
+		58D2595AAF38E65BD994883D /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		6B61A298D68A4F6DFD9FDBCC /* libPods-targetInduction.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C7C84CAE6734BF690017FE /* libPods-targetInduction.a */; };
 		9B0243531F270CBB6E36495A /* libPods-targetInduction-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFF1A0A0D79A52FA343994E /* libPods-targetInduction-tvOSTests.a */; };
 		9CEB73B58FB152FDD74F0720 /* libPods-targetInduction-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44697982F9284E7E43F44305 /* libPods-targetInduction-tvOS.a */; };
@@ -70,6 +70,7 @@
 		44697982F9284E7E43F44305 /* libPods-targetInduction-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-targetInduction-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5194B9636EC5B962F89DA5B8 /* libPods-targetInduction-Staging.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-targetInduction-Staging.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FFF1A0A0D79A52FA343994E /* libPods-targetInduction-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-targetInduction-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D53382E243DF1020000F05F /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		83ACE6892685D8C6AAE6DA9C /* Pods-targetInduction.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-targetInduction.release.xcconfig"; path = "Target Support Files/Pods-targetInduction/Pods-targetInduction.release.xcconfig"; sourceTree = "<group>"; };
 		8BE8208158E18B7F778E5A71 /* Pods-targetInduction-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-targetInduction-tvOS.release.xcconfig"; path = "Target Support Files/Pods-targetInduction-tvOS/Pods-targetInduction-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		972824CB458A25B53AC1EFEA /* Pods-targetInduction-Staging.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-targetInduction-Staging.release.xcconfig"; path = "Target Support Files/Pods-targetInduction-Staging/Pods-targetInduction-Staging.release.xcconfig"; sourceTree = "<group>"; };
@@ -129,7 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58D2595AAF38E65BD994883D /* libPods-targetInduction-Staging.a in Frameworks */,
+				58D2595AAF38E65BD994883D /* (null) in Frameworks */,
 				E77860054D22D4DDB9D5F9AA /* libPods-targetInduction-Staging.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -201,6 +202,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				7D53382E243DF1020000F05F /* Config.xcconfig */,
 				13B07FAE1A68108700A75B9A /* targetInduction */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* targetInductionTests */,
@@ -247,23 +249,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		FE49EE5322DE3E5700F7545F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				FE49EE5722DE3E5800F7545F /* libRNCAsyncStorage.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		FE49EE9522DE496D00F7545F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				FE49EE9A22DE496D00F7545F /* libRNGestureHandler.a */,
-				FE49EE9C22DE496D00F7545F /* libRNGestureHandler-tvOS.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -296,6 +281,7 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				19D569E4230D81B24C90D7EF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -355,6 +341,7 @@
 				FE002B0022E9DCD20027B199 /* Frameworks */,
 				FE002B0222E9DCD20027B199 /* Resources */,
 				FE002B0522E9DCD20027B199 /* Bundle React Native code and images */,
+				350C16C6F3EC278C8B5C8FE3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -375,6 +362,7 @@
 				FE002B1122EA13BF0027B199 /* Frameworks */,
 				FE002B1322EA13BF0027B199 /* Resources */,
 				FE002B1622EA13BF0027B199 /* Bundle React Native code and images */,
+				5658639FBDEC72E391F26DB8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -522,6 +510,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		19D569E4230D81B24C90D7EF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-targetInduction/Pods-targetInduction-resources.sh",
+				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-targetInduction/Pods-targetInduction-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		27E75E17105192B75AF11FF9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -558,6 +564,24 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
+		350C16C6F3EC278C8B5C8FE3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-targetInduction-Staging/Pods-targetInduction-Staging-resources.sh",
+				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-targetInduction-Staging/Pods-targetInduction-Staging-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		37D0E53BA7A052DA1ACCEE02 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -578,6 +602,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5658639FBDEC72E391F26DB8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-targetInduction-Develop/Pods-targetInduction-Develop-resources.sh",
+				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-targetInduction-Develop/Pods-targetInduction-Develop-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D97A05D59F5E54F4D781A792 /* [CP] Check Pods Manifest.lock */ = {
@@ -1033,6 +1075,7 @@
 		};
 		83CBBA201A601CBA00E9B192 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D53382E243DF1020000F05F /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1086,6 +1129,7 @@
 		};
 		83CBBA211A601CBA00E9B192 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D53382E243DF1020000F05F /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";

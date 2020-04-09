@@ -1,5 +1,11 @@
 import { createReducer } from '@rootstrap/redux-tools';
-import { loginSuccess, signUpSuccess, logoutSuccess, updateSession } from 'actions/userActions';
+import {
+  loginSuccess,
+  signUpSuccess,
+  logoutSuccess,
+  updateSession,
+  facebookLoginSuccess,
+} from 'actions/userActions';
 
 const initialState = {
   user: null,
@@ -7,6 +13,10 @@ const initialState = {
 };
 
 const handleLoginSuccess = (state, { payload }) => {
+  state.user = payload;
+};
+
+const handleFacebookLoginSuccess = (state, { payload }) => {
   state.user = payload;
 };
 
@@ -20,6 +30,7 @@ const handleUpdateSession = (state, { payload }) => {
 
 export default createReducer(initialState, {
   [loginSuccess]: handleLoginSuccess,
+  [facebookLoginSuccess]: handleFacebookLoginSuccess,
   [logoutSuccess]: handleLogoutSuccess,
   [signUpSuccess]: handleLoginSuccess,
   [updateSession]: handleUpdateSession,

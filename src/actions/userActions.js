@@ -15,6 +15,19 @@ export const login = createThunk('LOGIN', async user => {
   }
 });
 
+export const facebookLogin = createThunk('FB_LOGIN', async accessToken => {
+  try {
+    const {
+      data: {
+        data: { email: loggedUser },
+      },
+    } = await userService.facebookLogin({ accessToken });
+    return loggedUser;
+  } catch ({ response }) {
+    throw parseError(response);
+  }
+});
+
 export const logout = createThunk('LOGOUT', async () => {
   try {
     await userService.logout();
@@ -37,5 +50,6 @@ export const signUp = createThunk('SIGNUP', async user => {
 export const updateSession = createAction('UPDATE_SESSION');
 
 export const { success: loginSuccess } = login;
+export const { success: facebookLoginSuccess } = facebookLogin;
 export const { success: signUpSuccess } = signUp;
 export const { success: logoutSuccess } = logout;

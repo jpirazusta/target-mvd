@@ -24,4 +24,9 @@ export default {
     male: 'MASCULINO',
     button: 'REGISTRARSE',
   },
+
+  FACEBOOK: {
+    buttonTitle: 'CONECTAR CON FACEBOOK',
+    loginError: 'Login falló con error:',
+  },
 };

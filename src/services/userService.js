@@ -5,6 +5,10 @@ class UserService {
     return httpClient.post('/users/sign_in', user);
   }
 
+  facebookLogin(token) {
+    return httpClient.post('/users/facebook', token);
+  }
+
   logout() {
     return httpClient.delete('/users/sign_out', { data: {} });
   }
