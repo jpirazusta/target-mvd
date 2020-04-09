@@ -11,6 +11,7 @@ export default {
     length: { minimum: 6 },
   },
   passwordConfirmation: {
+    presence: true,
     equality: { attribute: 'password' },
   },
   gender: {
