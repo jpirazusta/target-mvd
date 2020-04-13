@@ -6663,10 +6663,15 @@ react-localization@^1.0.14:
   dependencies:
     localized-strings "^0.2.0"
 
-react-native-config@0.12.0:
+react-native-config@^0.12.0:
   version "0.12.0"
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.12.0.tgz#910e52226b60e0c9f2b648772eea2a93f8701751"
   integrity sha512-lC8QOZCGCXgFh74uWSVGMaChg+Qf2BScWzVd9C4yrFnfxrHSFyIekqOOq/sjE8Uu2ifgxZmSiK1Z8EEi78AmQA==
+
+react-native-fbsdk@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-fbsdk/-/react-native-fbsdk-1.1.2.tgz#4264903add869d05b84ef55ade9ff720c2957781"
+  integrity sha512-Sp+oja868QVsB5vpEFbwZkEcCJOSBuZgh7UGJzUhaoTCs/zwSUHA6b4QichM7GiTxtQyKfT/F31DtvLj2N/qAQ==
 
 react-native-gesture-handler@^1.5.6:
   version "1.5.6"
@@ -6690,6 +6695,11 @@ react-native-localization@2.1.5:
   integrity sha512-hDtLMEwHtHNm9xUXllWBklL887wPsR/TNNNnq9xeKBMrWtf9E+uS99NL34I/uMhWIvcVqQiFnCQ36bQy+swKOQ==
   dependencies:
     react-localization "^1.0.14"
+
+react-native-maps@0.27.1:
+  version "0.27.1"
+  resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.27.1.tgz#2f10cd417bb2fd938c9e015b1c9b6d9b1a44b97f"
+  integrity sha512-HygBkZBecTnIVRYrSiLRAvu4OmXOYso/A7c6Cy73HkOh9CgGV8Ap5eBea24tvmFGptjj5Hg8AJ94/YbmWK1Okw==
 
 react-native-picker-select@^6.6.0:
   version "6.6.0"
