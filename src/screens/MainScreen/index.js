@@ -3,7 +3,9 @@ import { View, Text, Button } from 'react-native';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
 import { MAIN_SCREEN } from 'constants/screens';
+import { LATITUDE_DELTA, LONGITUDE_DELTA } from 'constants/common';
 import useLogout from 'hooks/useLogout';
+import useLocation from 'hooks/useLocation';
 import strings from 'locale';
 import useSession from 'hooks/useSession';
 import styles from './styles';
@@ -13,16 +15,17 @@ const MainScreen = () => {
 
   const { user: email } = useSession();
 
+  const { location } = useLocation();
+
   return (
     <View style={styles.container} testID={MAIN_SCREEN}>
       <MapView
         provider={PROVIDER_GOOGLE}
         style={styles.map}
         region={{
-          latitude: 37.78825,
-          longitude: -122.4324,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
+          ...location,
+          latitudeDelta: LATITUDE_DELTA,
+          longitudeDelta: LONGITUDE_DELTA,
         }}
         showUserLocation
       />
