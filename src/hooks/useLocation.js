@@ -26,9 +26,9 @@ const useLocation = () => {
   useEffect(() => {
     async function requestLocation() {
       try {
-        let granted = await RNLocation.checkPermission({ PERMISSIONS });
+        let granted = await RNLocation.checkPermission(PERMISSIONS);
         if (!granted) {
-          granted = await RNLocation.requestPermission({ PERMISSIONS });
+          granted = await RNLocation.requestPermission(PERMISSIONS);
         }
         if (granted) {
           const { latitude, longitude } = await RNLocation.getLatestLocation({ timeout: TIMEOUT });
