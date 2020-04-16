@@ -8,11 +8,11 @@
       "actions/*": [
         "src/actions/*"
       ],
+      "api/*": [
+        "src/api/*"
+      ],
       "assets/*": [
         "src/assets/*"
-      ],
-      "httpClient/*": [
-        "src/httpClient/*"
       ],
       "components/*": [
         "src/components/*"

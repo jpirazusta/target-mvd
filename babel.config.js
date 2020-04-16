@@ -6,8 +6,8 @@ module.exports = {
       {
         alias: {
           actions: './src/actions',
+          api: './src/api',
           assets: './src/assets',
-          httpClient: './src/httpClient',
           services: './src/services',
           components: './src/components',
           constants: './src/constants',

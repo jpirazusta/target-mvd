@@ -1,20 +1,20 @@
-import httpClient from 'httpClient';
+import api from 'api';
 
 class UserService {
   login(user) {
-    return httpClient.post('/users/sign_in', user);
+    return api.post('/users/sign_in', user);
   }
 
   facebookLogin(token) {
-    return httpClient.post('/users/facebook', token);
+    return api.post('/users/facebook', token);
   }
 
   logout() {
-    return httpClient.delete('/users/sign_out', { data: {} });
+    return api.delete('/users/sign_out');
   }
 
   signUp(user) {
-    return httpClient.post('/users', user);
+    return api.post('/users', user);
   }
 }
 
