@@ -19,10 +19,16 @@ export default {
     passwordConfirmation: 'REPETIR CONTRASEÑA',
     passwordPlaceholder: 'MIN. 6 CARACTERES',
     gender: 'GÉNERO',
-    selectGender: 'ELIGE TU GÉNERO',
-    female: 'FEMENINO',
-    male: 'MASCULINO',
     button: 'REGISTRARSE',
+  },
+
+  GENDER: {
+    placeholder: { label: 'ELIGE TU GÉNERO', value: '' },
+    options: [
+      { label: 'FEMENINO', value: 'female' },
+      { label: 'MASCULINO', value: 'male' },
+      { label: 'OTRO', value: 'other' },
+    ],
   },
 
   FACEBOOK: {

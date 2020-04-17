@@ -298,6 +298,8 @@ DEPENDENCIES:
   - FBReactNativeSpec (from `../node_modules/react-native/Libraries/FBReactNativeSpec`)
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
+  - Google-Maps-iOS-Utils
+  - GoogleMaps
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
   - React (from `../node_modules/react-native/`)
@@ -310,9 +312,9 @@ DEPENDENCIES:
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - react-native-config (from `../node_modules/react-native-config`)
   - react-native-fbsdk (from `../node_modules/react-native-fbsdk`)
-  - react-native-google-maps (from `../node_modules/react-native-maps/`)
+  - react-native-google-maps (from `../node_modules/react-native-maps`)
   - react-native-location (from `../node_modules/react-native-location`)
-  - react-native-maps (from `../node_modules/react-native-maps/`)
+  - react-native-maps (from `../node_modules/react-native-maps`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -376,11 +378,11 @@ EXTERNAL SOURCES:
   react-native-fbsdk:
     :path: "../node_modules/react-native-fbsdk"
   react-native-google-maps:
-    :path: "../node_modules/react-native-maps/"
+    :path: "../node_modules/react-native-maps"
   react-native-location:
     :path: "../node_modules/react-native-location"
   react-native-maps:
-    :path: "../node_modules/react-native-maps/"
+    :path: "../node_modules/react-native-maps"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   React-RCTActionSheet:
@@ -463,6 +465,6 @@ SPEC CHECKSUMS:
   RNScreens: 5e4758109c6d35f9a009ce72af873df907548020
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
 
-PODFILE CHECKSUM: 1595db316e083e60a82f900e0002d783651c8fec
+PODFILE CHECKSUM: 2f2837f9bc58cdecf53d22bc0dcbc2931bae77eb
 
 COCOAPODS: 1.9.1

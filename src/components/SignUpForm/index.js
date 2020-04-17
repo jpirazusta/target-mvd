@@ -83,16 +83,10 @@ const SignUpForm = ({ onSubmit }) => {
           <Dropdown
             label={strings.SIGN_UP.gender}
             testID="gender-input"
-            items={[
-              { label: strings.SIGN_UP.female, value: 'female' },
-              { label: strings.SIGN_UP.male, value: 'male' },
-            ]}
+            items={strings.GENDER.options}
             error={errors[FIELDS.gender]}
             invalid={error || errors[FIELDS.gender]}
-            placeholder={{
-              label: strings.SIGN_UP.selectGender,
-              value: null,
-            }}
+            placeholder={strings.GENDER.placeholder}
             {...inputProps(FIELDS.gender)}
             showErrorMessage
           />

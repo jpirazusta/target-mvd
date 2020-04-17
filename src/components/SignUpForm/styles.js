@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import common from 'constants/commonStyles';
 import { BLACK } from 'constants/colors';
 
 const styles = StyleSheet.create({
@@ -10,9 +9,6 @@ const styles = StyleSheet.create({
   button: {
     width: 114,
     backgroundColor: BLACK,
-  },
-  dropdown: {
-    ...common.input,
   },
 });
 
