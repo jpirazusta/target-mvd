@@ -4,22 +4,24 @@ import RNPickerSelect from 'react-native-picker-select';
 import { array, func, bool, string, oneOfType } from 'prop-types';
 
 import commonStyles from 'constants/commonStyles';
-import { styles, errorStyles, errorViewStyles } from './styles';
+import { styles } from './styles';
 
 const Dropdown = ({ label, items, onChangeText, error, invalid, showErrorMessage, ...props }) => {
-  const dropdownStyles = invalid ? { ...styles, ...errorStyles } : styles;
+  const dropdownStyles = invalid ? styles.inputError : styles.input;
   return (
     <>
       {label && <Text style={commonStyles.inputLabel}>{label}</Text>}
       <RNPickerSelect
         onValueChange={onChangeText}
         items={items}
-        style={dropdownStyles}
+        useNativeAndroidPickerStyle={false}
+        Icon={() => null}
+        textInputProps={{ style: dropdownStyles }}
         {...props}
       />
       {showErrorMessage && (
-        <View style={errorViewStyles.errorContainer}>
-          {error && <Text style={errorViewStyles.error}>{error}</Text>}
+        <View style={styles.errorContainer}>
+          {error && <Text style={styles.error}>{error}</Text>}
         </View>
       )}
     </>

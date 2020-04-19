@@ -1,4 +1,4 @@
-package com.targetinduction;
+package com.targetInduction;
 
 import android.app.Application;
 

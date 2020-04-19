@@ -25,10 +25,16 @@ export default {
     passwordConfirmation: 'CONFIRM PASSWORD',
     passwordPlaceholder: 'MIN. 6 CHARACTERS LONG',
     gender: 'GENDER',
-    selectGender: 'SELECT YOUR GENDER',
-    female: 'FEMALE',
-    male: 'MALE',
     button: 'SIGN UP',
+  },
+
+  GENDER: {
+    placeholder: { label: 'SELECT YOUR GENDER', value: '' },
+    options: [
+      { label: 'FEMALE', value: 'female' },
+      { label: 'MALE', value: 'male' },
+      { label: 'OTHER', value: 'other' },
+    ],
   },
 
   FACEBOOK: {

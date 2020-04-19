@@ -1,4 +1,4 @@
-package com.targetinduction;
+package com.targetInduction;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

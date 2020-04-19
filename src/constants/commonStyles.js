@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
   title: {
     ...typography.title,
     textAlign: 'center',
+    color: BLACK,
   },
   linkButton: {
     marginTop: 54,
@@ -29,6 +30,7 @@ const styles = StyleSheet.create({
     ...typography.inputLabel,
     textAlign: 'center',
     marginBottom: 4,
+    color: BLACK,
   },
   input: {
     height: 37,
@@ -36,6 +38,7 @@ const styles = StyleSheet.create({
     borderColor: BLACK,
     borderWidth: 0.5,
     backgroundColor: TRANSPARENT,
+    color: BLACK,
     ...typography.input,
   },
   inputBorderError: {

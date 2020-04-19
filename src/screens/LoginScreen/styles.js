@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 import common from 'constants/commonStyles';
 import fonts from 'constants/fonts';
+import { BLACK } from 'constants/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -24,6 +25,7 @@ const styles = StyleSheet.create({
     ...fonts.bold,
     fontSize: 12,
     lineHeight: 16,
+    color: BLACK,
   },
 });
 

@@ -70,4 +70,4 @@ buck-out/
 coverage/
 
 # react-native-config codegen
-ios/tmp.xcconfig
+ios/tmp.xcconfig 
