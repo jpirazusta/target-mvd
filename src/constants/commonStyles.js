@@ -1,6 +1,8 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import typography from './typography';
 import { BLACK, ERROR, TRANSPARENT, BACKGROUND } from './colors';
+
+const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   formContainer: {
@@ -28,7 +30,6 @@ const styles = StyleSheet.create({
   },
   inputLabel: {
     ...typography.inputLabel,
-    textAlign: 'center',
     marginBottom: 4,
     color: BLACK,
   },
@@ -39,6 +40,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     backgroundColor: TRANSPARENT,
     color: BLACK,
+    width: '100%',
     ...typography.input,
   },
   inputBorderError: {
@@ -47,6 +49,21 @@ const styles = StyleSheet.create({
   },
   shortInputWidth: {
     width: 220,
+  },
+  center: {
+    textAlign: 'center',
+  },
+  leftPadding: {
+    paddingLeft: 3,
+  },
+  animatedContainer: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    height: SCREEN_HEIGHT,
+  },
+  alignCenter: {
+    alignItems: 'center',
   },
 });
 

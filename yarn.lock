@@ -1273,10 +1273,10 @@
     color "^3.1.2"
     react-native-iphone-x-helper "^1.2.1"
 
-"@rootstrap/redux-tools@^0.4.2":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@rootstrap/redux-tools/-/redux-tools-0.4.2.tgz#dd5f36b23cd7e66ece0639bba02fb1652a4020d2"
-  integrity sha512-4H7T8oQFEJLF71Snhd7v9NPMtT9rZxdgFCYiblKjtQk/PBexbXdTBSlLwf+VR2GLa+uQ9lln3+6DRv9R2hPHlQ==
+"@rootstrap/redux-tools@^0.5":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@rootstrap/redux-tools/-/redux-tools-0.5.0.tgz#342f24c79348d2b10bf30df1e5c032ae1f8668d2"
+  integrity sha512-gSiPulBgIM2JKOGjZ9VmHjltcVn2fs5h0/geEDU2wQCW/atvPAti/XOMTQVOry2wAi7f05K+ALyCf7IY0bUmHA==
   dependencies:
     immer "^5.0.0"
 

@@ -41,4 +41,18 @@ export default {
     buttonTitle: 'CONNECT WITH FACEBOOK',
     loginError: 'Login failed with error:',
   },
+
+  TARGET: {
+    create: 'CREATE NEW TARGET',
+    area: 'SPECIFY AREA LENGTH',
+    areaPlaceholder: '0 m',
+    titleLabel: 'TARGET TITLE',
+    titlePlaceholder: 'Choose a title for your target',
+    topicLabel: 'SELECT A TOPIC',
+    topicPlaceholder: 'What do you want to talk about?',
+    emptyTopic: "Topic can't be blank",
+    topicsError: 'Could not get topics from server',
+    loadingTopics: 'Loading topics',
+    buttonTitle: 'SAVE TARGET',
+  },
 };

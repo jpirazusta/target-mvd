@@ -35,4 +35,18 @@ export default {
     buttonTitle: 'CONECTAR CON FACEBOOK',
     loginError: 'Login falló con error:',
   },
+
+  TARGET: {
+    create: 'CREAR NUEVO TARGET',
+    area: 'LARGO DEL ÁREA',
+    areaPlaceholder: '0 m',
+    titleLabel: 'TÍTULO DEL TARGET',
+    titlePlaceholder: 'Elige un título para tu target',
+    topicLabel: 'SELECCIONA UN TEMA',
+    topicPlaceholder: 'De qué quieres hablar?',
+    emptyTopic: "Topic can't be blank",
+    topicsError: 'No se pudo obtener los temas del server',
+    loadingTopics: 'Cargando temas',
+    buttonTitle: 'GUARDAR TARGET',
+  },
 };

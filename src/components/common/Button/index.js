@@ -1,5 +1,5 @@
 import React from 'react';
-import { string, func, number, shape, bool } from 'prop-types';
+import { string, func, bool, object } from 'prop-types';
 import { TouchableOpacity, Text } from 'react-native';
 import strings from 'locale';
 import styles from './styles';
@@ -19,10 +19,7 @@ const Button = ({ testID, handleOnPress, additionalStyles, title, isLoading }) =
 Button.propTypes = {
   testID: string,
   handleOnPress: func.isRequired,
-  additionalStyles: shape({
-    width: number,
-    backgroundColor: string,
-  }),
+  additionalStyles: object.isRequired,
   title: string.isRequired,
   isLoading: bool,
 };

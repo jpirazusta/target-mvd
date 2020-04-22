@@ -8,6 +8,10 @@ class TargetService {
   getTopics() {
     return api.get('/topics');
   }
+
+  createTarget(target) {
+    return api.post('/targets', target);
+  }
 }
 
 export default new TargetService();

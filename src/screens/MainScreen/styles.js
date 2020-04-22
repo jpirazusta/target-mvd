@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { BACKGROUND } from 'constants/colors';
+import { BACKGROUND, MARKER_BORDER, MARKER_CIRCLE } from 'constants/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -7,12 +7,29 @@ const styles = StyleSheet.create({
     backgroundColor: BACKGROUND,
   },
   map: {
-    flex: 5,
+    flex: 1,
   },
   newTarget: {
-    flex: 1,
+    height: 100,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  marker: {
+    alignItems: 'center',
+    zIndex: 2,
+  },
+  markerCircle: {
+    bottom: 4,
+    width: 51,
+    height: 51,
+    borderRadius: 26,
+    borderWidth: 1,
+    borderColor: MARKER_BORDER,
+    backgroundColor: MARKER_CIRCLE,
+  },
+  markerImage: {
+    top: 25,
+    zIndex: 1,
   },
 });
 
