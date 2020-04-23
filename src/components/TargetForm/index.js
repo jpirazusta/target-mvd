@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { func, oneOfType, bool, arrayOf } from 'prop-types';
 import { View, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import _ from 'lodash';
 
 import { IS_ANDROID } from 'constants/common';
 import { TOPIC_SHAPE, TARGET_SHAPE } from 'constants/shapes';

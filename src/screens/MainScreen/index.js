@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { View, Image, Animated } from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
+import _ from 'lodash';
 
 import { MAIN_SCREEN } from 'constants/screens';
 import TargetForm from 'components/TargetForm';
