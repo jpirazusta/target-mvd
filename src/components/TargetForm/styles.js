@@ -34,8 +34,17 @@ const styles = StyleSheet.create({
     ...typography.input,
     color: BLACK,
   },
-  button: {
+  buttonsContainer: {
+    height: 37,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+  },
+  createButton: {
     width: 157,
+    backgroundColor: BLACK,
+  },
+  editButton: {
+    width: 120,
     backgroundColor: BLACK,
   },
 });

@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { MARKER } from 'constants/colors';
+import { MARKER, SELECTED_TARGET } from 'constants/colors';
 
 const styles = StyleSheet.create({
   marker: {
@@ -13,6 +13,9 @@ const styles = StyleSheet.create({
   image: {
     width: 30,
     height: 30,
+  },
+  selected: {
+    backgroundColor: SELECTED_TARGET,
   },
 });
 

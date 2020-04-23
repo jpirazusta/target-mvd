@@ -1,8 +1,9 @@
-import React from 'react';
-import { func, oneOfType, bool } from 'prop-types';
-import { Text, TouchableOpacity } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { func, oneOfType, bool, arrayOf } from 'prop-types';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { LOADING } from '@rootstrap/redux-tools';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import _ from 'lodash';
 
 import ErrorView from 'components/common/ErrorView';
 import Button from 'components/common/Button';
@@ -13,9 +14,9 @@ import useValidation from 'hooks/useValidation';
 import createTargetValidations from 'validations/createTargetValidations';
 import useCreateTargetForm from 'hooks/useCreateTargetForm';
 import useTextInputProps from 'hooks/useTextInputProps';
-import { BLACK } from 'constants/colors';
 import { IS_ANDROID } from 'constants/common';
-import { TOPIC_SHAPE } from 'constants/shapes';
+import { TOPIC_SHAPE, TARGET_SHAPE } from 'constants/shapes';
+import { BLACK, RED } from 'constants/colors';
 import common from 'constants/commonStyles';
 import fonts from 'constants/fonts';
 import styles from './styles';
@@ -29,26 +30,40 @@ const {
     emptyTopic,
     topicsError,
     topicLabel,
+    topicLabelEdit,
     loadingTopics,
     topicPlaceholder,
     area,
+    areaEdit,
     areaPlaceholder,
     titleLabel,
     titlePlaceholder,
-    buttonTitle,
+    createButton,
+    deleteButton,
+    saveButton,
   },
 } = strings;
 
-const TargetForm = ({ onSubmit, onShowTopics, onHide, topic }) => {
+const TargetForm = ({ onCreate, onShowTopics, onHide, selectedTopic, topics, existent }) => {
   const validator = useValidation(createTargetValidations);
+  const [actualTopic, setActualTopic] = useState('');
+
+  useEffect(() => {
+    if (existent) {
+      const {
+        topic: { label },
+      } = _.find(topics, ({ topic: { id } }) => id === existent.topicId);
+      setActualTopic(label);
+    }
+  }, [existent, topics]);
 
   const { values, errors, handleValueChange, handleSubmit, handleBlur } = useForm(
     {
-      onSubmit,
+      onCreate,
       validator,
       validateOnBlur: true,
     },
-    [onSubmit],
+    [onCreate],
   );
 
   const {
@@ -58,22 +73,30 @@ const TargetForm = ({ onSubmit, onShowTopics, onHide, topic }) => {
     getTopicsError,
     getTopicsStatus,
     topicError,
-  } = useCreateTargetForm(topic, emptyTopic, handleSubmit);
+  } = useCreateTargetForm(selectedTopic, emptyTopic, handleSubmit);
 
   const inputProps = useTextInputProps(handleValueChange, handleBlur, values);
+  const areaInputProps = { ...inputProps(FIELDS.areaLength) };
+  const titleInputProps = { ...inputProps(FIELDS.title) };
 
   const topicText = () => {
     if (getTopicsError) return topicsError;
     if (getTopicsStatus === LOADING) return loadingTopics;
-    return (topic && topic.label) || topicPlaceholder;
+    return (selectedTopic && selectedTopic.label) || topicPlaceholder;
   };
 
   return (
     <>
-      <TouchableOpacity style={styles.mainContainer} onPress={onHide} />
+      <TouchableOpacity
+        style={styles.mainContainer}
+        onPress={() => {
+          setActualTopic('');
+          onHide();
+        }}
+      />
       <KeyboardAwareScrollView keyboardShouldPersistTaps="handled" style={styles.container}>
         <Input
-          label={area}
+          label={existent ? areaEdit : area}
           testID="area-input"
           keyboardType="numeric"
           error={errors[FIELDS.areaLength]}
@@ -82,7 +105,9 @@ const TargetForm = ({ onSubmit, onShowTopics, onHide, topic }) => {
           additionalStyles={styles.inputContainer}
           placeholder={areaPlaceholder}
           placeholderTextColor={BLACK}
-          {...inputProps(FIELDS.areaLength)}
+          onBlur={areaInputProps.onBlur}
+          onChangeText={areaInputProps.onChangeText}
+          value={existent ? existent.radius.toString() : areaInputProps.value}
         />
         <Input
           label={titleLabel}
@@ -93,34 +118,57 @@ const TargetForm = ({ onSubmit, onShowTopics, onHide, topic }) => {
           additionalStyles={styles.inputContainer}
           placeholder={titlePlaceholder}
           placeholderTextColor={BLACK}
-          {...inputProps(FIELDS.title)}
+          onBlur={titleInputProps.onBlur}
+          onChangeText={titleInputProps.onChangeText}
+          value={existent ? existent.title : titleInputProps.value}
         />
         <>
-          <Text style={[common.inputLabel, common.leftPadding]}>{topicLabel}</Text>
+          <Text style={[common.inputLabel, common.leftPadding]}>
+            {existent ? topicLabelEdit : topicLabel}
+          </Text>
           <TouchableOpacity
             style={[styles.topic, (topicError || targetError) && common.inputBorderError]}
             onPress={onShowTopics}>
-            <Text style={[styles.topicInput, IS_ANDROID && fonts.bold]}>{topicText()}</Text>
+            <Text style={[styles.topicInput, IS_ANDROID && fonts.bold]}>
+              {actualTopic || topicText()}
+            </Text>
           </TouchableOpacity>
         </>
         <ErrorView errors={{ ...errors, targetError, topicError }} />
-        <Button
-          testID="save-target-button"
-          handleOnPress={handleOnPress}
-          additionalStyles={styles.button}
-          title={buttonTitle}
-          isLoading={targetStatus === LOADING}
-        />
+        {existent ? (
+          <View style={styles.buttonsContainer}>
+            <Button
+              additionalStyles={[styles.editButton, { backgroundColor: RED }]}
+              title={deleteButton}
+              isLoading={targetStatus === LOADING}
+            />
+            <Button
+              additionalStyles={styles.editButton}
+              title={saveButton}
+              isLoading={targetStatus === LOADING}
+            />
+          </View>
+        ) : (
+          <Button
+            testID="save-target-button"
+            handleOnPress={handleOnPress}
+            additionalStyles={styles.createButton}
+            title={createButton}
+            isLoading={targetStatus === LOADING}
+          />
+        )}
       </KeyboardAwareScrollView>
     </>
   );
 };
 
 TargetForm.propTypes = {
-  onSubmit: func.isRequired,
+  onCreate: func.isRequired,
   onShowTopics: func.isRequired,
   onHide: func.isRequired,
-  topic: oneOfType([TOPIC_SHAPE, bool]).isRequired,
+  selectedTopic: oneOfType([TOPIC_SHAPE, bool]).isRequired,
+  topics: oneOfType([arrayOf(TOPIC_SHAPE), bool]).isRequired,
+  existent: oneOfType([TARGET_SHAPE, bool]).isRequired,
 };
 
 export default TargetForm;

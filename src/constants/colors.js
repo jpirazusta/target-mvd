@@ -6,3 +6,5 @@ export const TRANSPARENT = 'rgba(255, 255, 255, 0)';
 export const MARKER = 'rgba(239, 198, 56, 0.7)';
 export const MARKER_BORDER = '#EFC638';
 export const MARKER_CIRCLE = '#rgba(255, 255, 255, 0.7)';
+export const SELECTED_TARGET = 'rgba(47, 188, 247, 0.7)';
+export const RED = '#D0021B';
