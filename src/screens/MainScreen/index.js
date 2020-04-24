@@ -1,7 +1,6 @@
-import React, { useRef, useCallback, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import { View, Image, Animated } from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
-import _ from 'lodash';
 
 import { MAIN_SCREEN } from 'constants/screens';
 import TargetForm from 'components/TargetForm';
@@ -11,7 +10,8 @@ import { LATITUDE_DELTA, LONGITUDE_DELTA, SCREEN_HEIGHT } from 'constants/common
 import useLocation from 'hooks/useLocation';
 import useGetTargets from 'hooks/useGetTargets';
 import useCreateTarget from 'hooks/useCreateTarget';
-import CustomMarker from 'components/CustomMarker';
+import useSelectTarget from 'hooks/useSelectTarget';
+import TargetMarker from 'components/TargetMarker';
 import locationMap from 'assets/images/locationMap.png';
 import common from 'constants/commonStyles';
 import styles from './styles';
@@ -48,24 +48,14 @@ const MainScreen = () => {
     HIDDEN_VIEWS_POSITION,
   );
 
-  useEffect(() => {
-    const coords = selectedTarget
-      ? { latitude: selectedTarget.lat, longitude: selectedTarget.lng }
-      : location;
-    const region = {
-      ...coords,
-      ...coordsConstants,
-    };
-    mapView.current.animateToRegion(region);
-  }, [location, selectedTarget]);
-
-  const onSelectTarget = useCallback(
-    (id, targets) => {
-      const { target } = _.find(targets, ({ target }) => target.id === id);
-      setSelectedTarget(target);
-      animate(formPositionAnim, 0);
-    },
-    [formPositionAnim],
+  const onSelectTarget = useSelectTarget(
+    selectedTarget,
+    location,
+    coordsConstants,
+    mapView,
+    setSelectedTarget,
+    animate,
+    formPositionAnim,
   );
 
   return (
@@ -81,15 +71,15 @@ const MainScreen = () => {
         showUserLocation
         followUserLocation>
         {topics &&
-          targets.map(({ target: { id, lat, lng, topicId } }, _, targets) => (
-            <CustomMarker
+          targets.map(({ target: { id, lat, lng, topicId } }) => (
+            <TargetMarker
               key={id}
               id={id.toString()}
               lat={lat}
               lng={lng}
               topicId={topicId}
               onPress={() => onSelectTarget(id, targets)}
-              selected={selectedTarget && selectedTarget.id === id}
+              selected={selectedTarget?.id === id}
             />
           ))}
         <Marker coordinate={location} style={styles.marker}>

@@ -1,17 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { func, oneOfType, bool, arrayOf, string } from 'prop-types';
 import { LOADING } from '@rootstrap/redux-tools';
-import _ from 'lodash';
 
+import useTargetForm from 'hooks/useTargetForm';
 import ErrorView from 'components/common/ErrorView';
 import Button from 'components/common/Button';
 import Input from 'components/common/Input';
-import useForm from 'hooks/useForm';
-import useValidation from 'hooks/useValidation';
-import createTargetValidations from 'validations/createTargetValidations';
-import useCreateTargetForm from 'hooks/useCreateTargetForm';
-import useTextInputProps from 'hooks/useTextInputProps';
 import strings from 'locale';
 import { BLACK, RED } from 'constants/colors';
 import { IS_ANDROID } from 'constants/common';
@@ -53,44 +48,27 @@ const TargetFormContent = ({
   actualTopic,
   setActualTopic,
 }) => {
-  const validator = useValidation(createTargetValidations);
-
-  useEffect(() => {
-    if (existent) {
-      const {
-        topic: { label },
-      } = _.find(topics, ({ topic: { id } }) => id === existent.topicId);
-      setActualTopic(label);
-    }
-  }, [existent, setActualTopic, topics]);
-
-  const { values, errors, handleValueChange, handleSubmit, handleBlur } = useForm(
-    {
-      onCreate,
-      validator,
-      validateOnBlur: true,
-    },
-    [onCreate],
-  );
-
   const {
+    errors,
     handleOnPress,
     targetError,
     targetStatus,
-    getTopicsError,
-    getTopicsStatus,
     topicError,
-  } = useCreateTargetForm(selectedTopic, emptyTopic, handleSubmit);
-
-  const inputProps = useTextInputProps(handleValueChange, handleBlur, values);
-  const areaInputProps = { ...inputProps(FIELDS.areaLength) };
-  const titleInputProps = { ...inputProps(FIELDS.title) };
-
-  const topicText = () => {
-    if (getTopicsError) return topicsError;
-    if (getTopicsStatus === LOADING) return loadingTopics;
-    return (selectedTopic && selectedTopic.label) || topicPlaceholder;
-  };
+    areaInputProps,
+    titleInputProps,
+    topicText,
+  } = useTargetForm({
+    existent,
+    topics,
+    setActualTopic,
+    onCreate,
+    selectedTopic,
+    emptyTopic,
+    FIELDS,
+    topicsError,
+    loadingTopics,
+    topicPlaceholder,
+  });
 
   return (
     <>

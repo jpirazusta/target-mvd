@@ -3,15 +3,15 @@ import { View, Image } from 'react-native';
 import { useSelector } from 'react-redux';
 import { number, func, string, bool } from 'prop-types';
 import { Marker } from 'react-native-maps';
-import _ from 'lodash';
+import find from 'lodash/find';
 
 import styles from './styles';
 
-const CustomMarker = ({ id, lat, lng, topicId, onPress, selected }) => {
+const TargetMarker = ({ id, lat, lng, topicId, onPress, selected }) => {
   const topics = useSelector(({ target: { topics } }) => topics);
   const {
     topic: { icon },
-  } = _.find(topics, ({ topic }) => topic.id === topicId);
+  } = find(topics, ({ topic }) => topic.id === topicId);
   return (
     <Marker
       identifier={id}
@@ -27,7 +27,7 @@ const CustomMarker = ({ id, lat, lng, topicId, onPress, selected }) => {
   );
 };
 
-CustomMarker.propTypes = {
+TargetMarker.propTypes = {
   id: string.isRequired,
   lat: number.isRequired,
   lng: number.isRequired,
@@ -36,4 +36,4 @@ CustomMarker.propTypes = {
   selected: bool.isRequired,
 };
 
-export default CustomMarker;
+export default TargetMarker;

@@ -1,12 +1,12 @@
 import { StyleSheet } from 'react-native';
-import { MARKER, SELECTED_TARGET } from 'constants/colors';
+import { YELLOW_MARKER, BLUE } from 'constants/colors';
 
 const styles = StyleSheet.create({
   marker: {
     width: 58,
     height: 58,
     borderRadius: 29,
-    backgroundColor: MARKER,
+    backgroundColor: YELLOW_MARKER,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     height: 30,
   },
   selected: {
-    backgroundColor: SELECTED_TARGET,
+    backgroundColor: BLUE,
   },
 });
 

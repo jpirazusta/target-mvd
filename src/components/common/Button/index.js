@@ -1,6 +1,6 @@
 import React from 'react';
-import { string, func, arrayOf, bool, oneOfType, object } from 'prop-types';
-import { TouchableOpacity, Text } from 'react-native';
+import { string, func, bool } from 'prop-types';
+import { TouchableOpacity, Text, ViewPropTypes } from 'react-native';
 import strings from 'locale';
 import styles from './styles';
 
@@ -19,7 +19,7 @@ const Button = ({ testID, handleOnPress, additionalStyles, title, isLoading }) =
 Button.propTypes = {
   testID: string,
   handleOnPress: func.isRequired,
-  additionalStyles: oneOfType([arrayOf(object), object]),
+  additionalStyles: ViewPropTypes.style,
   title: string.isRequired,
   isLoading: bool,
 };

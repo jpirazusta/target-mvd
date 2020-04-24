@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import fonts from './fonts';
-import { ERROR, WHITE } from './colors';
+import { RED_ERROR, WHITE } from './colors';
 
 export default StyleSheet.create({
   title: {
@@ -22,7 +22,7 @@ export default StyleSheet.create({
     ...fonts.semibold,
     fontSize: 10,
     lineHeight: 14,
-    color: ERROR,
+    color: RED_ERROR,
     textAlign: 'center',
   },
   buttonTitle: {
