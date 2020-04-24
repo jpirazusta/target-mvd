@@ -6,7 +6,6 @@ import { deleteTarget } from 'actions/targetActions';
 const useDeleteTarget = (setShowDeleteConfirmation, requestTargets, hideTargetForm) => {
   const { status } = useStatus(deleteTarget);
   const dispatch = useDispatch();
-
   useEffect(() => {
     if (status === SUCCESS) {
       setShowDeleteConfirmation(false);
