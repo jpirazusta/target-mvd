@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useCallback } from 'react';
 import { View, Image, Animated } from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import _ from 'lodash';
@@ -7,12 +7,14 @@ import { MAIN_SCREEN } from 'constants/screens';
 import TargetForm from 'components/TargetForm';
 import CreateTargetButton from 'components/CreateTargetButton';
 import TopicPicker from 'components/TopicPicker';
+import DeleteConfirmation from 'components/DeleteConfirmation';
 import { LATITUDE_DELTA, LONGITUDE_DELTA, SCREEN_HEIGHT } from 'constants/common';
 import useLocation from 'hooks/useLocation';
 import useGetTargets from 'hooks/useGetTargets';
 import useCreateTarget from 'hooks/useCreateTarget';
 import useSelectTarget from 'hooks/useSelectTarget';
 import TargetMarker from 'components/TargetMarker';
+import useDeleteTarget from 'hooks/useDeleteTarget';
 import locationMap from 'assets/images/locationMap.png';
 import common from 'constants/commonStyles';
 import styles from './styles';
@@ -35,6 +37,7 @@ const MainScreen = () => {
   const location = useLocation();
   const { targets, topics, requestTargets } = useGetTargets();
   const [selectedTarget, setSelectedTarget] = useState(false);
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   const mapView = useRef();
 
   const formPositionAnim = useRef(new Animated.Value(HIDDEN_VIEWS_POSITION)).current;
@@ -58,6 +61,14 @@ const MainScreen = () => {
     animate,
     formPositionAnim,
   );
+
+  const hideTargetForm = useCallback(() => {
+    setSelectedTarget(false);
+    animate(formPositionAnim, HIDDEN_VIEWS_POSITION);
+    mapView.current.animateToRegion({ ...location, ...coordsConstants });
+  }, [formPositionAnim, location]);
+
+  const onDeleteTarget = useDeleteTarget(setShowDeleteConfirmation, requestTargets, hideTargetForm);
 
   return (
     <View style={styles.container} testID={MAIN_SCREEN}>
@@ -97,12 +108,9 @@ const MainScreen = () => {
             onCreateTarget(target);
             mapView.current.animateToRegion({ ...location, ...coordsConstants });
           }}
+          onDelete={() => setShowDeleteConfirmation(true)}
           onShowTopics={() => animate(topicsPositionAnim, 0)}
-          onHide={() => {
-            setSelectedTarget(false);
-            animate(formPositionAnim, HIDDEN_VIEWS_POSITION);
-            mapView.current.animateToRegion({ ...location, ...coordsConstants });
-          }}
+          onHide={hideTargetForm}
           selectedTopic={topic}
           topics={topics}
           existent={selectedTarget}
@@ -116,6 +124,13 @@ const MainScreen = () => {
             onSelectTopic={onSelectTopic}
           />
         </Animated.View>
+      )}
+      {showDeleteConfirmation && (
+        <DeleteConfirmation
+          target={selectedTarget}
+          onDelete={onDeleteTarget}
+          onHide={() => setShowDeleteConfirmation(false)}
+        />
       )}
     </View>
   );

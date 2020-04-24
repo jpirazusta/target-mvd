@@ -3,6 +3,7 @@ export default {
     title: 'TARGET MVD',
     loading: 'LOADING',
     somethingWentWrong: 'something went wrong',
+    cancel: 'Cancel',
   },
 
   SIGN_IN: {
@@ -58,5 +59,8 @@ export default {
     createButton: 'SAVE TARGET',
     saveButton: 'SAVE',
     deleteButton: 'DELETE',
+    deleteQuestion: 'Sure you want to delete this target?',
+    deleteReminder:
+      "Remember that if you delete it, you won't be able to chat with it's matches anymore",
   },
 };

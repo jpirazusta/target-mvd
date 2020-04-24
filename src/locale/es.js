@@ -1,4 +1,11 @@
 export default {
+  COMMON: {
+    title: 'TARGET MVD',
+    loading: 'CARGANDO',
+    somethingWentWrong: 'something went wrong',
+    cancel: 'Cancelar',
+  },
+
   SIGN_IN: {
     title: 'INICIAR SESIÓN',
     email: 'EMAIL',
@@ -52,5 +59,7 @@ export default {
     createButton: 'GUARDAR TARGET',
     saveButton: 'GUARDAR',
     deleteButton: 'ELIMINAR',
+    deleteQuestion: 'Seguro/a que quieres eliminar este target?',
+    deleteReminder: 'Recuerda que si lo haces, ya no podrás chatear con sus coincidencias',
   },
 };

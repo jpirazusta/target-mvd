@@ -1,17 +1,11 @@
 import React from 'react';
-import { View, Image } from 'react-native';
-import { useSelector } from 'react-redux';
+import MarkerView from 'components/common/MarkerView';
 import { number, func, string, bool } from 'prop-types';
+import useTopicIcon from 'hooks/useTopicIcon';
 import { Marker } from 'react-native-maps';
-import find from 'lodash/find';
-
-import styles from './styles';
 
 const TargetMarker = ({ id, lat, lng, topicId, onPress, selected }) => {
-  const topics = useSelector(({ target: { topics } }) => topics);
-  const {
-    topic: { icon },
-  } = find(topics, ({ topic }) => topic.id === topicId);
+  const icon = useTopicIcon(topicId);
   return (
     <Marker
       identifier={id}
@@ -20,9 +14,7 @@ const TargetMarker = ({ id, lat, lng, topicId, onPress, selected }) => {
         latitude: lat,
         longitude: lng,
       }}>
-      <View style={[styles.marker, selected && styles.selected]}>
-        <Image source={{ uri: icon }} style={styles.image} />
-      </View>
+      <MarkerView selected={selected} icon={icon} />
     </Marker>
   );
 };
