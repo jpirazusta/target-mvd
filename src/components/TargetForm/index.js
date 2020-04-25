@@ -16,6 +16,7 @@ const TargetForm = ({
   selectedTopic,
   topics,
   existent,
+  visible,
 }) => {
   const [actualTopic, setActualTopic] = useState('');
 
@@ -41,6 +42,7 @@ const TargetForm = ({
             existent={existent}
             actualTopic={actualTopic}
             setActualTopic={setActualTopic}
+            visible={visible}
           />
         </KeyboardAwareScrollView>
       ) : (
@@ -55,6 +57,7 @@ const TargetForm = ({
               existent={existent}
               actualTopic={actualTopic}
               setActualTopic={setActualTopic}
+              visible={visible}
             />
           </View>
         </KeyboardAvoidingView>
@@ -71,6 +74,7 @@ TargetForm.propTypes = {
   selectedTopic: oneOfType([TOPIC_SHAPE, bool]).isRequired,
   topics: oneOfType([arrayOf(TOPIC_SHAPE), bool]).isRequired,
   existent: oneOfType([TARGET_SHAPE, bool]).isRequired,
+  visible: bool.isRequired,
 };
 
 export default TargetForm;

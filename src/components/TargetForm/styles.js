@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { BLACK, BACKGROUND } from 'constants/colors';
+import { BLACK, BACKGROUND, RED } from 'constants/colors';
 import typography from 'constants/typography';
 
 const styles = StyleSheet.create({
@@ -47,18 +47,13 @@ const styles = StyleSheet.create({
     ...typography.input,
     color: BLACK,
   },
-  buttonsContainer: {
-    height: 37,
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-  },
   createButton: {
     width: 157,
     backgroundColor: BLACK,
   },
-  editButton: {
+  deleteButton: {
     width: 120,
-    backgroundColor: BLACK,
+    backgroundColor: RED,
   },
 });
 

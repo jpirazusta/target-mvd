@@ -17,7 +17,15 @@ const useCreateTargetForm = (topic, emptyTopic, handleSubmit) => {
     handleSubmit();
   };
 
-  return { handleOnPress, targetError, targetStatus, getTopicsError, getTopicsStatus, topicError };
+  return {
+    handleOnPress,
+    targetError,
+    targetStatus,
+    getTopicsError,
+    getTopicsStatus,
+    topicError,
+    setTopicError,
+  };
 };
 
 export default useCreateTargetForm;

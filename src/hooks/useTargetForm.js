@@ -7,6 +7,7 @@ import useValidation from 'hooks/useValidation';
 import createTargetValidations from 'validations/createTargetValidations';
 import useCreateTargetForm from 'hooks/useCreateTargetForm';
 import useTextInputProps from 'hooks/useTextInputProps';
+import useResetTargetForm from 'hooks/useResetTargetForm';
 
 const useTargetForm = ({
   existent,
@@ -19,6 +20,8 @@ const useTargetForm = ({
   topicsError,
   loadingTopics,
   topicPlaceholder,
+  visible,
+  initialValues,
 }) => {
   const validator = useValidation(createTargetValidations);
 
@@ -31,7 +34,15 @@ const useTargetForm = ({
     }
   }, [existent, setActualTopic, topics]);
 
-  const { values, errors, handleValueChange, handleSubmit, handleBlur } = useForm(
+  const {
+    values,
+    setValues,
+    setErrors,
+    errors,
+    handleValueChange,
+    handleSubmit,
+    handleBlur,
+  } = useForm(
     {
       onSubmit: onCreate,
       validator,
@@ -47,6 +58,7 @@ const useTargetForm = ({
     getTopicsError,
     getTopicsStatus,
     topicError,
+    setTopicError,
   } = useCreateTargetForm(selectedTopic, emptyTopic, handleSubmit);
 
   const inputProps = useTextInputProps(handleValueChange, handleBlur, values);
@@ -59,7 +71,20 @@ const useTargetForm = ({
     return (selectedTopic && selectedTopic.label) || topicPlaceholder;
   };
 
+  const networkError = useResetTargetForm({
+    targetError,
+    visible,
+    initialValues,
+    setValues,
+    setActualTopic,
+    setErrors,
+    setTopicError,
+  });
+
   return {
+    values,
+    setValues,
+    setErrors,
     errors,
     handleOnPress,
     targetError,
@@ -68,6 +93,7 @@ const useTargetForm = ({
     areaInputProps,
     titleInputProps,
     topicText,
+    networkError,
   };
 };
 
