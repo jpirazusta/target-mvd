@@ -15,19 +15,6 @@
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application 
-            openURL:(NSURL *)url 
-            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
-
-  BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
-    openURL:url
-    sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
-    annotation:options[UIApplicationOpenURLOptionsAnnotationKey]
-  ];
-  // Add any custom logic here.
-  return handled;
-}
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   [GMSServices provideAPIKey:@"GOOGLE_API_KEY"];
@@ -44,10 +31,6 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
-
-  [[FBSDKApplicationDelegate sharedInstance] application:application
-    didFinishLaunchingWithOptions:launchOptions];
-  [GMSServices provideAPIKey:@"GOOGLE_API_KEY"];
 
   return YES;
 }

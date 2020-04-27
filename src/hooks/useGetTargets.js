@@ -19,7 +19,7 @@ const useGetTargets = () => {
     requestTargets();
   }, [requestTargets, requestTopics]);
 
-  return { targets, topics };
+  return { targets, topics, requestTargets };
 };
 
 export default useGetTargets;

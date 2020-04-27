@@ -1,50 +1,33 @@
 import { createThunk, createAction } from '@rootstrap/redux-tools';
 import userService from 'services/userService';
-import parseError from 'utils/parseError';
 
 export const login = createThunk('LOGIN', async user => {
-  try {
-    const {
-      data: {
-        data: { email: loggedUser },
-      },
-    } = await userService.login({ user });
-    return loggedUser;
-  } catch ({ response }) {
-    throw parseError(response);
-  }
+  const {
+    data: {
+      data: { email: loggedUser },
+    },
+  } = await userService.login({ user });
+  return loggedUser;
 });
 
 export const facebookLogin = createThunk('FB_LOGIN', async accessToken => {
-  try {
-    const {
-      data: {
-        data: { email: loggedUser },
-      },
-    } = await userService.facebookLogin({ accessToken });
-    return loggedUser;
-  } catch ({ response }) {
-    throw parseError(response);
-  }
+  const {
+    data: {
+      data: { email: loggedUser },
+    },
+  } = await userService.facebookLogin({ accessToken });
+  return loggedUser;
 });
 
 export const logout = createThunk('LOGOUT', async () => {
-  try {
-    await userService.logout();
-  } catch ({ response }) {
-    throw parseError(response);
-  }
+  await userService.logout();
 });
 
 export const signUp = createThunk('SIGNUP', async user => {
-  try {
-    const {
-      data: { email: loggedUser },
-    } = await userService.signUp({ user });
-    return loggedUser;
-  } catch ({ response }) {
-    throw parseError(response);
-  }
+  const {
+    data: { email: loggedUser },
+  } = await userService.signUp({ user });
+  return loggedUser;
 });
 
 export const updateSession = createAction('UPDATE_SESSION');
