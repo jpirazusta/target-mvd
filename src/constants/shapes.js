@@ -9,3 +9,11 @@ export const TOPIC_SHAPE_LONG = shape({
   label: string,
   icon: string,
 });
+export const TARGET_SHAPE = shape({
+  id: number,
+  lat: number,
+  lng: number,
+  title: string,
+  topicId: number,
+  radius: number,
+});

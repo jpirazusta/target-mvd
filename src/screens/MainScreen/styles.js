@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { BACKGROUND, MARKER_BORDER, MARKER_CIRCLE } from 'constants/colors';
+import { BACKGROUND, YELLOW, LIGHT_YELLOW } from 'constants/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -24,8 +24,8 @@ const styles = StyleSheet.create({
     height: 51,
     borderRadius: 26,
     borderWidth: 1,
-    borderColor: MARKER_BORDER,
-    backgroundColor: MARKER_CIRCLE,
+    borderColor: YELLOW,
+    backgroundColor: LIGHT_YELLOW,
   },
   markerImage: {
     top: 25,

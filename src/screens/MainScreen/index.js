@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { View, Image, Animated } from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 
@@ -10,13 +10,18 @@ import { LATITUDE_DELTA, LONGITUDE_DELTA, SCREEN_HEIGHT } from 'constants/common
 import useLocation from 'hooks/useLocation';
 import useGetTargets from 'hooks/useGetTargets';
 import useCreateTarget from 'hooks/useCreateTarget';
-import CustomMarker from 'components/CustomMarker';
+import useSelectTarget from 'hooks/useSelectTarget';
+import TargetMarker from 'components/TargetMarker';
 import locationMap from 'assets/images/locationMap.png';
 import common from 'constants/commonStyles';
 import styles from './styles';
 
 const HIDDEN_VIEWS_POSITION = SCREEN_HEIGHT * -1;
 const ANIMATIONS_DURATION = 500;
+const coordsConstants = {
+  latitudeDelta: LATITUDE_DELTA,
+  longitudeDelta: LONGITUDE_DELTA,
+};
 
 const animate = (animatedValue, toValue) => {
   Animated.timing(animatedValue, {
@@ -28,6 +33,8 @@ const animate = (animatedValue, toValue) => {
 const MainScreen = () => {
   const location = useLocation();
   const { targets, topics, requestTargets } = useGetTargets();
+  const [selectedTarget, setSelectedTarget] = useState(false);
+  const mapView = useRef();
 
   const formPositionAnim = useRef(new Animated.Value(HIDDEN_VIEWS_POSITION)).current;
   const topicsPositionAnim = useRef(new Animated.Value(HIDDEN_VIEWS_POSITION)).current;
@@ -41,20 +48,39 @@ const MainScreen = () => {
     HIDDEN_VIEWS_POSITION,
   );
 
+  const onSelectTarget = useSelectTarget(
+    selectedTarget,
+    location,
+    coordsConstants,
+    mapView,
+    setSelectedTarget,
+    animate,
+    formPositionAnim,
+  );
+
   return (
     <View style={styles.container} testID={MAIN_SCREEN}>
       <MapView
+        ref={mapView}
         provider={PROVIDER_GOOGLE}
         style={styles.map}
-        region={{
+        initialRegion={{
           ...location,
-          latitudeDelta: LATITUDE_DELTA,
-          longitudeDelta: LONGITUDE_DELTA,
+          ...coordsConstants,
         }}
-        showUserLocation>
+        showUserLocation
+        followUserLocation>
         {topics &&
           targets.map(({ target: { id, lat, lng, topicId } }) => (
-            <CustomMarker key={id} lat={lat} lng={lng} topicId={topicId} />
+            <TargetMarker
+              key={id}
+              id={id.toString()}
+              lat={lat}
+              lng={lng}
+              topicId={topicId}
+              onPress={() => onSelectTarget(id, targets)}
+              selected={selectedTarget?.id === id}
+            />
           ))}
         <Marker coordinate={location} style={styles.marker}>
           <Image source={locationMap} style={styles.markerImage} />
@@ -66,10 +92,19 @@ const MainScreen = () => {
       </View>
       <Animated.View style={[common.animatedContainer, { bottom: formPositionAnim }]}>
         <TargetForm
-          onSubmit={onCreateTarget}
+          onCreate={target => {
+            onCreateTarget(target);
+            mapView.current.animateToRegion({ ...location, ...coordsConstants });
+          }}
           onShowTopics={() => animate(topicsPositionAnim, 0)}
-          onHide={() => animate(formPositionAnim, HIDDEN_VIEWS_POSITION)}
-          topic={topic}
+          onHide={() => {
+            setSelectedTarget(false);
+            animate(formPositionAnim, HIDDEN_VIEWS_POSITION);
+            mapView.current.animateToRegion({ ...location, ...coordsConstants });
+          }}
+          selectedTopic={topic}
+          topics={topics}
+          existent={selectedTarget}
         />
       </Animated.View>
       {topics && (

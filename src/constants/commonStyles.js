@@ -1,6 +1,6 @@
 import { StyleSheet, Dimensions } from 'react-native';
 import typography from './typography';
-import { BLACK, ERROR, TRANSPARENT, BACKGROUND } from './colors';
+import { BLACK, RED_ERROR, TRANSPARENT, BACKGROUND } from './colors';
 
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     ...typography.input,
   },
   inputBorderError: {
-    borderColor: ERROR,
+    borderColor: RED_ERROR,
     borderWidth: 1.5,
   },
   shortInputWidth: {
