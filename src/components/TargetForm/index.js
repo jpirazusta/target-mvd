@@ -8,7 +8,15 @@ import { TOPIC_SHAPE, TARGET_SHAPE } from 'constants/shapes';
 import TargetFormContent from './TargetFormContent';
 import styles from './styles';
 
-const TargetForm = ({ onCreate, onShowTopics, onHide, selectedTopic, topics, existent }) => {
+const TargetForm = ({
+  onCreate,
+  onDelete,
+  onShowTopics,
+  onHide,
+  selectedTopic,
+  topics,
+  existent,
+}) => {
   const [actualTopic, setActualTopic] = useState('');
 
   return (
@@ -26,6 +34,7 @@ const TargetForm = ({ onCreate, onShowTopics, onHide, selectedTopic, topics, exi
           style={styles.androidContainer}>
           <TargetFormContent
             onCreate={onCreate}
+            onDelete={onDelete}
             onShowTopics={onShowTopics}
             selectedTopic={selectedTopic}
             topics={topics}
@@ -39,6 +48,7 @@ const TargetForm = ({ onCreate, onShowTopics, onHide, selectedTopic, topics, exi
           <View style={styles.container}>
             <TargetFormContent
               onCreate={onCreate}
+              onDelete={onDelete}
               onShowTopics={onShowTopics}
               selectedTopic={selectedTopic}
               topics={topics}
@@ -55,6 +65,7 @@ const TargetForm = ({ onCreate, onShowTopics, onHide, selectedTopic, topics, exi
 
 TargetForm.propTypes = {
   onCreate: func.isRequired,
+  onDelete: func.isRequired,
   onShowTopics: func.isRequired,
   onHide: func.isRequired,
   selectedTopic: oneOfType([TOPIC_SHAPE, bool]).isRequired,

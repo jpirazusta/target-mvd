@@ -41,6 +41,7 @@ const FIELDS = {
 
 const TargetFormContent = ({
   onCreate,
+  onDelete,
   onShowTopics,
   selectedTopic,
   topics,
@@ -115,11 +116,13 @@ const TargetFormContent = ({
       {existent ? (
         <View style={styles.buttonsContainer}>
           <Button
+            handleOnPress={onDelete}
             additionalStyles={[styles.editButton, { backgroundColor: RED }]}
             title={deleteButton}
             isLoading={targetStatus === LOADING}
           />
           <Button
+            handleOnPress={() => null}
             additionalStyles={styles.editButton}
             title={saveButton}
             isLoading={targetStatus === LOADING}
@@ -140,6 +143,7 @@ const TargetFormContent = ({
 
 TargetFormContent.propTypes = {
   onCreate: func.isRequired,
+  onDelete: func.isRequired,
   onShowTopics: func.isRequired,
   selectedTopic: oneOfType([TOPIC_SHAPE, bool]).isRequired,
   topics: oneOfType([arrayOf(TOPIC_SHAPE), bool]).isRequired,

@@ -8,3 +8,4 @@ export const YELLOW = '#EFC638';
 export const LIGHT_YELLOW = 'rgba(255, 255, 255, 0.7)';
 export const BLUE = 'rgba(47, 188, 247, 0.7)';
 export const RED = '#D0021B';
+export const BLACK_40_ALPHA = 'rgba(0, 0, 0, 0.4)';
