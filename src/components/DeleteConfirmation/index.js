@@ -4,6 +4,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { useStatus, LOADING } from '@rootstrap/redux-tools';
 
 import useTopicIcon from 'hooks/useTopicIcon';
+import Modal from 'components/common/Modal';
 import MarkerView from 'components/common/MarkerView';
 import ErrorView from 'components/common/ErrorView';
 import Button from 'components/common/Button';
@@ -20,26 +21,24 @@ const DeleteConfirmation = ({ target, onDelete, onHide }) => {
   const { deleteQuestion, deleteReminder, deleteButton } = TARGET;
 
   return (
-    <View style={styles.opacityLayer}>
-      <View style={styles.container}>
-        <Text style={styles.question}>{deleteQuestion}</Text>
-        <View style={styles.marker}>
-          <MarkerView icon={icon} />
-        </View>
-        <Text style={styles.targetTitle}>{title}</Text>
-        <Text style={styles.reminder}>{deleteReminder}</Text>
-        <ErrorView errors={{ error }} />
-        <Button
-          handleOnPress={() => onDelete(id)}
-          additionalStyles={styles.deleteButton}
-          title={deleteButton}
-          isLoading={status === LOADING}
-        />
-        <TouchableOpacity onPress={onHide} style={styles.cancelButton}>
-          <Text style={styles.cancelText}>{COMMON.cancel}</Text>
-        </TouchableOpacity>
+    <Modal>
+      <Text style={styles.question}>{deleteQuestion}</Text>
+      <View style={styles.marker}>
+        <MarkerView icon={icon} />
       </View>
-    </View>
+      <Text style={styles.targetTitle}>{title}</Text>
+      <Text style={styles.reminder}>{deleteReminder}</Text>
+      <ErrorView errors={{ error }} />
+      <Button
+        handleOnPress={() => onDelete(id)}
+        additionalStyles={styles.deleteButton}
+        title={deleteButton}
+        isLoading={status === LOADING}
+      />
+      <TouchableOpacity onPress={onHide} style={styles.cancelButton}>
+        <Text style={styles.cancelText}>{COMMON.cancel}</Text>
+      </TouchableOpacity>
+    </Modal>
   );
 };
 

@@ -17,3 +17,18 @@ export const TARGET_SHAPE = shape({
   topicId: number,
   radius: number,
 });
+
+export const MATCH_SHAPE = shape({
+  id: number.isRequired,
+  email: string.isRequired,
+  firstName: string,
+  lastName: string,
+  fullName: string,
+  username: string,
+  gender: string,
+  avatar: shape({
+    originalUrl: string,
+    normalUrl: string,
+    smallThumbUrl: string,
+  }),
+});
