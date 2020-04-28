@@ -1,8 +1,9 @@
 import React, { useRef, useState, useCallback } from 'react';
+import { object } from 'prop-types';
 import { View, Image, Animated } from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 
-import { MAIN_SCREEN } from 'constants/screens';
+import { MAIN_SCREEN, CHAT_SCREEN } from 'constants/screens';
 import TargetForm from 'components/TargetForm';
 import CreateTargetButton from 'components/CreateTargetButton';
 import TopicPicker from 'components/TopicPicker';
@@ -33,7 +34,7 @@ const animate = (animatedValue, toValue) => {
   }).start();
 };
 
-const MainScreen = () => {
+const MainScreen = ({ navigation }) => {
   const location = useLocation();
   const { targets, topics, requestTargets } = useGetTargets();
   const [selectedTarget, setSelectedTarget] = useState(false);
@@ -80,6 +81,13 @@ const MainScreen = () => {
     requestTargets,
     setFormVisible,
     hideTargetForm,
+  );
+
+  const onStartChatting = useCallback(
+    ({ matchedUser, matchConversation }) => {
+      navigation.push(CHAT_SCREEN, { matchedUser, matchConversation });
+    },
+    [navigation],
   );
 
   return (
@@ -151,10 +159,19 @@ const MainScreen = () => {
         />
       )}
       {showMatch && (
-        <MatchModal match={createdTarget.matchedUser} onHide={() => setShowMatch(false)} />
+        <MatchModal
+          matchedUser={createdTarget.matchedUser}
+          matchConversation={createdTarget.matchConversation}
+          onHide={() => setShowMatch(false)}
+          onStartChatting={onStartChatting}
+        />
       )}
     </View>
   );
+};
+
+MainScreen.propTypes = {
+  navigation: object.isRequired,
 };
 
 export default MainScreen;

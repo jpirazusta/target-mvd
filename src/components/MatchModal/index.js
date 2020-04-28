@@ -3,28 +3,38 @@ import { func } from 'prop-types';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 
 import Modal from 'components/common/Modal';
+import Button from 'components/common/Button';
 import strings from 'locale';
-import { MATCH_SHAPE } from 'constants/shapes';
+import { MATCH_SHAPE, CONVERSATION_SHAPE } from 'constants/shapes';
 import ovals from 'assets/images/match.png';
 import defaultAvatar from 'assets/images/defaultProfileImage.png';
 import styles from './styles';
 
 const {
-  MATCH: { modalTitle, message, skip },
+  MATCH: { modalTitle, message, skip, chatButton },
 } = strings;
 
-const MatchModal = ({ match, onHide }) => (
+const MatchModal = ({ matchedUser, matchConversation, onHide, onStartChatting }) => (
   <Modal>
     <Image source={ovals} />
     <Text style={styles.title}>{modalTitle}</Text>
     <Text style={styles.message}>{message}</Text>
     <View style={styles.matchedUser}>
       <Image
-        source={match.avatar.smallThumbUrl ? { uri: match.avatar.smallThumbUrl } : defaultAvatar}
+        source={
+          matchedUser.avatar.smallThumbUrl
+            ? { uri: matchedUser.avatar.smallThumbUrl }
+            : defaultAvatar
+        }
         style={styles.avatar}
       />
-      <Text style={styles.name}>{match.fullName}</Text>
+      <Text style={styles.name}>{matchedUser.fullName}</Text>
     </View>
+    <Button
+      handleOnPress={() => onStartChatting({ matchedUser, matchConversation })}
+      additionalStyles={styles.chatButton}
+      title={chatButton}
+    />
     <TouchableOpacity onPress={onHide} style={styles.skipButton}>
       <Text style={styles.name}>{skip}</Text>
     </TouchableOpacity>
@@ -32,8 +42,10 @@ const MatchModal = ({ match, onHide }) => (
 );
 
 MatchModal.propTypes = {
-  match: MATCH_SHAPE.isRequired,
+  matchedUser: MATCH_SHAPE.isRequired,
+  matchConversation: CONVERSATION_SHAPE.isRequired,
   onHide: func.isRequired,
+  onStartChatting: func.isRequired,
 };
 
 export default MatchModal;

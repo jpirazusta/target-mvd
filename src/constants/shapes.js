@@ -32,3 +32,8 @@ export const MATCH_SHAPE = shape({
     smallThumbUrl: string,
   }),
 });
+
+export const CONVERSATION_SHAPE = shape({
+  id: number,
+  topicId: number,
+});
