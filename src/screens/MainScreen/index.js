@@ -1,6 +1,6 @@
 import React, { useRef, useState, useCallback } from 'react';
 import { object } from 'prop-types';
-import { View, Image, Animated } from 'react-native';
+import { View, Image, Animated, Button } from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 
 import { MAIN_SCREEN, CHAT_SCREEN } from 'constants/screens';
@@ -18,6 +18,8 @@ import TargetMarker from 'components/TargetMarker';
 import useDeleteTarget from 'hooks/useDeleteTarget';
 import locationMap from 'assets/images/locationMap.png';
 import common from 'constants/commonStyles';
+import { logout } from 'actions/userActions';
+import { useDispatch } from 'react-redux';
 import styles from './styles';
 
 const HIDDEN_VIEWS_POSITION = SCREEN_HEIGHT * -1;
@@ -41,7 +43,10 @@ const MainScreen = ({ navigation }) => {
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   const [showMatch, setShowMatch] = useState(false);
   const [formVisible, setFormVisible] = useState(false);
+  const [isMapRendered, setIsMapRendered] = useState(false);
   const mapView = useRef();
+  const dispatch = useDispatch();
+  const logoutRequest = useCallback(() => dispatch(logout()), [dispatch]);
 
   const formPositionAnim = useRef(new Animated.Value(HIDDEN_VIEWS_POSITION)).current;
   const topicsPositionAnim = useRef(new Animated.Value(HIDDEN_VIEWS_POSITION)).current;
@@ -58,6 +63,7 @@ const MainScreen = ({ navigation }) => {
   });
 
   const onSelectTarget = useSelectTarget(
+    isMapRendered,
     selectedTarget,
     location,
     coordsConstants,
@@ -94,6 +100,7 @@ const MainScreen = ({ navigation }) => {
     <View style={styles.container} testID={MAIN_SCREEN}>
       <MapView
         ref={mapView}
+        onLayout={() => setIsMapRendered(true)}
         provider={PROVIDER_GOOGLE}
         style={styles.map}
         initialRegion={{
@@ -166,6 +173,7 @@ const MainScreen = ({ navigation }) => {
           onStartChatting={onStartChatting}
         />
       )}
+      <Button testID="logout-button" onPress={logoutRequest} title="SIGN OUT" />
     </View>
   );
 };

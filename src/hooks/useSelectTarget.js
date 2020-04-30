@@ -2,6 +2,7 @@ import { useEffect, useCallback } from 'react';
 import find from 'lodash/find';
 
 const useSelectTarget = (
+  isMapRendered,
   selectedTarget,
   location,
   coordsConstants,
@@ -19,8 +20,8 @@ const useSelectTarget = (
       ...coords,
       ...coordsConstants,
     };
-    mapView.current.animateToRegion(region);
-  }, [coordsConstants, location, mapView, selectedTarget]);
+    if (isMapRendered) mapView.current.animateToRegion(region);
+  }, [coordsConstants, isMapRendered, location, mapView, selectedTarget]);
 
   const onSelectTarget = useCallback(
     (id, targets) => {
