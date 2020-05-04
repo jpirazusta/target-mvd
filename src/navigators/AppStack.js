@@ -7,7 +7,7 @@ import { MAIN_SCREEN, CHAT_SCREEN } from 'constants/screens';
 
 import MainScreen from 'screens/MainScreen';
 import ChatScreen from 'screens/ChatScreen';
-import back from 'assets/images/back.png';
+import backIcon from 'assets/images/backIcon.png';
 import { BLACK } from 'constants/colors';
 
 const Stack = createStackNavigator();
@@ -27,7 +27,7 @@ const AppStack = () => (
         headerTintColor: BLACK,
         headerBackTitle: ' ',
         // eslint-disable-next-line react/no-multi-comp
-        headerBackImage: () => <Image source={back} style={{ marginLeft: 18 }} />,
+        headerBackImage: () => <Image source={backIcon} style={{ marginLeft: 18 }} />,
       })}
     />
   </Stack.Navigator>

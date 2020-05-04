@@ -91,10 +91,13 @@ const MainScreen = ({ navigation }) => {
 
   const onStartChatting = useCallback(
     ({ matchedUser, matchConversation }) => {
+      setShowMatch(false);
       navigation.push(CHAT_SCREEN, { matchedUser, matchConversation });
     },
     [navigation],
   );
+
+  const { matchedUser, matchConversation } = createdTarget;
 
   return (
     <View style={styles.container} testID={MAIN_SCREEN}>
@@ -167,12 +170,13 @@ const MainScreen = ({ navigation }) => {
       )}
       {showMatch && (
         <MatchModal
-          matchedUser={createdTarget.matchedUser}
-          matchConversation={createdTarget.matchConversation}
+          matchedUser={matchedUser}
+          matchConversation={matchConversation}
           onHide={() => setShowMatch(false)}
-          onStartChatting={onStartChatting}
+          onStartChatting={() => onStartChatting({ matchedUser, matchConversation })}
         />
       )}
+
       <Button testID="logout-button" onPress={logoutRequest} title="SIGN OUT" />
     </View>
   );
