@@ -7,6 +7,7 @@ import TargetForm from 'components/TargetForm';
 import CreateTargetButton from 'components/CreateTargetButton';
 import TopicPicker from 'components/TopicPicker';
 import DeleteConfirmation from 'components/DeleteConfirmation';
+import MatchModal from 'components/MatchModal';
 import { LATITUDE_DELTA, LONGITUDE_DELTA, SCREEN_HEIGHT } from 'constants/common';
 import useLocation from 'hooks/useLocation';
 import useGetTargets from 'hooks/useGetTargets';
@@ -37,21 +38,23 @@ const MainScreen = () => {
   const { targets, topics, requestTargets } = useGetTargets();
   const [selectedTarget, setSelectedTarget] = useState(false);
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+  const [showMatch, setShowMatch] = useState(false);
   const [formVisible, setFormVisible] = useState(false);
   const mapView = useRef();
 
   const formPositionAnim = useRef(new Animated.Value(HIDDEN_VIEWS_POSITION)).current;
   const topicsPositionAnim = useRef(new Animated.Value(HIDDEN_VIEWS_POSITION)).current;
 
-  const { onCreateTarget, onSelectTopic, topic, setTopic } = useCreateTarget(
+  const { onCreateTarget, onSelectTopic, topic, setTopic, createdTarget } = useCreateTarget({
     animate,
     location,
     requestTargets,
     formPositionAnim,
     topicsPositionAnim,
     setFormVisible,
+    setShowMatch,
     HIDDEN_VIEWS_POSITION,
-  );
+  });
 
   const onSelectTarget = useSelectTarget(
     selectedTarget,
@@ -146,6 +149,9 @@ const MainScreen = () => {
           onDelete={onDeleteTarget}
           onHide={() => setShowDeleteConfirmation(false)}
         />
+      )}
+      {showMatch && (
+        <MatchModal match={createdTarget.matchedUser} onHide={() => setShowMatch(false)} />
       )}
     </View>
   );

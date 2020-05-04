@@ -61,4 +61,10 @@ export default {
     deleteQuestion: 'Seguro/a que quieres eliminar este target?',
     deleteReminder: 'Recuerda que si lo haces, ya no podrás chatear con sus coincidencias',
   },
+
+  MATCH: {
+    modalTitle: 'Yey!',
+    message: 'Tienes una nueva coincidencia!',
+    skip: 'Saltar',
+  },
 };

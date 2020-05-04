@@ -62,4 +62,10 @@ export default {
     deleteReminder:
       "Remember that if you delete it, you won't be able to chat with it's matches anymore",
   },
+
+  MATCH: {
+    modalTitle: 'Yey!',
+    message: 'You have a new match!',
+    skip: 'Skip',
+  },
 };

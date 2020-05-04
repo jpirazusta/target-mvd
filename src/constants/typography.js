@@ -1,12 +1,13 @@
 import { StyleSheet } from 'react-native';
 import fonts from './fonts';
-import { RED_ERROR, WHITE } from './colors';
+import { RED_ERROR, WHITE, BLACK } from './colors';
 
 export default StyleSheet.create({
   title: {
     ...fonts.bold,
     fontSize: 20,
     lineHeight: 27,
+    color: BLACK,
   },
   inputLabel: {
     ...fonts.semibold,
