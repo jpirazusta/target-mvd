@@ -1,103 +1,40 @@
-import React, { useRef, useState, useCallback } from 'react';
+import React, { useRef, useState } from 'react';
 import { object } from 'prop-types';
-import { View, Image, Animated, Button } from 'react-native';
+import { View, Image, Animated } from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 
-import { MAIN_SCREEN, CHAT_SCREEN } from 'constants/screens';
-import TargetForm from 'components/TargetForm';
-import CreateTargetButton from 'components/CreateTargetButton';
-import TopicPicker from 'components/TopicPicker';
-import DeleteConfirmation from 'components/DeleteConfirmation';
-import MatchModal from 'components/MatchModal';
-import { LATITUDE_DELTA, LONGITUDE_DELTA, SCREEN_HEIGHT } from 'constants/common';
+import { MAIN_SCREEN } from 'constants/screens';
+import CreateTarget from 'components/CreateTarget';
+import { DELTA_COORDS, HIDDEN_VIEWS_POSITION } from 'constants/common';
 import useLocation from 'hooks/useLocation';
 import useGetTargets from 'hooks/useGetTargets';
-import useCreateTarget from 'hooks/useCreateTarget';
 import useSelectTarget from 'hooks/useSelectTarget';
 import TargetMarker from 'components/TargetMarker';
-import useDeleteTarget from 'hooks/useDeleteTarget';
+import { animate } from 'utils/helpers';
 import locationMap from 'assets/images/locationMap.png';
-import common from 'constants/commonStyles';
-import { logout } from 'actions/userActions';
-import { useDispatch } from 'react-redux';
 import styles from './styles';
-
-const HIDDEN_VIEWS_POSITION = SCREEN_HEIGHT * -1;
-const ANIMATIONS_DURATION = 500;
-const coordsConstants = {
-  latitudeDelta: LATITUDE_DELTA,
-  longitudeDelta: LONGITUDE_DELTA,
-};
-
-const animate = (animatedValue, toValue) => {
-  Animated.timing(animatedValue, {
-    toValue,
-    duration: ANIMATIONS_DURATION,
-  }).start();
-};
 
 const MainScreen = ({ navigation }) => {
   const location = useLocation();
   const { targets, topics, requestTargets } = useGetTargets();
   const [selectedTarget, setSelectedTarget] = useState(false);
-  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
-  const [showMatch, setShowMatch] = useState(false);
   const [formVisible, setFormVisible] = useState(false);
   const [isMapRendered, setIsMapRendered] = useState(false);
   const mapView = useRef();
-  const dispatch = useDispatch();
-  const logoutRequest = useCallback(() => dispatch(logout()), [dispatch]);
 
   const formPositionAnim = useRef(new Animated.Value(HIDDEN_VIEWS_POSITION)).current;
   const topicsPositionAnim = useRef(new Animated.Value(HIDDEN_VIEWS_POSITION)).current;
-
-  const { onCreateTarget, onSelectTopic, topic, setTopic, createdTarget } = useCreateTarget({
-    animate,
-    location,
-    requestTargets,
-    formPositionAnim,
-    topicsPositionAnim,
-    setFormVisible,
-    setShowMatch,
-    HIDDEN_VIEWS_POSITION,
-  });
 
   const onSelectTarget = useSelectTarget(
     isMapRendered,
     selectedTarget,
     location,
-    coordsConstants,
     mapView,
     setSelectedTarget,
     animate,
     formPositionAnim,
     setFormVisible,
   );
-
-  const hideTargetForm = useCallback(() => {
-    setFormVisible(false);
-    setSelectedTarget(false);
-    setTopic(false);
-    animate(formPositionAnim, HIDDEN_VIEWS_POSITION);
-    mapView.current.animateToRegion({ ...location, ...coordsConstants });
-  }, [formPositionAnim, location, setTopic]);
-
-  const onDeleteTarget = useDeleteTarget(
-    setShowDeleteConfirmation,
-    requestTargets,
-    setFormVisible,
-    hideTargetForm,
-  );
-
-  const onStartChatting = useCallback(
-    ({ matchedUser, matchConversation }) => {
-      setShowMatch(false);
-      navigation.push(CHAT_SCREEN, { matchedUser, matchConversation });
-    },
-    [navigation],
-  );
-
-  const { matchedUser, matchConversation } = createdTarget;
 
   return (
     <View style={styles.container} testID={MAIN_SCREEN}>
@@ -108,7 +45,7 @@ const MainScreen = ({ navigation }) => {
         style={styles.map}
         initialRegion={{
           ...location,
-          ...coordsConstants,
+          ...DELTA_COORDS,
         }}
         showUserLocation
         followUserLocation>
@@ -129,55 +66,19 @@ const MainScreen = ({ navigation }) => {
           <View style={styles.markerCircle} />
         </Marker>
       </MapView>
-      <View style={styles.newTarget}>
-        <CreateTargetButton
-          onPress={() => {
-            setFormVisible(true);
-            animate(formPositionAnim, 0);
-          }}
-        />
-      </View>
-      <Animated.View style={[common.animatedContainer, { bottom: formPositionAnim }]}>
-        <TargetForm
-          onCreate={target => {
-            onCreateTarget(target);
-            mapView.current.animateToRegion({ ...location, ...coordsConstants });
-          }}
-          onDelete={() => setShowDeleteConfirmation(true)}
-          onShowTopics={() => animate(topicsPositionAnim, 0)}
-          onHide={hideTargetForm}
-          selectedTopic={topic}
-          topics={topics}
-          existent={selectedTarget}
-          visible={formVisible}
-        />
-      </Animated.View>
-      {topics && (
-        <Animated.View style={[common.animatedContainer, { bottom: topicsPositionAnim }]}>
-          <TopicPicker
-            topics={topics}
-            onHide={() => animate(topicsPositionAnim, HIDDEN_VIEWS_POSITION)}
-            onSelectTopic={onSelectTopic}
-          />
-        </Animated.View>
-      )}
-      {showDeleteConfirmation && (
-        <DeleteConfirmation
-          target={selectedTarget}
-          onDelete={onDeleteTarget}
-          onHide={() => setShowDeleteConfirmation(false)}
-        />
-      )}
-      {showMatch && (
-        <MatchModal
-          matchedUser={matchedUser}
-          matchConversation={matchConversation}
-          onHide={() => setShowMatch(false)}
-          onStartChatting={() => onStartChatting({ matchedUser, matchConversation })}
-        />
-      )}
-
-      <Button testID="logout-button" onPress={logoutRequest} title="SIGN OUT" />
+      <CreateTarget
+        navigation={navigation}
+        formPositionAnim={formPositionAnim}
+        topicsPositionAnim={topicsPositionAnim}
+        location={location}
+        requestTargets={requestTargets}
+        formVisible={formVisible}
+        setFormVisible={setFormVisible}
+        mapView={mapView}
+        topics={topics}
+        selectedTarget={selectedTarget}
+        setSelectedTarget={setSelectedTarget}
+      />
     </View>
   );
 };

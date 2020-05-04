@@ -37,3 +37,8 @@ export const CONVERSATION_SHAPE = shape({
   id: number,
   topicId: number,
 });
+
+export const LOCATION_SHAPE = shape({
+  latitude: number,
+  longitude: number,
+});

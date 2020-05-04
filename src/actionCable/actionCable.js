@@ -1,4 +1,3 @@
-import { Platform } from 'react-native';
 import ActionCable from 'actioncable';
 
 ActionCable.getConfig = () => null;
@@ -12,11 +11,9 @@ ActionCable.Connection.prototype.open = function open() {
   return result;
 };
 
-if (Platform.OS === 'ios' || Platform.OS === 'android') {
-  global.document = {
-    addEventListener() {},
-    removeEventListener() {},
-  };
-}
+global.document = {
+  addEventListener() {},
+  removeEventListener() {},
+};
 
 export default ActionCable;
