@@ -1,7 +1,6 @@
 import React, { useRef, useState, useCallback } from 'react';
 import { View, Image, Animated } from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
-import _ from 'lodash';
 
 import { MAIN_SCREEN } from 'constants/screens';
 import TargetForm from 'components/TargetForm';
@@ -38,17 +37,19 @@ const MainScreen = () => {
   const { targets, topics, requestTargets } = useGetTargets();
   const [selectedTarget, setSelectedTarget] = useState(false);
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+  const [formVisible, setFormVisible] = useState(false);
   const mapView = useRef();
 
   const formPositionAnim = useRef(new Animated.Value(HIDDEN_VIEWS_POSITION)).current;
   const topicsPositionAnim = useRef(new Animated.Value(HIDDEN_VIEWS_POSITION)).current;
 
-  const { onCreateTarget, onSelectTopic, topic } = useCreateTarget(
+  const { onCreateTarget, onSelectTopic, topic, setTopic } = useCreateTarget(
     animate,
     location,
     requestTargets,
     formPositionAnim,
     topicsPositionAnim,
+    setFormVisible,
     HIDDEN_VIEWS_POSITION,
   );
 
@@ -60,15 +61,23 @@ const MainScreen = () => {
     setSelectedTarget,
     animate,
     formPositionAnim,
+    setFormVisible,
   );
 
   const hideTargetForm = useCallback(() => {
+    setFormVisible(false);
     setSelectedTarget(false);
+    setTopic(false);
     animate(formPositionAnim, HIDDEN_VIEWS_POSITION);
     mapView.current.animateToRegion({ ...location, ...coordsConstants });
-  }, [formPositionAnim, location]);
+  }, [formPositionAnim, location, setTopic]);
 
-  const onDeleteTarget = useDeleteTarget(setShowDeleteConfirmation, requestTargets, hideTargetForm);
+  const onDeleteTarget = useDeleteTarget(
+    setShowDeleteConfirmation,
+    requestTargets,
+    setFormVisible,
+    hideTargetForm,
+  );
 
   return (
     <View style={styles.container} testID={MAIN_SCREEN}>
@@ -100,7 +109,12 @@ const MainScreen = () => {
         </Marker>
       </MapView>
       <View style={styles.newTarget}>
-        <CreateTargetButton onPress={() => animate(formPositionAnim, 0)} />
+        <CreateTargetButton
+          onPress={() => {
+            setFormVisible(true);
+            animate(formPositionAnim, 0);
+          }}
+        />
       </View>
       <Animated.View style={[common.animatedContainer, { bottom: formPositionAnim }]}>
         <TargetForm
@@ -114,6 +128,7 @@ const MainScreen = () => {
           selectedTopic={topic}
           topics={topics}
           existent={selectedTarget}
+          visible={formVisible}
         />
       </Animated.View>
       {topics && (

@@ -1,14 +1,15 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import { func, oneOfType, bool, arrayOf, string } from 'prop-types';
+import { Text, TouchableOpacity } from 'react-native';
+import { func, oneOfType, bool, arrayOf, string, objectOf } from 'prop-types';
 import { LOADING } from '@rootstrap/redux-tools';
 
 import useTargetForm from 'hooks/useTargetForm';
+import { getStringWithCondition } from 'utils/helpers';
 import ErrorView from 'components/common/ErrorView';
 import Button from 'components/common/Button';
 import Input from 'components/common/Input';
 import strings from 'locale';
-import { BLACK, RED } from 'constants/colors';
+import { BLACK } from 'constants/colors';
 import { IS_ANDROID } from 'constants/common';
 import { TOPIC_SHAPE, TARGET_SHAPE } from 'constants/shapes';
 import common from 'constants/commonStyles';
@@ -25,12 +26,10 @@ const {
     topicPlaceholder,
     area,
     areaEdit,
-    areaPlaceholder,
     titleLabel,
     titlePlaceholder,
     createButton,
     deleteButton,
-    saveButton,
   },
 } = strings;
 
@@ -48,16 +47,20 @@ const TargetFormContent = ({
   existent,
   actualTopic,
   setActualTopic,
+  visible,
+  initialValues,
 }) => {
   const {
+    values,
+    setValues,
     errors,
     handleOnPress,
-    targetError,
     targetStatus,
     topicError,
     areaInputProps,
     titleInputProps,
     topicText,
+    networkError,
   } = useTargetForm({
     existent,
     topics,
@@ -69,65 +72,76 @@ const TargetFormContent = ({
     topicsError,
     loadingTopics,
     topicPlaceholder,
+    visible,
+    initialValues,
   });
+
+  const onEndEditingArea = () => {
+    setValues({
+      ...values,
+      areaLength: getStringWithCondition(
+        values.areaLength,
+        `${values.areaLength} m`,
+        initialValues.areaLength,
+      ),
+    });
+  };
+
+  const allErrors = { title: !existent && errors.title, networkError, topicError };
 
   return (
     <>
       <Input
-        label={existent ? areaEdit : area}
+        label={getStringWithCondition(existent, areaEdit, area)}
         testID="area-input"
         keyboardType="numeric"
-        error={errors[FIELDS.areaLength]}
-        invalid={targetError || errors[FIELDS.areaLength]}
         short={false}
         additionalStyles={styles.inputContainer}
-        placeholder={areaPlaceholder}
-        placeholderTextColor={BLACK}
         onBlur={areaInputProps.onBlur}
         onChangeText={areaInputProps.onChangeText}
-        value={existent ? existent.radius.toString() : areaInputProps.value}
+        value={getStringWithCondition(
+          existent,
+          existent && `${existent.radius.toString()} m`,
+          areaInputProps.value,
+        )}
+        editable={!existent}
+        onFocus={() => setValues({ ...values, areaLength: '' })}
+        onEndEditing={onEndEditingArea}
       />
       <Input
         label={titleLabel}
         testID="target-title-input"
-        error={errors[FIELDS.title]}
-        invalid={targetError || errors[FIELDS.title]}
+        invalid={!existent && (networkError || errors[FIELDS.title])}
         short={false}
         additionalStyles={styles.inputContainer}
         placeholder={titlePlaceholder}
         placeholderTextColor={BLACK}
         onBlur={titleInputProps.onBlur}
         onChangeText={titleInputProps.onChangeText}
-        value={existent ? existent.title : titleInputProps.value}
+        value={getStringWithCondition(existent, existent && existent.title, titleInputProps.value)}
+        editable={!existent}
       />
       <>
         <Text style={[common.inputLabel, common.leftPadding]}>
-          {existent ? topicLabelEdit : topicLabel}
+          {getStringWithCondition(existent, topicLabelEdit, topicLabel)}
         </Text>
         <TouchableOpacity
-          style={[styles.topic, (topicError || targetError) && common.inputBorderError]}
-          onPress={onShowTopics}>
+          style={[styles.topic, (topicError || networkError) && common.inputBorderError]}
+          onPress={onShowTopics}
+          disabled={Boolean(existent)}>
           <Text style={[styles.topicInput, IS_ANDROID && fonts.bold]}>
             {actualTopic || topicText()}
           </Text>
         </TouchableOpacity>
       </>
-      <ErrorView errors={{ ...errors, targetError, topicError }} />
+      <ErrorView errors={allErrors} />
       {existent ? (
-        <View style={styles.buttonsContainer}>
-          <Button
-            handleOnPress={onDelete}
-            additionalStyles={[styles.editButton, { backgroundColor: RED }]}
-            title={deleteButton}
-            isLoading={targetStatus === LOADING}
-          />
-          <Button
-            handleOnPress={() => null}
-            additionalStyles={styles.editButton}
-            title={saveButton}
-            isLoading={targetStatus === LOADING}
-          />
-        </View>
+        <Button
+          handleOnPress={onDelete}
+          additionalStyles={styles.deleteButton}
+          title={deleteButton}
+          isLoading={targetStatus === LOADING}
+        />
       ) : (
         <Button
           testID="save-target-button"
@@ -150,6 +164,12 @@ TargetFormContent.propTypes = {
   existent: oneOfType([TARGET_SHAPE, bool]).isRequired,
   actualTopic: string.isRequired,
   setActualTopic: func.isRequired,
+  visible: bool.isRequired,
+  initialValues: objectOf(string),
+};
+
+TargetFormContent.defaultProps = {
+  initialValues: { areaLength: '200 m' },
 };
 
 export default TargetFormContent;

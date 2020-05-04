@@ -9,6 +9,7 @@ const useSelectTarget = (
   setSelectedTarget,
   animate,
   formPositionAnim,
+  setFormVisible,
 ) => {
   useEffect(() => {
     const coords = selectedTarget
@@ -25,9 +26,10 @@ const useSelectTarget = (
     (id, targets) => {
       const { target } = find(targets, ({ target }) => target.id === id);
       setSelectedTarget(target);
+      setFormVisible(true);
       animate(formPositionAnim, 0);
     },
-    [animate, formPositionAnim, setSelectedTarget],
+    [animate, formPositionAnim, setFormVisible, setSelectedTarget],
   );
 
   return onSelectTarget;

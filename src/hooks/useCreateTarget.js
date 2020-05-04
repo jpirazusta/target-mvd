@@ -10,6 +10,7 @@ const useCreateTarget = (
   requestTargets,
   formPositionAnim,
   topicsPositionAnim,
+  setFormVisible,
   HIDDEN_VIEWS_POSITION,
 ) => {
   const dispatch = useDispatch();
@@ -19,9 +20,18 @@ const useCreateTarget = (
   useEffect(() => {
     if (targetStatus === SUCCESS) {
       requestTargets();
+      setTopic(false);
+      setFormVisible(false);
       animate(formPositionAnim, HIDDEN_VIEWS_POSITION);
     }
-  }, [HIDDEN_VIEWS_POSITION, animate, formPositionAnim, requestTargets, targetStatus]);
+  }, [
+    HIDDEN_VIEWS_POSITION,
+    animate,
+    formPositionAnim,
+    requestTargets,
+    setFormVisible,
+    targetStatus,
+  ]);
 
   const onCreateTarget = useCallback(
     ({ title, areaLength }) => {
@@ -42,7 +52,7 @@ const useCreateTarget = (
     animate(topicsPositionAnim, HIDDEN_VIEWS_POSITION);
   };
 
-  return { onCreateTarget, onSelectTopic, topic };
+  return { onCreateTarget, onSelectTopic, topic, setTopic };
 };
 
 export default useCreateTarget;

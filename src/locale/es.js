@@ -47,7 +47,6 @@ export default {
     create: 'CREAR NUEVO TARGET',
     area: 'LARGO DEL ÁREA',
     areaEdit: 'LARGO DEL ÁREA',
-    areaPlaceholder: '0 m',
     titleLabel: 'TÍTULO DEL TARGET',
     titlePlaceholder: 'Elige un título para tu target',
     topicLabel: 'SELECCIONA UN TEMA',

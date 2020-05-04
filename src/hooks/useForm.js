@@ -10,7 +10,6 @@ const useForm = (
   },
   ...dependencies
 ) => {
-  console.log('onSubmit:', onSubmit);
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState({});
   const [blurredFields, setBlurredFields] = useState({});
