@@ -11,6 +11,7 @@ const ConversationItem = ({ conversation, onSelect }) => {
   const {
     lastMessage,
     topicIcon,
+    unreadMessages,
     user: { avatar, fullName },
   } = conversation;
 
@@ -24,6 +25,11 @@ const ConversationItem = ({ conversation, onSelect }) => {
         </View>
       </View>
       <Image source={{ uri: topicIcon }} style={styles.topicIcon} />
+      {unreadMessages > 0 && (
+        <View style={styles.unread}>
+          <Text style={styles.unreadNumber}>{unreadMessages}</Text>
+        </View>
+      )}
     </TouchableOpacity>
   );
 };

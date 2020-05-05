@@ -51,8 +51,3 @@ export const CONVERSATION_SHAPE = shape({
   unreadMessages: number,
   user: USER_SHAPE,
 });
-
-export const LOCATION_SHAPE = shape({
-  latitude: number,
-  longitude: number,
-});

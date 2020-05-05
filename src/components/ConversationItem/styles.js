@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 import typography from 'constants/typography';
 import fonts from 'constants/fonts';
+import { YELLOW, WHITE } from 'constants/colors';
 
 const styles = StyleSheet.create({
   row: {
@@ -28,6 +29,23 @@ const styles = StyleSheet.create({
   topicIcon: {
     height: 25,
     width: 25,
+  },
+  unread: {
+    width: 16,
+    height: 16,
+    borderRadius: 8,
+    backgroundColor: YELLOW,
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+    top: 5,
+    right: 5,
+  },
+  unreadNumber: {
+    color: WHITE,
+    fontSize: 10,
+    fontWeight: '600',
+    textAlign: 'center',
   },
 });
 
