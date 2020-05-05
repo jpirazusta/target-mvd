@@ -9,11 +9,6 @@ const styles = StyleSheet.create({
   map: {
     flex: 1,
   },
-  newTarget: {
-    height: 100,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   marker: {
     alignItems: 'center',
     zIndex: 2,

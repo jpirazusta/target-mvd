@@ -66,5 +66,6 @@ export default {
     modalTitle: 'Yey!',
     message: 'Tienes una nueva coincidencia!',
     skip: 'Saltar',
+    chatButton: 'Chatear!',
   },
 };

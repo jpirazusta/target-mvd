@@ -1,10 +1,11 @@
 import { useEffect, useCallback } from 'react';
 import find from 'lodash/find';
+import { DELTA_COORDS } from 'constants/common';
 
 const useSelectTarget = (
+  isMapRendered,
   selectedTarget,
   location,
-  coordsConstants,
   mapView,
   setSelectedTarget,
   animate,
@@ -17,10 +18,10 @@ const useSelectTarget = (
       : location;
     const region = {
       ...coords,
-      ...coordsConstants,
+      ...DELTA_COORDS,
     };
-    mapView.current.animateToRegion(region);
-  }, [coordsConstants, location, mapView, selectedTarget]);
+    isMapRendered && mapView.current.animateToRegion(region);
+  }, [isMapRendered, location, mapView, selectedTarget]);
 
   const onSelectTarget = useCallback(
     (id, targets) => {

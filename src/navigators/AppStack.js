@@ -1,10 +1,14 @@
 import React from 'react';
+import { Image } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import strings from 'locale';
 
-import { MAIN_SCREEN } from 'constants/screens';
+import { MAIN_SCREEN, CHAT_SCREEN } from 'constants/screens';
 
 import MainScreen from 'screens/MainScreen';
+import ChatScreen from 'screens/ChatScreen';
+import backIcon from 'assets/images/backIcon.png';
+import { BLACK } from 'constants/colors';
 
 const Stack = createStackNavigator();
 
@@ -14,6 +18,17 @@ const AppStack = () => (
       name={MAIN_SCREEN}
       component={MainScreen}
       options={{ title: strings.MAIN_SCREEN.title }}
+    />
+    <Stack.Screen
+      name={CHAT_SCREEN}
+      component={ChatScreen}
+      options={({ route }) => ({
+        title: route.params.matchedUser.fullName,
+        headerTintColor: BLACK,
+        headerBackTitle: ' ',
+        // eslint-disable-next-line react/no-multi-comp
+        headerBackImage: () => <Image source={backIcon} style={{ marginLeft: 18 }} />,
+      })}
     />
   </Stack.Navigator>
 );

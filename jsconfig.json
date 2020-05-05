@@ -5,6 +5,9 @@
       "*": [
         "src/*"
       ],
+      "actionCable/*": [
+        "src/actionCable/*"
+      ],
       "actions/*": [
         "src/actions/*"
       ],

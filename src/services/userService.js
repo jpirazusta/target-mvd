@@ -1,20 +1,22 @@
 import api from 'api';
 
+const prefix = '/users';
+
 class UserService {
   login(user) {
-    return api.post('/users/sign_in', user);
+    return api.post(`${prefix}/sign_in`, user);
   }
 
   facebookLogin(token) {
-    return api.post('/users/facebook', token);
+    return api.post(`${prefix}/facebook`, token);
   }
 
   logout() {
-    return api.delete('/users/sign_out');
+    return api.delete(`${prefix}/sign_out`);
   }
 
   signUp(user) {
-    return api.post('/users', user);
+    return api.post(prefix, user);
   }
 }
 

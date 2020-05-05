@@ -3,18 +3,14 @@ import userService from 'services/userService';
 
 export const login = createThunk('LOGIN', async user => {
   const {
-    data: {
-      data: { email: loggedUser },
-    },
+    data: { data: loggedUser },
   } = await userService.login({ user });
   return loggedUser;
 });
 
 export const facebookLogin = createThunk('FB_LOGIN', async accessToken => {
   const {
-    data: {
-      data: { email: loggedUser },
-    },
+    data: { data: loggedUser },
   } = await userService.facebookLogin({ accessToken });
   return loggedUser;
 });

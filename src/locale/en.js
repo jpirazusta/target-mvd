@@ -67,5 +67,6 @@ export default {
     modalTitle: 'Yey!',
     message: 'You have a new match!',
     skip: 'Skip',
+    chatButton: 'Cool! Start chatting',
   },
 };

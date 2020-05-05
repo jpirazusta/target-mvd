@@ -1,8 +1,10 @@
 import api from 'api';
 
+const prefix = '/targets';
+
 class TargetService {
   getTargets() {
-    return api.get('/targets');
+    return api.get(prefix);
   }
 
   getTopics() {
@@ -10,11 +12,11 @@ class TargetService {
   }
 
   createTarget(target) {
-    return api.post('/targets', target);
+    return api.post(prefix, target);
   }
 
   deleteTarget(targetId) {
-    return api.delete(`/targets/${targetId}`);
+    return api.delete(`${prefix}/${targetId}`);
   }
 }
 

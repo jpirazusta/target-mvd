@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import typography from 'constants/typography';
 import fonts from 'constants/fonts';
-import { BLACK } from 'constants/colors';
+import { BLACK, YELLOW } from 'constants/colors';
 
 const styles = StyleSheet.create({
   title: {
@@ -30,6 +30,11 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 16,
     color: BLACK,
+  },
+  chatButton: {
+    backgroundColor: YELLOW,
+    width: 157,
+    marginBottom: 10,
   },
   skipButton: {
     width: 157,
