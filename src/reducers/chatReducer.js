@@ -1,7 +1,14 @@
 import { createReducer } from '@rootstrap/redux-tools';
-import { CLEAR_CHAT_STATE, RECEIVE_MESSAGE, getMessagesSuccess } from 'actions/chatActions';
+import {
+  CLEAR_CHAT_STATE,
+  RECEIVE_MESSAGE,
+  getMessagesSuccess,
+  getConversationsSuccess,
+} from 'actions/chatActions';
 
-const initialState = {};
+const initialState = {
+  conversations: [],
+};
 
 const isInCollection = (id, array) => array.find(({ id: elementId }) => elementId === id);
 
@@ -22,8 +29,13 @@ const handleReceiveMessage = (state, { payload }) => {
   state.messages = [...state.messages, payload];
 };
 
+const handleGetConversationsSuccess = (state, { payload }) => {
+  state.conversations = payload;
+};
+
 export default createReducer(initialState, {
   [getMessagesSuccess]: handleGetMessagesSuccess,
+  [getConversationsSuccess]: handleGetConversationsSuccess,
   [CLEAR_CHAT_STATE]: handleClearChatState,
   [RECEIVE_MESSAGE]: handleReceiveMessage,
 });

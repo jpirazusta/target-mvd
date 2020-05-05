@@ -59,9 +59,9 @@ const CreateTarget = ({
   );
 
   const onStartChatting = useCallback(
-    ({ matchedUser, matchConversation }) => {
+    (fullName, matchId) => {
       setShowMatch(false);
-      navigation.push(CHAT_SCREEN, { matchedUser, matchConversation });
+      navigation.push(CHAT_SCREEN, { userName: fullName, matchId });
     },
     [navigation],
   );
@@ -112,9 +112,8 @@ const CreateTarget = ({
       {showMatch && (
         <MatchModal
           matchedUser={matchedUser}
-          matchConversation={matchConversation}
           onHide={() => setShowMatch(false)}
-          onStartChatting={() => onStartChatting({ matchedUser, matchConversation })}
+          onStartChatting={() => onStartChatting(matchedUser.fullName, matchConversation.id)}
         />
       )}
     </>

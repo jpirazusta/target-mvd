@@ -32,4 +32,9 @@ export default StyleSheet.create({
     lineHeight: 15,
     color: WHITE,
   },
+  conversations: {
+    fontSize: 12,
+    lineHeight: 20,
+    color: BLACK,
+  },
 });

@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { BLACK, BACKGROUND } from 'constants/colors';
+import { BACKGROUND } from 'constants/colors';
 
 const styles = StyleSheet.create({
   mainContainer: {
@@ -8,10 +8,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-  },
-  separator: {
-    height: 0.5,
-    backgroundColor: BLACK,
   },
   list: {
     backgroundColor: BACKGROUND,

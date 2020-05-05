@@ -1,4 +1,4 @@
-import { shape, number, string } from 'prop-types';
+import { shape, number, string, objectOf } from 'prop-types';
 
 export const TOPIC_SHAPE = shape({
   id: number,
@@ -33,12 +33,21 @@ export const MATCH_SHAPE = shape({
   }),
 });
 
-export const CONVERSATION_SHAPE = shape({
-  id: number,
-  topicId: number,
-});
-
 export const LOCATION_SHAPE = shape({
   latitude: number,
   longitude: number,
+});
+
+export const USER_SHAPE = shape({
+  id: number.isRequired,
+  fullName: string,
+  avatar: objectOf(string),
+});
+
+export const CONVERSATION_SHAPE = shape({
+  matchId: number.isRequired,
+  topicIcon: string.isRequired,
+  lastMessage: string,
+  unreadMessages: number,
+  user: USER_SHAPE,
 });
