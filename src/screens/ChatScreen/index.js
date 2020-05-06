@@ -17,7 +17,7 @@ import {
 import useSession from 'hooks/useSession';
 import { CHAT_PAGE_COUNT } from 'constants/chat';
 import defaultProfileImage from 'assets/images/defaultProfileImage.png';
-import common from 'constants/commonStyles';
+import commonStyles from 'constants/commonStyles';
 
 const ChatScreen = ({ route }) => {
   const {
@@ -76,7 +76,7 @@ const ChatScreen = ({ route }) => {
   };
 
   return (
-    <View style={common.screenContainer}>
+    <View style={commonStyles.screenContainer}>
       <GiftedChat
         messages={messages}
         onSend={handleOnSend}

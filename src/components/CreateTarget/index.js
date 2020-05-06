@@ -61,7 +61,7 @@ const CreateTarget = ({
   const onStartChatting = useCallback(
     (fullName, matchId) => {
       setShowMatch(false);
-      navigation.push(CHAT_SCREEN, { userName: fullName, matchId });
+      navigation.navigate(CHAT_SCREEN, { userName: fullName, matchId });
     },
     [navigation],
   );

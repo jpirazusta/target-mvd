@@ -1,6 +1,6 @@
 /* eslint-disable react/no-multi-comp */
 import React from 'react';
-import { Image, TouchableOpacity } from 'react-native';
+import { Image } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import strings from 'locale';
 
@@ -9,6 +9,7 @@ import { MAIN_SCREEN, CHAT_SCREEN, CONVERSATIONS_SCREEN } from 'constants/screen
 import MainScreen from 'screens/MainScreen';
 import ChatScreen from 'screens/ChatScreen';
 import ConversationsScreen from 'screens/ConversationsScreen';
+import HeaderButton from 'components/common/HeaderButton';
 import backIcon from 'assets/images/backIcon.png';
 import conversationsIcon from 'assets/images/conversationsIcon.png';
 import locationIcon from 'assets/images/locationIcon.png';
@@ -25,11 +26,11 @@ const AppStack = () => (
       options={({ navigation }) => ({
         title: strings.MAIN_SCREEN.title,
         headerRight: () => (
-          <TouchableOpacity
-            onPress={() => navigation.push(CONVERSATIONS_SCREEN)}
-            style={styles.rightButton}>
-            <Image source={conversationsIcon} />
-          </TouchableOpacity>
+          <HeaderButton
+            onPress={() => navigation.navigate(CONVERSATIONS_SCREEN)}
+            icon={conversationsIcon}
+            style={styles.rightButton}
+          />
         ),
       })}
     />
@@ -49,9 +50,11 @@ const AppStack = () => (
       options={({ navigation }) => ({
         title: strings.CHAT.title,
         headerRight: () => (
-          <TouchableOpacity onPress={() => navigation.pop()} style={styles.rightButton}>
-            <Image source={locationIcon} />
-          </TouchableOpacity>
+          <HeaderButton
+            onPress={() => navigation.pop()}
+            icon={locationIcon}
+            style={styles.rightButton}
+          />
         ),
         headerLeft: null,
       })}

@@ -4,7 +4,7 @@ import { arrayOf, func } from 'prop-types';
 
 import TopicItem from 'components/TopicItem';
 import { TOPIC_SHAPE_LONG } from 'constants/shapes';
-import common from 'constants/commonStyles';
+import commonStyles from 'constants/commonStyles';
 import styles from './styles';
 
 const TopicPicker = ({ topics, onHide, onSelectTopic }) => (
@@ -12,7 +12,7 @@ const TopicPicker = ({ topics, onHide, onSelectTopic }) => (
     <TouchableOpacity style={styles.mainContainer} onPress={onHide} />
     <FlatList
       data={topics}
-      ItemSeparatorComponent={() => <View style={common.separator} />}
+      ItemSeparatorComponent={() => <View style={commonStyles.separator} />}
       keyExtractor={({ topic: { id } }) => id.toString()}
       renderItem={({ item: { topic } }) => <TopicItem {...topic} onSelect={onSelectTopic} />}
       style={styles.list}

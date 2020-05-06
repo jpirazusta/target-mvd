@@ -5,13 +5,10 @@ import { getConversations } from 'actions/chatActions';
 
 const useGetConversations = navigation => {
   const dispatch = useDispatch();
-  const requestConversations = useCallback(() => {
-    dispatch(getConversations());
-  }, [dispatch]);
+  const requestConversations = useCallback(() => dispatch(getConversations()), [dispatch]);
+
   useEffect(() => {
-    const unsubscribe = navigation.addListener('focus', () => {
-      requestConversations();
-    });
+    const unsubscribe = navigation.addListener('focus', () => requestConversations());
 
     return unsubscribe;
   }, []);

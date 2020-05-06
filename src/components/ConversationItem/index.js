@@ -4,15 +4,19 @@ import { func } from 'prop-types';
 
 import Avatar from 'components/common/Avatar';
 import { CONVERSATION_SHAPE } from 'constants/shapes';
-import common from 'constants/commonStyles';
+import commonStyles from 'constants/commonStyles';
 import styles from './styles';
 
 const ConversationItem = ({ conversation, onSelect }) => {
-  const { lastMessage, topicIcon, user } = conversation;
-  const { avatar, fullName } = user;
+  const {
+    lastMessage,
+    topicIcon,
+    user: { avatar, fullName },
+  } = conversation;
+
   return (
     <TouchableOpacity style={styles.row} onPress={onSelect}>
-      <View style={common.row}>
+      <View style={commonStyles.row}>
         <Avatar uri={avatar.smallThumbUrl} style={styles.avatar} />
         <View>
           <Text style={styles.name}>{fullName}</Text>

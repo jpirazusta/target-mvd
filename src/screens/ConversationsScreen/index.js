@@ -7,25 +7,25 @@ import ConversationItem from 'components/ConversationItem';
 import useGetConversations from 'hooks/useGetConversations';
 import strings from 'locale';
 import { CHAT_SCREEN } from 'constants/screens';
-import common from 'constants/commonStyles';
+import commonStyles from 'constants/commonStyles';
 
 const ConversationsScreen = ({ navigation }) => {
   const { conversations, status, error, requestConversations } = useGetConversations(navigation);
 
   return (
-    <View style={common.screenContainer}>
+    <View style={commonStyles.screenContainer}>
       {error ? (
         <Text>{strings.CHAT.conversationsError}</Text>
       ) : (
         <FlatList
           data={conversations}
-          ItemSeparatorComponent={() => <View style={common.separator} />}
+          ItemSeparatorComponent={() => <View style={commonStyles.separator} />}
           keyExtractor={({ matchId }) => matchId.toString()}
           renderItem={({ item }) => (
             <ConversationItem
               conversation={item}
               onSelect={() =>
-                navigation.push(CHAT_SCREEN, {
+                navigation.navigate(CHAT_SCREEN, {
                   userName: item.user.fullName,
                   matchId: item.matchId,
                 })
