@@ -5,6 +5,10 @@ import { BLACK, RED_ERROR, TRANSPARENT, BACKGROUND } from './colors';
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
+  screenContainer: {
+    flex: 1,
+    backgroundColor: BACKGROUND,
+  },
   formContainer: {
     backgroundColor: BACKGROUND,
     flex: 1,
@@ -64,6 +68,13 @@ const styles = StyleSheet.create({
   },
   alignCenter: {
     alignItems: 'center',
+  },
+  separator: {
+    height: 0.5,
+    backgroundColor: BLACK,
+  },
+  row: {
+    flexDirection: 'row',
   },
 });
 

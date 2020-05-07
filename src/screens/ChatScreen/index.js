@@ -17,14 +17,14 @@ import {
 import useSession from 'hooks/useSession';
 import { CHAT_PAGE_COUNT } from 'constants/chat';
 import defaultProfileImage from 'assets/images/defaultProfileImage.png';
-import styles from './styles';
+import commonStyles from 'constants/commonStyles';
 
 const ChatScreen = ({ route }) => {
   const {
     user: { id },
     info,
   } = useSession();
-  const matchId = route.params.matchConversation.id;
+  const { matchId } = route.params;
   const dispatch = useDispatch();
   const [isLoadingEarlier, setIsLoadingEarlier] = useState(false);
 
@@ -76,7 +76,7 @@ const ChatScreen = ({ route }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={commonStyles.screenContainer}>
       <GiftedChat
         messages={messages}
         onSend={handleOnSend}

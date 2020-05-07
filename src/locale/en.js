@@ -69,4 +69,9 @@ export default {
     skip: 'Skip',
     chatButton: 'Cool! Start chatting',
   },
+
+  CHAT: {
+    title: 'Chat',
+    conversationsError: 'Could not get conversations from server',
+  },
 };

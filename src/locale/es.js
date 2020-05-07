@@ -68,4 +68,9 @@ export default {
     skip: 'Saltar',
     chatButton: 'Chatear!',
   },
+
+  CHAT: {
+    title: 'Chat',
+    conversationsError: 'No se pudieron obtener las conversaciones del server',
+  },
 };
