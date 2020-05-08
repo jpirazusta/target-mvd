@@ -3,6 +3,7 @@ import { View, TouchableOpacity, Image, Text } from 'react-native';
 import { func } from 'prop-types';
 
 import Avatar from 'components/common/Avatar';
+import Badge from 'components/common/Badge';
 import { CONVERSATION_SHAPE } from 'constants/shapes';
 import commonStyles from 'constants/commonStyles';
 import styles from './styles';
@@ -25,11 +26,7 @@ const ConversationItem = ({ conversation, onSelect }) => {
         </View>
       </View>
       <Image source={{ uri: topicIcon }} style={styles.topicIcon} />
-      {unreadMessages > 0 && (
-        <View style={styles.unread}>
-          <Text style={styles.unreadNumber}>{unreadMessages}</Text>
-        </View>
-      )}
+      {unreadMessages > 0 && <Badge number={unreadMessages} position={styles.badgePosition} />}
     </TouchableOpacity>
   );
 };
