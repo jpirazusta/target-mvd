@@ -1,23 +1,24 @@
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useStatus } from '@rootstrap/redux-tools';
 import useSession from 'hooks/useSession';
 import { getProfile } from 'actions/userActions';
 
-const useProfile = () => {
+const useGetProfile = () => {
   const dispatch = useDispatch();
   const {
     user: { id },
   } = useSession();
+  const requestProfile = useCallback(() => dispatch(getProfile(id)), [dispatch, id]);
 
   useEffect(() => {
-    dispatch(getProfile(id));
-  }, []);
+    requestProfile();
+  }, [requestProfile]);
 
   const { error, status } = useStatus(getProfile);
   const profile = useSelector(({ user: { profile } }) => profile);
 
-  return { profile, error, status };
+  return { profile, error, status, id };
 };
 
-export default useProfile;
+export default useGetProfile;

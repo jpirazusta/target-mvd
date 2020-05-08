@@ -6,7 +6,10 @@ export default {
     presence: true,
     email: true,
   },
-  password: {
+  firstName: {
+    presence: true,
+  },
+  lastName: {
     presence: true,
   },
 };

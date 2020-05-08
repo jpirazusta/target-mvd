@@ -14,7 +14,6 @@ export default {
   },
 
   MAIN_SCREEN: {
-    logout: 'CERRAR SESIÓN',
     title: 'Pagina Principal',
   },
 
@@ -82,5 +81,7 @@ export default {
     selectAvatar: 'Elegir Avatar',
     errorGet: 'No se pudieron obtener los datos del server',
     button: 'GUARDAR CAMBIOS',
+    success: 'El perfil ha sido actualizado',
+    logout: 'Cerrar sesión',
   },
 };

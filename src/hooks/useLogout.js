@@ -10,9 +10,7 @@ const useLogout = () => {
     LoginManager.logOut();
   }, [dispatch]);
 
-  return {
-    logoutRequest,
-  };
+  return logoutRequest;
 };
 
 export default useLogout;

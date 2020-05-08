@@ -33,6 +33,8 @@ export const getProfile = createThunk('GET_PROFILE', async id => {
   return user;
 });
 
+export const updateProfile = createThunk('UPDATE_PROFILE', userService.updateProfile);
+
 export const updateSession = createAction('UPDATE_SESSION');
 
 export const { success: loginSuccess } = login;
@@ -40,3 +42,4 @@ export const { success: facebookLoginSuccess } = facebookLogin;
 export const { success: signUpSuccess } = signUp;
 export const { success: logoutSuccess } = logout;
 export const { success: getProfileSuccess } = getProfile;
+export const { reset: updateProfileReset } = updateProfile;

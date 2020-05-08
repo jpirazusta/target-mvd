@@ -10,7 +10,7 @@ const Dropdown = ({ label, items, onChangeText, error, invalid, showErrorMessage
   const dropdownStyles = invalid ? styles.inputError : styles.input;
   return (
     <>
-      {label && <Text style={commonStyles.inputLabel}>{label}</Text>}
+      {label && <Text style={[commonStyles.inputLabel, commonStyles.center]}>{label}</Text>}
       <RNPickerSelect
         onValueChange={onChangeText}
         items={items}

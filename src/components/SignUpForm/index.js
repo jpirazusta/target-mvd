@@ -14,7 +14,7 @@ import useForm from 'hooks/useForm';
 import useValidation from 'hooks/useValidation';
 import useTextInputProps from 'hooks/useTextInputProps';
 import signUpValidations from 'validations/signUpValidations';
-import common from 'constants/commonStyles';
+import commonStyles from 'constants/commonStyles';
 import styles from './styles';
 
 const FIELDS = {
@@ -79,7 +79,7 @@ const SignUpForm = ({ onSubmit }) => {
           {...inputProps(FIELDS.passwordConfirmation)}
           showErrorMessage
         />
-        <View style={common.shortInputWidth}>
+        <View style={commonStyles.shortInputWidth}>
           <Dropdown
             label={strings.SIGN_UP.gender}
             testID="gender-input"

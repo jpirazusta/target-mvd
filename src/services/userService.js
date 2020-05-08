@@ -22,6 +22,10 @@ class UserService {
   getProfile(id) {
     return api.get(`${prefix}/${id}`);
   }
+
+  updateProfile(id, profile) {
+    return api.put(`${prefix}/${id}`, profile);
+  }
 }
 
 export default new UserService();
