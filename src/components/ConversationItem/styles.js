@@ -1,7 +1,6 @@
 import { StyleSheet } from 'react-native';
 import typography from 'constants/typography';
 import fonts from 'constants/fonts';
-import { YELLOW, WHITE } from 'constants/colors';
 
 const styles = StyleSheet.create({
   row: {
