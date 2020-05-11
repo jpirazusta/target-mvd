@@ -89,6 +89,7 @@ const ChatScreen = ({ route }) => {
         renderAvatar={null}
         alignTop
         renderBubble={props => <ChatBubble {...props} />}
+        renderTime={() => {}}
         bottomOffset={0}
         showUserAvatar
       />

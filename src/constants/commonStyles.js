@@ -1,16 +1,15 @@
 import { StyleSheet, Dimensions } from 'react-native';
 import typography from './typography';
-import { BLACK, RED_ERROR, TRANSPARENT, BACKGROUND } from './colors';
+import { BLACK, RED_ERROR, TRANSPARENT, WHITE } from './colors';
 
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   screenContainer: {
     flex: 1,
-    backgroundColor: BACKGROUND,
   },
   formContainer: {
-    backgroundColor: BACKGROUND,
+    backgroundColor: WHITE,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import useSession from 'hooks/useSession';
 import { APP_STACK, AUTH_STACK } from 'constants/screens';
+import { WHITE } from 'constants/colors';
 
 import AppStack from './AppStack';
 import AuthStack from './AuthStack';
@@ -14,7 +15,7 @@ const Navigation = () => {
   const { user, info } = useSession();
 
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={{ colors: { background: WHITE } }}>
       <Stack.Navigator headerMode="none">
         {user && info ? (
           <Stack.Screen name={APP_STACK} component={AppStack} />

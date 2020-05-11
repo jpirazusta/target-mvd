@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { BLACK_40_ALPHA, BACKGROUND } from 'constants/colors';
+import { BLACK_40_ALPHA, WHITE } from 'constants/colors';
 
 const styles = StyleSheet.create({
   opacityLayer: {
@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   },
   container: {
     width: '80%',
-    backgroundColor: BACKGROUND,
+    backgroundColor: WHITE,
     alignItems: 'center',
     paddingTop: 30,
     paddingBottom: 10,

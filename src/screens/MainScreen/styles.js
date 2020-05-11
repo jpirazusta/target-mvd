@@ -1,11 +1,9 @@
 import { StyleSheet } from 'react-native';
-import { BACKGROUND, YELLOW, LIGHT_YELLOW } from 'constants/colors';
+import { YELLOW, LIGHT_YELLOW } from 'constants/colors';
+import commonStyles from 'constants/commonStyles';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: BACKGROUND,
-  },
+  container: commonStyles.screenContainer,
   map: {
     flex: 1,
   },

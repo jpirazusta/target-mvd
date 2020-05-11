@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { BACKGROUND } from 'constants/colors';
+import { WHITE } from 'constants/colors';
 
 const styles = StyleSheet.create({
   mainContainer: {
@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     right: 0,
   },
   list: {
-    backgroundColor: BACKGROUND,
+    backgroundColor: WHITE,
     width: '100%',
     flexGrow: 0,
     bottom: 0,

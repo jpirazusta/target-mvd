@@ -19,7 +19,6 @@ const ConversationsScreen = ({ navigation }) => {
       ) : (
         <FlatList
           data={conversations}
-          ItemSeparatorComponent={() => <View style={commonStyles.separator} />}
           keyExtractor={({ matchId }) => matchId.toString()}
           renderItem={({ item }) => (
             <ConversationItem

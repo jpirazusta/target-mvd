@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { BLACK, BACKGROUND, RED } from 'constants/colors';
+import { BLACK, RED, WHITE } from 'constants/colors';
 import typography from 'constants/typography';
 
 const styles = StyleSheet.create({
@@ -12,14 +12,14 @@ const styles = StyleSheet.create({
   },
   mainContainer: {
     position: 'absolute',
-    backgroundColor: BACKGROUND,
+    backgroundColor: WHITE,
     bottom: 0,
     left: 0,
     right: 0,
   },
   androidContainer: {
     position: 'absolute',
-    backgroundColor: BACKGROUND,
+    backgroundColor: WHITE,
     bottom: 0,
     left: 0,
     right: 0,
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     paddingBottom: 26,
   },
   container: {
-    backgroundColor: BACKGROUND,
+    backgroundColor: WHITE,
     paddingHorizontal: 34,
     paddingTop: 15,
     paddingBottom: 26,

@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   },
   saveButton: {
     backgroundColor: BLACK,
-    width: 114,
+    width: 157,
   },
   success: {
     marginTop: 15,
