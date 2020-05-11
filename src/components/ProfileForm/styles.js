@@ -1,11 +1,26 @@
 import { StyleSheet } from 'react-native';
+import { BLACK } from 'constants/colors';
+import typography from 'constants/typography';
 
 const styles = StyleSheet.create({
   container: {
-    width: 240,
+    width: '100%',
   },
-  inputContainer: {
-    marginBottom: 11,
+  saveButton: {
+    backgroundColor: BLACK,
+    width: 114,
+  },
+  success: {
+    marginTop: 15,
+    height: 26,
+  },
+  successText: {
+    ...typography.inputError,
+    color: BLACK,
+  },
+  logoutButton: {
+    marginTop: 20,
+    width: 114,
   },
 });
 

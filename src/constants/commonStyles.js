@@ -16,6 +16,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 66,
   },
+  centerChilds: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   title: {
     ...typography.title,
     textAlign: 'center',

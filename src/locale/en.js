@@ -14,7 +14,6 @@ export default {
   },
 
   MAIN_SCREEN: {
-    logout: 'SIGN OUT',
     title: 'Target Points',
   },
 
@@ -83,5 +82,7 @@ export default {
     selectAvatar: 'Select Avatar',
     errorGet: 'Could not get data from server',
     button: 'SAVE CHANGES',
+    success: 'Profile has been updated',
+    logout: 'Log out',
   },
 };
