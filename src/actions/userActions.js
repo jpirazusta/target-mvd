@@ -26,9 +26,17 @@ export const signUp = createThunk('SIGNUP', async user => {
   return loggedUser;
 });
 
+export const getProfile = createThunk('GET_PROFILE', async id => {
+  const {
+    data: { user },
+  } = await userService.getProfile(id);
+  return user;
+});
+
 export const updateSession = createAction('UPDATE_SESSION');
 
 export const { success: loginSuccess } = login;
 export const { success: facebookLoginSuccess } = facebookLogin;
 export const { success: signUpSuccess } = signUp;
 export const { success: logoutSuccess } = logout;
+export const { success: getProfileSuccess } = getProfile;

@@ -1,11 +1,11 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  rightButton: {
-    marginRight: 10,
+  container: {
+    width: 240,
   },
-  leftButton: {
-    marginLeft: 10,
+  inputContainer: {
+    marginBottom: 11,
   },
 });
 

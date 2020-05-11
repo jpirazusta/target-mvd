@@ -18,6 +18,10 @@ class UserService {
   signUp(user) {
     return api.post(prefix, user);
   }
+
+  getProfile(id) {
+    return api.get(`${prefix}/${id}`);
+  }
 }
 
 export default new UserService();

@@ -51,3 +51,14 @@ export const CONVERSATION_SHAPE = shape({
   unreadMessages: number,
   user: USER_SHAPE,
 });
+
+export const PROFILE_SHAPE = shape({
+  id: number,
+  email: string,
+  firstName: string,
+  lastName: string,
+  fullName: string,
+  username: string,
+  gender: string,
+  avatar: objectOf(string),
+});

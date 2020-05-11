@@ -73,4 +73,14 @@ export default {
     title: 'Chat',
     conversationsError: 'No se pudieron obtener las conversaciones del server',
   },
+
+  PROFILE: {
+    title: 'Perfil',
+    usernameLabel: 'NOMBRE DE USUARIO',
+    firstNameLabel: 'NOMBRE',
+    lastNameLabel: 'APELLIDO',
+    selectAvatar: 'Elegir Avatar',
+    errorGet: 'No se pudieron obtener los datos del server',
+    button: 'GUARDAR CAMBIOS',
+  },
 };

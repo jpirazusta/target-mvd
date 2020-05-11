@@ -76,6 +76,10 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
   },
+  headerButton: {
+    width: 30,
+    alignItems: 'center',
+  },
 });
 
 export default styles;

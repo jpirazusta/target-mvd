@@ -74,4 +74,14 @@ export default {
     title: 'Chat',
     conversationsError: 'Could not get conversations from server',
   },
+
+  PROFILE: {
+    title: 'Profile',
+    usernameLabel: 'USERNAME',
+    firstNameLabel: 'FIRST NAME',
+    lastNameLabel: 'LAST NAME',
+    selectAvatar: 'Select Avatar',
+    errorGet: 'Could not get data from server',
+    button: 'SAVE CHANGES',
+  },
 };
