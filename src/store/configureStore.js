@@ -18,7 +18,7 @@ const persistConfig = {
 };
 
 export default function configureStore(initialState) {
-  const middlewares = [thunkMiddleware(({ error }) => parseError(error)), actionCableMiddleware];
+  const middlewares = [thunkMiddleware(error => parseError(error)), actionCableMiddleware];
 
   if (__DEV__) {
     const logger = createLogger({
