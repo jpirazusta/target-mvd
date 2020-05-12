@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import { func } from 'prop-types';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { LOADING, SUCCESS } from '@rootstrap/redux-tools';
 
@@ -17,7 +18,7 @@ import { BLACK } from 'constants/colors';
 import styles from './styles';
 
 const {
-  PROFILE: { usernameLabel, firstNameLabel, lastNameLabel, button, success },
+  PROFILE: { usernameLabel, firstNameLabel, lastNameLabel, button, success, changePassword },
 } = strings;
 
 const FIELDS = {
@@ -27,7 +28,7 @@ const FIELDS = {
   lastName: 'lastName',
 };
 
-const ProfileForm = ({ profile }) => {
+const ProfileForm = ({ profile, onShowChangePassword }) => {
   const {
     id,
     username,
@@ -89,6 +90,7 @@ const ProfileForm = ({ profile }) => {
         {...inputProps(FIELDS.lastName)}
         showErrorMessage
       />
+      <Button handleOnPress={onShowChangePassword} title={changePassword} titleColor={BLACK} />
       <ErrorView errors={{ error }} />
       <Button
         handleOnPress={handleSubmit}
@@ -111,6 +113,7 @@ const ProfileForm = ({ profile }) => {
 
 ProfileForm.propTypes = {
   profile: PROFILE_SHAPE.isRequired,
+  onShowChangePassword: func.isRequired,
 };
 
 export default ProfileForm;

@@ -26,6 +26,8 @@ export const signUp = createThunk('SIGNUP', async user => {
   return loggedUser;
 });
 
+export const changePassword = createThunk('CHANGE_PASSWORD', userService.changePassword);
+
 export const getProfile = createThunk('GET_PROFILE', async id => {
   const {
     data: { user },
@@ -41,5 +43,6 @@ export const { success: loginSuccess } = login;
 export const { success: facebookLoginSuccess } = facebookLogin;
 export const { success: signUpSuccess } = signUp;
 export const { success: logoutSuccess } = logout;
+export const { reset: changePasswordReset } = changePassword;
 export const { success: getProfileSuccess } = getProfile;
 export const { reset: updateProfileReset } = updateProfile;

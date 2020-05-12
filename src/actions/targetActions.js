@@ -23,10 +23,5 @@ export const createTarget = createThunk('CREATE_TARGET', async target => {
 export const deleteTarget = createThunk('DELETE_TARGET', targetService.deleteTarget);
 
 export const { success: getTargetsSuccess } = getTargets;
-<<<<<<< HEAD
 export const { success: createTargetSuccess, reset: createTargetReset } = createTarget;
-=======
-export const { success: createTargetSuccess } = createTarget;
-export const { reset: createTargetReset } = createTarget;
->>>>>>> Add: Error message when user attempts to create more than 10 targets
 export const { success: getTopicsSuccess } = getTopics;

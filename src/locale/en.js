@@ -4,6 +4,8 @@ export default {
     loading: 'LOADING',
     somethingWentWrong: 'something went wrong',
     cancel: 'Cancel',
+    done: 'DONE',
+    ok: 'OK',
   },
 
   SIGN_IN: {
@@ -60,7 +62,6 @@ export default {
     deleteQuestion: 'Sure you want to delete this target?',
     deleteReminder:
       "Remember that if you delete it, you won't be able to chat with it's matches anymore",
-    maximumTargetsError: 'You cannot create more than 10 targets',
   },
 
   MATCH: {
@@ -85,5 +86,13 @@ export default {
     button: 'SAVE CHANGES',
     success: 'Profile has been updated',
     logout: 'Log out',
+    changePassword: 'Change Password',
+  },
+
+  PASSWORD: {
+    currentLabel: 'ENTER YOUR CURRENT\nPASSWORD TO EDIT',
+    newLabel: 'NEW PASSWORD',
+    confirmLabel: 'CONFIRM NEW PASSWORD',
+    success: 'Your password has been changed successfully',
   },
 };
