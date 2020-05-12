@@ -60,6 +60,7 @@ export default {
     deleteQuestion: 'Sure you want to delete this target?',
     deleteReminder:
       "Remember that if you delete it, you won't be able to chat with it's matches anymore",
+    maximumTargetsError: 'You cannot create more than 10 targets',
   },
 
   MATCH: {

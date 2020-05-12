@@ -59,6 +59,7 @@ export default {
     deleteButton: 'ELIMINAR',
     deleteQuestion: 'Seguro/a que quieres eliminar este target?',
     deleteReminder: 'Recuerda que si lo haces, ya no podrás chatear con sus coincidencias',
+    maximumTargetsError: 'No puedes crear más de 10 targets',
   },
 
   MATCH: {
