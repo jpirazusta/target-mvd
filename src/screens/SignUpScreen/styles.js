@@ -1,21 +1,17 @@
 import { StyleSheet } from 'react-native';
-import common from 'constants/commonStyles';
+import commonStyles from 'constants/commonStyles';
 
 const styles = StyleSheet.create({
-  container: {
-    ...common.formContainer,
-  },
+  container: commonStyles.formContainer,
   welcome: {
-    ...common.title,
+    ...commonStyles.title,
     marginBottom: 25,
   },
   signinButton: {
-    ...common.linkButton,
+    ...commonStyles.linkButton,
     marginTop: 19,
   },
-  signinButtonText: {
-    ...common.linkButtonText,
-  },
+  signinButtonText: commonStyles.linkButtonText,
 });
 
 export default styles;

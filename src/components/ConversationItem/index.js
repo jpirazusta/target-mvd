@@ -22,7 +22,11 @@ const ConversationItem = ({ conversation, onSelect }) => {
         <Avatar uri={avatar.smallThumbUrl} style={styles.avatar} />
         <View>
           <Text style={styles.name}>{fullName}</Text>
-          {lastMessage && <Text style={styles.lastMessage}>{lastMessage}</Text>}
+          {lastMessage && (
+            <Text style={styles.lastMessage} ellipsizeMode="tail" numberOfLines={1}>
+              {lastMessage}
+            </Text>
+          )}
         </View>
       </View>
       <Image source={{ uri: topicIcon }} style={styles.topicIcon} />

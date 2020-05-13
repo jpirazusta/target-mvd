@@ -1,22 +1,16 @@
 import { StyleSheet } from 'react-native';
-import common from 'constants/commonStyles';
+import commonStyles from 'constants/commonStyles';
 import fonts from 'constants/fonts';
 import { BLACK } from 'constants/colors';
 
 const styles = StyleSheet.create({
-  container: {
-    ...common.formContainer,
-  },
+  container: commonStyles.formContainer,
   welcome: {
-    ...common.title,
+    ...commonStyles.title,
     marginBottom: 68,
   },
-  signupButton: {
-    ...common.linkButton,
-  },
-  signupButtonText: {
-    ...common.linkButtonText,
-  },
+  signupButton: commonStyles.linkButton,
+  signupButtonText: commonStyles.linkButtonText,
   facebookButton: {
     height: 20,
     marginTop: 47,
