@@ -20,7 +20,7 @@ const parseErrors = errors => {
 
     const errorKey = Object.keys(errors)[0];
     const error = errors[errorKey][0];
-    return `${errorKey} ${error}`;
+    return error;
   }
 
   return strings.COMMON.somethingWentWrong;

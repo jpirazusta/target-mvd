@@ -56,11 +56,11 @@ const TargetFormContent = ({
     errors,
     handleOnPress,
     targetStatus,
+    targetError,
     topicError,
     areaInputProps,
     titleInputProps,
     topicText,
-    networkError,
   } = useTargetForm({
     existent,
     topics,
@@ -87,7 +87,7 @@ const TargetFormContent = ({
     });
   };
 
-  const allErrors = { title: !existent && errors.title, networkError, topicError };
+  const allErrors = { title: !existent && errors.title, targetError, topicError };
 
   return (
     <>
@@ -111,7 +111,7 @@ const TargetFormContent = ({
       <Input
         label={titleLabel}
         testID="target-title-input"
-        invalid={!existent && (networkError || errors[FIELDS.title])}
+        invalid={!existent && (targetError || errors[FIELDS.title])}
         short={false}
         additionalStyles={styles.inputContainer}
         placeholder={titlePlaceholder}
@@ -126,7 +126,7 @@ const TargetFormContent = ({
           {getStringWithCondition(existent, topicLabelEdit, topicLabel)}
         </Text>
         <TouchableOpacity
-          style={[styles.topic, (topicError || networkError) && common.inputBorderError]}
+          style={[styles.topic, (topicError || targetError) && common.inputBorderError]}
           onPress={onShowTopics}
           disabled={Boolean(existent)}>
           <Text style={[styles.topicInput, IS_ANDROID && fonts.bold]}>

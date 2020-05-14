@@ -71,8 +71,7 @@ const useTargetForm = ({
     return (selectedTopic && selectedTopic.label) || topicPlaceholder;
   };
 
-  const networkError = useResetTargetForm({
-    targetError,
+  useResetTargetForm({
     visible,
     initialValues,
     setValues,
@@ -93,7 +92,6 @@ const useTargetForm = ({
     areaInputProps,
     titleInputProps,
     topicText,
-    networkError,
   };
 };
 

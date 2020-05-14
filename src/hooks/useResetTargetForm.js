@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { createTargetReset } from 'actions/targetActions';
 
 const useResetTargetForm = ({
-  targetError,
   visible,
   initialValues,
   setValues,
@@ -9,7 +10,7 @@ const useResetTargetForm = ({
   setErrors,
   setTopicError,
 }) => {
-  const [networkError, setNetworkError] = useState(targetError);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!visible) {
@@ -17,11 +18,9 @@ const useResetTargetForm = ({
       setActualTopic('');
       setErrors({});
       setTopicError(null);
-      setNetworkError(null);
+      dispatch(createTargetReset());
     }
-  }, [initialValues, setActualTopic, setErrors, setTopicError, setValues, visible]);
-
-  return networkError;
+  }, [dispatch, initialValues, setActualTopic, setErrors, setTopicError, setValues, visible]);
 };
 
 export default useResetTargetForm;
