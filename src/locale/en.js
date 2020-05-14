@@ -4,6 +4,8 @@ export default {
     loading: 'LOADING',
     somethingWentWrong: 'something went wrong',
     cancel: 'Cancel',
+    done: 'DONE',
+    ok: 'OK',
   },
 
   SIGN_IN: {
@@ -84,5 +86,13 @@ export default {
     button: 'SAVE CHANGES',
     success: 'Profile has been updated',
     logout: 'Log out',
+    changePassword: 'Change Password',
+  },
+
+  PASSWORD: {
+    currentLabel: 'ENTER YOUR CURRENT\nPASSWORD TO EDIT',
+    newLabel: 'NEW PASSWORD',
+    confirmLabel: 'CONFIRM NEW PASSWORD',
+    success: 'Your password has been changed successfully',
   },
 };

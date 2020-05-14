@@ -4,6 +4,8 @@ export default {
     loading: 'CARGANDO',
     somethingWentWrong: 'something went wrong',
     cancel: 'Cancelar',
+    done: 'HECHO',
+    ok: 'OK',
   },
 
   SIGN_IN: {
@@ -83,5 +85,13 @@ export default {
     button: 'GUARDAR CAMBIOS',
     success: 'El perfil ha sido actualizado',
     logout: 'Cerrar sesión',
+    changePassword: 'Cambiar Contraseña',
+  },
+
+  PASSWORD: {
+    currentLabel: 'INGRESA TU\nCONTRASEÑA ACTUAL',
+    newLabel: 'NUEVA CONTRASEÑA',
+    confirmLabel: 'CONFIRMAR NUEVA CONTRASEÑA',
+    success: 'Tu contraseña ha sido restablecida con éxito',
   },
 };

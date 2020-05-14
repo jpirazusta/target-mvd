@@ -3,6 +3,7 @@ import { object } from 'prop-types';
 import { View } from 'react-native';
 import { GiftedChat } from 'react-native-gifted-chat';
 import { useDispatch, useSelector } from 'react-redux';
+import { noop } from 'lodash';
 
 import ChatBubble from 'components/ChatBubble';
 import {
@@ -89,7 +90,7 @@ const ChatScreen = ({ route }) => {
         renderAvatar={null}
         alignTop
         renderBubble={props => <ChatBubble {...props} />}
-        renderTime={() => {}}
+        renderTime={noop}
         bottomOffset={0}
         showUserAvatar
       />

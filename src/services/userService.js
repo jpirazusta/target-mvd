@@ -19,6 +19,10 @@ class UserService {
     return api.post(prefix, user);
   }
 
+  changePassword(password) {
+    return api.put(`${prefix}/password`, password);
+  }
+
   getProfile(id) {
     return api.get(`${prefix}/${id}`);
   }

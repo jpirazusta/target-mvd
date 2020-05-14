@@ -95,6 +95,7 @@ const TargetFormContent = ({
         label={getStringWithCondition(existent, areaEdit, area)}
         testID="area-input"
         keyboardType="numeric"
+        invalid={!existent && targetError}
         short={false}
         additionalStyles={styles.inputContainer}
         onBlur={areaInputProps.onBlur}
