@@ -39,6 +39,8 @@ export const updateProfile = createThunk('UPDATE_PROFILE', userService.updatePro
 
 export const updateSession = createAction('UPDATE_SESSION');
 
+export const sendQuestions = createThunk('SEND_QUESTIONS', userService.sendQuestions);
+
 export const { success: loginSuccess } = login;
 export const { success: facebookLoginSuccess } = facebookLogin;
 export const { success: signUpSuccess } = signUp;
@@ -46,3 +48,4 @@ export const { success: logoutSuccess } = logout;
 export const { reset: changePasswordReset } = changePassword;
 export const { success: getProfileSuccess } = getProfile;
 export const { reset: updateProfileReset } = updateProfile;
+export const { reset: sendQuestionsReset } = sendQuestions;

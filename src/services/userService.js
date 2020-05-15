@@ -30,6 +30,10 @@ class UserService {
   updateProfile(id, profile) {
     return api.put(`${prefix}/${id}`, profile);
   }
+
+  sendQuestions(questions) {
+    return api.post('/questions', questions);
+  }
 }
 
 export default new UserService();

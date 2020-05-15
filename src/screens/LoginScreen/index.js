@@ -1,7 +1,7 @@
 import React, { memo, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { LOADING } from '@rootstrap/redux-tools';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, SafeAreaView, TouchableOpacity } from 'react-native';
 import { object } from 'prop-types';
 
 import LoginForm from 'components/LoginForm';
@@ -13,6 +13,12 @@ import { LOGIN_SCREEN, SIGN_UP_SCREEN } from 'constants/screens';
 import Ovals from 'components/common/Ovals';
 import styles from './styles';
 
+const {
+  COMMON: { title, loading },
+  FACEBOOK: { buttonTitle },
+  SIGN_UP,
+} = strings;
+
 const LoginScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const loginRequest = useCallback(user => dispatch(login(user)), [dispatch]);
@@ -21,23 +27,21 @@ const LoginScreen = ({ navigation }) => {
   const { error, status, facebookError, handleFacebookLogin } = useFacebook();
 
   return (
-    <View style={styles.container} testID={LOGIN_SCREEN}>
+    <SafeAreaView style={styles.container} testID={LOGIN_SCREEN}>
       <Ovals />
-      <Text style={styles.welcome}>{strings.COMMON.title}</Text>
+      <Text style={styles.welcome}>{title}</Text>
       <LoginForm onSubmit={loginRequest} />
       <TouchableOpacity
         testID="facebook-button"
         onPress={handleFacebookLogin}
         style={styles.facebookButton}>
-        <Text style={styles.facebookButtonText}>
-          {status === LOADING ? strings.COMMON.loading : strings.FACEBOOK.buttonTitle}
-        </Text>
+        <Text style={styles.facebookButtonText}>{status === LOADING ? loading : buttonTitle}</Text>
       </TouchableOpacity>
       <ErrorView errors={{ facebookError, error }} />
       <TouchableOpacity testID="sign-up-button" onPress={handleLogin} style={styles.signupButton}>
-        <Text style={styles.signupButtonText}>{strings.SIGN_UP.title}</Text>
+        <Text style={styles.signupButtonText}>{SIGN_UP.title}</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 };
 

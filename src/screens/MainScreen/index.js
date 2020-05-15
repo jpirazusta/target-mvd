@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { object } from 'prop-types';
-import { View, Image, Animated } from 'react-native';
+import { View, Image, Animated, SafeAreaView } from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 
 import { MAIN_SCREEN } from 'constants/screens';
@@ -37,7 +37,7 @@ const MainScreen = ({ navigation }) => {
   );
 
   return (
-    <View style={styles.container} testID={MAIN_SCREEN}>
+    <SafeAreaView style={styles.container} testID={MAIN_SCREEN}>
       <MapView
         ref={mapView}
         onLayout={() => setIsMapRendered(true)}
@@ -79,7 +79,7 @@ const MainScreen = ({ navigation }) => {
         selectedTarget={selectedTarget}
         setSelectedTarget={setSelectedTarget}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 

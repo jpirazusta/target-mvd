@@ -1,23 +1,13 @@
 import { StyleSheet } from 'react-native';
-import { BLACK } from 'constants/colors';
+import commonStyles from 'constants/commonStyles';
 
 const styles = StyleSheet.create({
-  done: {
-    width: 157,
-    backgroundColor: BLACK,
-    marginBottom: 10,
-  },
+  done: commonStyles.blackButton,
   okButton: {
+    ...commonStyles.blackButton,
     width: 114,
-    backgroundColor: BLACK,
-    marginBottom: 10,
   },
-  success: {
-    fontSize: 14,
-    color: BLACK,
-    textAlign: 'center',
-    marginBottom: 20,
-  },
+  success: commonStyles.successText,
 });
 
 export default styles;

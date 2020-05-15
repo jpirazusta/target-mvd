@@ -1,5 +1,5 @@
 import React, { memo, useCallback } from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, SafeAreaView, TouchableOpacity } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { object } from 'prop-types';
 
@@ -15,7 +15,7 @@ const SignUpScreen = memo(({ navigation }) => {
   const signUpRequest = useCallback(user => dispatch(signUp(user)), [dispatch]);
 
   return (
-    <View style={styles.container} testID={SIGN_UP_SCREEN}>
+    <SafeAreaView style={styles.container} testID={SIGN_UP_SCREEN}>
       <Ovals />
       <Text style={styles.welcome}>{strings.COMMON.title}</Text>
       <SignUpForm onSubmit={signUpRequest} />
@@ -25,7 +25,7 @@ const SignUpScreen = memo(({ navigation }) => {
         style={styles.signinButton}>
         <Text style={styles.signinButtonText}>{strings.SIGN_IN.title}</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 });
 

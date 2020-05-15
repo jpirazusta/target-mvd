@@ -6,24 +6,22 @@ export default {
     cancel: 'Cancelar',
     done: 'HECHO',
     ok: 'OK',
+    email: 'EMAIL',
+    password: 'CONTRASEÑA',
   },
 
   SIGN_IN: {
     title: 'INICIAR SESIÓN',
-    email: 'EMAIL',
-    password: 'CONTRASEÑA',
     button: 'INICIAR SESIÓN',
   },
 
-  MAIN_SCREEN: {
+  MAIN: {
     title: 'Pagina Principal',
   },
 
   SIGN_UP: {
     title: 'REGISTRO',
     name: 'NOMBRE',
-    email: 'EMAIL',
-    password: 'CONTRASEÑA',
     passwordConfirmation: 'REPETIR CONTRASEÑA',
     passwordPlaceholder: 'MIN. 6 CARACTERES',
     gender: 'GÉNERO',
@@ -92,6 +90,13 @@ export default {
     currentLabel: 'INGRESA TU\nCONTRASEÑA ACTUAL',
     newLabel: 'NUEVA CONTRASEÑA',
     confirmLabel: 'CONFIRMAR NUEVA CONTRASEÑA',
-    success: 'Tu contraseña ha sido restablecida con éxito',
+    success: 'Tu contraseña ha sido restablecida con éxito!',
+  },
+
+  CONTACT: {
+    button: 'Contacto',
+    questionsLabel: 'PREGUNTAS',
+    send: 'ENVIAR',
+    success: 'Tus preguntas han sido enviadas con éxito!',
   },
 };
