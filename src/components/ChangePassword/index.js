@@ -3,10 +3,10 @@ import { Text } from 'react-native';
 import { func } from 'prop-types';
 import { LOADING, SUCCESS } from '@rootstrap/redux-tools';
 
-import Modal from 'components/common/Modal';
+import ModalWrapper from 'components/common/ModalWrapper';
 import Input from 'components/common/Input';
 import ErrorView from 'components/common/ErrorView';
-import Button from 'components/common/Button';
+import CustomButton from 'components/common/CustomButton';
 import useChangePassword from 'hooks/useChangePassword';
 import useForm from 'hooks/useForm';
 import useTextInputProps from 'hooks/useTextInputProps';
@@ -40,7 +40,7 @@ const ChangePassword = ({ onHide }) => {
   const inputProps = useTextInputProps(handleValueChange, handleBlur, values);
 
   return (
-    <Modal>
+    <ModalWrapper>
       {status !== SUCCESS ? (
         <>
           <Input
@@ -68,18 +68,18 @@ const ChangePassword = ({ onHide }) => {
             showErrorMessage
           />
           <ErrorView errors={{ error }} />
-          <Button
+          <CustomButton
             handleOnPress={() => handleSubmit(values)}
             additionalStyles={styles.done}
             title={done}
             isLoading={status === LOADING}
           />
-          <Button handleOnPress={onHide} title={cancel} titleColor={BLACK} />
+          <CustomButton handleOnPress={onHide} title={cancel} titleColor={BLACK} />
         </>
       ) : (
         <>
           <Text style={styles.success}>{success}</Text>
-          <Button
+          <CustomButton
             handleOnPress={() => {
               reset();
               onHide();
@@ -89,7 +89,7 @@ const ChangePassword = ({ onHide }) => {
           />
         </>
       )}
-    </Modal>
+    </ModalWrapper>
   );
 };
 

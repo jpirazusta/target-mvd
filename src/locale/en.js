@@ -52,7 +52,6 @@ export default {
     topicLabelEdit: 'TOPIC',
     topicPlaceholder: 'What do you want to talk about?',
     emptyTopic: "Topic can't be blank",
-    topicsError: 'Could not get topics from server',
     loadingTopics: 'Loading topics',
     createButton: 'SAVE TARGET',
     saveButton: 'SAVE',
@@ -71,7 +70,6 @@ export default {
 
   CHAT: {
     title: 'Chat',
-    conversationsError: 'Could not get conversations from server',
   },
 
   PROFILE: {
@@ -80,7 +78,6 @@ export default {
     firstNameLabel: 'FIRST NAME',
     lastNameLabel: 'LAST NAME',
     selectAvatar: 'Select Avatar',
-    errorGet: 'Could not get data from server',
     button: 'SAVE CHANGES',
     success: 'Profile has been updated',
     logout: 'Log out',
@@ -98,6 +95,6 @@ export default {
     button: 'Contact',
     questionsLabel: 'QUESTIONS',
     send: 'SEND',
-    success: 'Your questions have been sent sucessfully!',
+    success: 'Thank you for your contact. We will be sending you an email soon.',
   },
 };

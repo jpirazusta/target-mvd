@@ -5,7 +5,6 @@ import { LOADING } from '@rootstrap/redux-tools';
 
 import ConversationItem from 'components/ConversationItem';
 import useGetConversations from 'hooks/useGetConversations';
-import strings from 'locale';
 import { CHAT_SCREEN } from 'constants/screens';
 import commonStyles from 'constants/commonStyles';
 
@@ -15,7 +14,7 @@ const ConversationsScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={commonStyles.screenContainer}>
       {error ? (
-        <Text>{strings.CHAT.conversationsError}</Text>
+        <Text>{error}</Text>
       ) : (
         <FlatList
           data={conversations}
@@ -33,6 +32,7 @@ const ConversationsScreen = ({ navigation }) => {
           )}
           onRefresh={requestConversations}
           refreshing={status === LOADING}
+          style={commonStyles.borderTop}
         />
       )}
     </SafeAreaView>

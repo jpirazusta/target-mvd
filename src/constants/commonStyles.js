@@ -97,6 +97,10 @@ const styles = StyleSheet.create({
   leftButton: {
     marginLeft: 10,
   },
+  borderTop: {
+    borderTopColor: BLACK,
+    borderTopWidth: 0.5,
+  },
 });
 
 export default styles;

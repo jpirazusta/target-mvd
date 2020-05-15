@@ -6,7 +6,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 
 import Dropdown from 'components/Dropdown';
 import ErrorView from 'components/common/ErrorView';
-import Button from 'components/common/Button';
+import CustomButton from 'components/common/CustomButton';
 import { signUp } from 'actions/userActions';
 import Input from 'components/common/Input';
 import strings from 'locale';
@@ -98,7 +98,7 @@ const SignUpForm = ({ onSubmit }) => {
           />
         </View>
         <ErrorView errors={{ error }} />
-        <Button
+        <CustomButton
           testID="signup-submit-button"
           handleOnPress={handleSubmit}
           additionalStyles={styles.button}

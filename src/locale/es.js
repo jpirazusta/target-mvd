@@ -52,7 +52,6 @@ export default {
     topicLabelEdit: 'TEMA',
     topicPlaceholder: 'De qué quieres hablar?',
     emptyTopic: "Topic can't be blank",
-    topicsError: 'No se pudieron obtener los temas del server',
     loadingTopics: 'Cargando temas',
     createButton: 'GUARDAR TARGET',
     saveButton: 'GUARDAR',
@@ -70,7 +69,6 @@ export default {
 
   CHAT: {
     title: 'Chat',
-    conversationsError: 'No se pudieron obtener las conversaciones del server',
   },
 
   PROFILE: {
@@ -79,7 +77,6 @@ export default {
     firstNameLabel: 'NOMBRE',
     lastNameLabel: 'APELLIDO',
     selectAvatar: 'Elegir Avatar',
-    errorGet: 'No se pudieron obtener los datos del server',
     button: 'GUARDAR CAMBIOS',
     success: 'El perfil ha sido actualizado',
     logout: 'Cerrar sesión',
@@ -97,6 +94,6 @@ export default {
     button: 'Contacto',
     questionsLabel: 'PREGUNTAS',
     send: 'ENVIAR',
-    success: 'Tus preguntas han sido enviadas con éxito!',
+    success: 'Gracias por el contacto. Pronto te estaremos enviando un mail.',
   },
 };

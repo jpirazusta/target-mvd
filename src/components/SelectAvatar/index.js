@@ -3,7 +3,7 @@ import { View, Image } from 'react-native';
 import { func, string } from 'prop-types';
 import ImagePicker from 'react-native-image-picker';
 
-import Button from 'components/common/Button';
+import CustomButton from 'components/common/CustomButton';
 import Avatar from 'components/common/Avatar';
 import profileCircles from 'assets/images/profileCircles.png';
 import strings from 'locale';
@@ -42,7 +42,7 @@ const SelectAvatar = ({ avatarUrl, setAvatarData }) => {
         <Image source={profileCircles} />
         <Avatar uri={avatarSource || avatarUrl} style={styles.profileImage} />
       </View>
-      <Button
+      <CustomButton
         handleOnPress={onSelect}
         title={selectAvatar}
         titleColor={BLACK}

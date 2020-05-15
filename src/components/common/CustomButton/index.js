@@ -5,7 +5,7 @@ import strings from 'locale';
 import { WHITE } from 'constants/colors';
 import styles from './styles';
 
-const Button = ({ handleOnPress, additionalStyles, title, isLoading, titleColor }) => {
+const CustomButton = ({ handleOnPress, additionalStyles, title, isLoading, titleColor }) => {
   const buttonTitle = isLoading ? strings.COMMON.loading : title;
   return (
     <TouchableOpacity onPress={handleOnPress} style={[styles.button, additionalStyles]}>
@@ -14,7 +14,7 @@ const Button = ({ handleOnPress, additionalStyles, title, isLoading, titleColor 
   );
 };
 
-Button.propTypes = {
+CustomButton.propTypes = {
   handleOnPress: func.isRequired,
   additionalStyles: ViewPropTypes.style,
   title: string.isRequired,
@@ -22,9 +22,9 @@ Button.propTypes = {
   titleColor: string,
 };
 
-Button.defaultProps = {
+CustomButton.defaultProps = {
   isLoading: false,
   titleColor: WHITE,
 };
 
-export default Button;
+export default CustomButton;

@@ -9,7 +9,7 @@ import useForm from 'hooks/useForm';
 import useValidation from 'hooks/useValidation';
 import loginValidations from 'validations/loginValidations';
 import ErrorView from 'components/common/ErrorView';
-import Button from 'components/common/Button';
+import CustomButton from 'components/common/CustomButton';
 import useTextInputProps from 'hooks/useTextInputProps';
 import strings from 'locale';
 import styles from './styles';
@@ -58,7 +58,7 @@ const LoginForm = ({ onSubmit }) => {
         />
       </View>
       <ErrorView errors={{ ...errors, error }} />
-      <Button
+      <CustomButton
         testID="login-submit-button"
         handleOnPress={handleSubmit}
         additionalStyles={styles.button}

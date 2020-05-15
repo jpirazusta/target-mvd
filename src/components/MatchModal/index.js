@@ -2,9 +2,9 @@ import React from 'react';
 import { func } from 'prop-types';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 
-import Modal from 'components/common/Modal';
+import ModalWrapper from 'components/common/ModalWrapper';
 import Avatar from 'components/common/Avatar';
-import Button from 'components/common/Button';
+import CustomButton from 'components/common/CustomButton';
 import strings from 'locale';
 import { MATCH_SHAPE } from 'constants/shapes';
 import ovals from 'assets/images/match.png';
@@ -15,7 +15,7 @@ const {
 } = strings;
 
 const MatchModal = ({ matchedUser, onHide, onStartChatting }) => (
-  <Modal>
+  <ModalWrapper>
     <Image source={ovals} />
     <Text style={styles.title}>{modalTitle}</Text>
     <Text style={styles.message}>{message}</Text>
@@ -23,7 +23,7 @@ const MatchModal = ({ matchedUser, onHide, onStartChatting }) => (
       <Avatar uri={matchedUser.avatar.smallThumbUrl} style={styles.avatar} />
       <Text style={styles.name}>{matchedUser.fullName}</Text>
     </View>
-    <Button
+    <CustomButton
       handleOnPress={onStartChatting}
       additionalStyles={styles.chatButton}
       title={chatButton}
@@ -31,7 +31,7 @@ const MatchModal = ({ matchedUser, onHide, onStartChatting }) => (
     <TouchableOpacity onPress={onHide} style={styles.skipButton}>
       <Text style={styles.name}>{skip}</Text>
     </TouchableOpacity>
-  </Modal>
+  </ModalWrapper>
 );
 
 MatchModal.propTypes = {

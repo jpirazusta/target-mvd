@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import commonStyles from 'constants/commonStyles';
-import fonts from 'constants/fonts';
+import { OPEN_SANS_BOLD } from 'constants/fonts';
 import { BLACK } from 'constants/colors';
 
 const styles = StyleSheet.create({
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     marginTop: 47,
   },
   facebookButtonText: {
-    ...fonts.bold,
+    fontFamily: OPEN_SANS_BOLD,
     fontSize: 12,
     lineHeight: 16,
     color: BLACK,

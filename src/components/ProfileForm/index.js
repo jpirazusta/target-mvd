@@ -6,7 +6,7 @@ import { LOADING, SUCCESS } from '@rootstrap/redux-tools';
 
 import Input from 'components/common/Input';
 import ErrorView from 'components/common/ErrorView';
-import Button from 'components/common/Button';
+import CustomButton from 'components/common/CustomButton';
 import SelectAvatar from 'components/SelectAvatar';
 import useUpdateProfile from 'hooks/useUpdateProfile';
 import useForm from 'hooks/useForm';
@@ -90,9 +90,13 @@ const ProfileForm = ({ profile, onShowChangePassword }) => {
         {...inputProps(FIELDS.lastName)}
         showErrorMessage
       />
-      <Button handleOnPress={onShowChangePassword} title={changePassword} titleColor={BLACK} />
+      <CustomButton
+        handleOnPress={onShowChangePassword}
+        title={changePassword}
+        titleColor={BLACK}
+      />
       <ErrorView errors={{ error }} />
-      <Button
+      <CustomButton
         handleOnPress={handleSubmit}
         additionalStyles={styles.saveButton}
         title={button}
@@ -101,7 +105,7 @@ const ProfileForm = ({ profile, onShowChangePassword }) => {
       <View style={styles.success}>
         {status === SUCCESS && <Text style={styles.successText}>{success}</Text>}
       </View>
-      <Button
+      <CustomButton
         handleOnPress={logoutRequest}
         title={strings.PROFILE.logout}
         titleColor={BLACK}
