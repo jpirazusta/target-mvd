@@ -68,7 +68,7 @@ const ProfileForm = ({ profile, onShowChangePassword }) => {
         showErrorMessage
       />
       <Input
-        label={strings.SIGN_UP.email}
+        label={strings.COMMON.email}
         keyboardType="email-address"
         autoCapitalize="none"
         error={errors[FIELDS.email]}

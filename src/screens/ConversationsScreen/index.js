@@ -1,6 +1,6 @@
 import React from 'react';
 import { object } from 'prop-types';
-import { View, FlatList, Text } from 'react-native';
+import { SafeAreaView, FlatList, Text } from 'react-native';
 import { LOADING } from '@rootstrap/redux-tools';
 
 import ConversationItem from 'components/ConversationItem';
@@ -13,7 +13,7 @@ const ConversationsScreen = ({ navigation }) => {
   const { conversations, status, error, requestConversations } = useGetConversations(navigation);
 
   return (
-    <View style={commonStyles.screenContainer}>
+    <SafeAreaView style={commonStyles.screenContainer}>
       {error ? (
         <Text>{strings.CHAT.conversationsError}</Text>
       ) : (
@@ -35,7 +35,7 @@ const ConversationsScreen = ({ navigation }) => {
           refreshing={status === LOADING}
         />
       )}
-    </View>
+    </SafeAreaView>
   );
 };
 

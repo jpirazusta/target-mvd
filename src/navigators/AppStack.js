@@ -20,6 +20,8 @@ import { BLACK } from 'constants/colors';
 import commonStyles from 'constants/commonStyles';
 import styles from './styles';
 
+const { MAIN, CHAT, PROFILE } = strings;
+
 const Stack = createStackNavigator();
 
 const AppStack = () => (
@@ -28,7 +30,7 @@ const AppStack = () => (
       name={MAIN_SCREEN}
       component={MainScreen}
       options={({ navigation }) => ({
-        title: strings.MAIN_SCREEN.title,
+        title: MAIN.title,
         headerRight: () => (
           <HeaderButton
             onPress={() => navigation.navigate(CONVERSATIONS_SCREEN)}
@@ -63,7 +65,7 @@ const AppStack = () => (
       name={CONVERSATIONS_SCREEN}
       component={ConversationsScreen}
       options={({ navigation }) => ({
-        title: strings.CHAT.title,
+        title: CHAT.title,
         headerRight: () => (
           <HeaderButton
             onPress={() => navigation.pop()}
@@ -84,7 +86,7 @@ const AppStack = () => (
       name={PROFILE_SCREEN}
       component={ProfileScreen}
       options={({ navigation }) => ({
-        title: strings.PROFILE.title,
+        title: PROFILE.title,
         headerLeft: null,
         headerRight: () => (
           <HeaderButton

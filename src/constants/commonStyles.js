@@ -83,6 +83,20 @@ const styles = StyleSheet.create({
     width: 30,
     alignItems: 'center',
   },
+  blackButton: {
+    width: 157,
+    backgroundColor: BLACK,
+    marginBottom: 10,
+  },
+  successText: {
+    fontSize: 14,
+    color: BLACK,
+    textAlign: 'center',
+    marginBottom: 20,
+  },
+  leftButton: {
+    marginLeft: 10,
+  },
 });
 
 export default styles;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import { format } from 'date-fns';
 import { Bubble } from 'react-native-gifted-chat';
 import styles from './styles';
 
@@ -9,10 +10,8 @@ const ChatBubble = props => {
     position,
   } = props;
 
-  const date = new Date(createdAt).toLocaleString();
-  const [, time, suffix] = date.split(' ');
-  const [hours, minutes] = time.split(':');
-  const timeStamp = `${hours}:${minutes} ${suffix}`;
+  const date = new Date(createdAt);
+  const timeStamp = format(date, 'p');
 
   return (
     <View>

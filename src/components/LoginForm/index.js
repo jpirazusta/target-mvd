@@ -19,6 +19,11 @@ const FIELDS = {
   password: 'password',
 };
 
+const {
+  COMMON: { email, password },
+  SIGN_IN: { button },
+} = strings;
+
 const LoginForm = ({ onSubmit }) => {
   const { error, status } = useStatus(login);
   const validator = useValidation(loginValidations);
@@ -36,7 +41,7 @@ const LoginForm = ({ onSubmit }) => {
   return (
     <View style={styles.container}>
       <Input
-        label={strings.SIGN_IN.email}
+        label={email}
         keyboardType="email-address"
         autoCapitalize="none"
         testID="email-input"
@@ -45,7 +50,7 @@ const LoginForm = ({ onSubmit }) => {
       />
       <View style={styles.inputContainer}>
         <Input
-          label={strings.SIGN_IN.password}
+          label={password}
           testID="password-input"
           secureTextEntry
           invalid={error || errors[FIELDS.password]}
@@ -57,7 +62,7 @@ const LoginForm = ({ onSubmit }) => {
         testID="login-submit-button"
         handleOnPress={handleSubmit}
         additionalStyles={styles.button}
-        title={strings.SIGN_IN.button}
+        title={button}
         isLoading={status === LOADING}
       />
     </View>

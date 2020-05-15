@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { object } from 'prop-types';
-import { View } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import { GiftedChat } from 'react-native-gifted-chat';
 import { useDispatch, useSelector } from 'react-redux';
 import { noop } from 'lodash';
@@ -77,7 +77,7 @@ const ChatScreen = ({ route }) => {
   };
 
   return (
-    <View style={commonStyles.screenContainer}>
+    <SafeAreaView style={commonStyles.screenContainer}>
       <GiftedChat
         messages={messages}
         onSend={handleOnSend}
@@ -94,7 +94,7 @@ const ChatScreen = ({ route }) => {
         bottomOffset={0}
         showUserAvatar
       />
-    </View>
+    </SafeAreaView>
   );
 };
 

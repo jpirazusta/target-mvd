@@ -6,24 +6,22 @@ export default {
     cancel: 'Cancel',
     done: 'DONE',
     ok: 'OK',
+    email: 'EMAIL',
+    password: 'PASSWORD',
   },
 
   SIGN_IN: {
     title: 'SIGN IN',
-    email: 'EMAIL',
-    password: 'PASSWORD',
     button: 'SIGN IN',
   },
 
-  MAIN_SCREEN: {
+  MAIN: {
     title: 'Target Points',
   },
 
   SIGN_UP: {
     title: 'SIGN UP',
     name: 'NAME',
-    email: 'EMAIL',
-    password: 'PASSWORD',
     passwordConfirmation: 'CONFIRM PASSWORD',
     passwordPlaceholder: 'MIN. 6 CHARACTERS LONG',
     gender: 'GENDER',
@@ -93,6 +91,13 @@ export default {
     currentLabel: 'ENTER YOUR CURRENT\nPASSWORD TO EDIT',
     newLabel: 'NEW PASSWORD',
     confirmLabel: 'CONFIRM NEW PASSWORD',
-    success: 'Your password has been changed successfully',
+    success: 'Your password has been changed successfully!',
+  },
+
+  CONTACT: {
+    button: 'Contact',
+    questionsLabel: 'QUESTIONS',
+    send: 'SEND',
+    success: 'Your questions have been sent sucessfully!',
   },
 };

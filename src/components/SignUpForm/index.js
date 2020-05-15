@@ -25,6 +25,12 @@ const FIELDS = {
   gender: 'gender',
 };
 
+const {
+  SIGN_UP: { name, passwordPlaceholder, passwordConfirmation, gender, button },
+  COMMON: { email, password },
+  GENDER: { options, placeholder },
+} = strings;
+
 const SignUpForm = ({ onSubmit }) => {
   const { error, status } = useStatus(signUp);
   const validator = useValidation(signUpValidations);
@@ -43,7 +49,7 @@ const SignUpForm = ({ onSubmit }) => {
     <View style={styles.container}>
       <KeyboardAwareScrollView keyboardShouldPersistTaps="handled">
         <Input
-          label={strings.SIGN_UP.name}
+          label={name}
           testID="name-input"
           error={errors[FIELDS.name]}
           invalid={error || errors[FIELDS.name]}
@@ -51,7 +57,7 @@ const SignUpForm = ({ onSubmit }) => {
           showErrorMessage
         />
         <Input
-          label={strings.SIGN_UP.email}
+          label={email}
           keyboardType="email-address"
           autoCapitalize="none"
           testID="email-input"
@@ -61,8 +67,8 @@ const SignUpForm = ({ onSubmit }) => {
           showErrorMessage
         />
         <Input
-          label={strings.SIGN_UP.password}
-          placeholder={strings.SIGN_UP.passwordPlaceholder}
+          label={password}
+          placeholder={passwordPlaceholder}
           secureTextEntry
           testID="password-input"
           error={errors[FIELDS.password]}
@@ -71,7 +77,7 @@ const SignUpForm = ({ onSubmit }) => {
           showErrorMessage
         />
         <Input
-          label={strings.SIGN_UP.passwordConfirmation}
+          label={passwordConfirmation}
           secureTextEntry
           testID="confirm-password-input"
           error={errors[FIELDS.passwordConfirmation]}
@@ -81,12 +87,12 @@ const SignUpForm = ({ onSubmit }) => {
         />
         <View style={commonStyles.shortInputWidth}>
           <Dropdown
-            label={strings.SIGN_UP.gender}
+            label={gender}
             testID="gender-input"
-            items={strings.GENDER.options}
+            items={options}
             error={errors[FIELDS.gender]}
             invalid={error || errors[FIELDS.gender]}
-            placeholder={strings.GENDER.placeholder}
+            placeholder={placeholder}
             {...inputProps(FIELDS.gender)}
             showErrorMessage
           />
@@ -96,7 +102,7 @@ const SignUpForm = ({ onSubmit }) => {
           testID="signup-submit-button"
           handleOnPress={handleSubmit}
           additionalStyles={styles.button}
-          title={strings.SIGN_UP.button}
+          title={button}
           isLoading={status === LOADING}
         />
       </KeyboardAwareScrollView>
