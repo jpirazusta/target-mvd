@@ -11,7 +11,7 @@ import useCreateTarget from 'hooks/useCreateTarget';
 import useDeleteTarget from 'hooks/useDeleteTarget';
 import { animate } from 'utils/helpers';
 import { CHAT_SCREEN } from 'constants/screens';
-import { HIDDEN_VIEWS_POSITION, DELTA_COORDS } from 'constants/common';
+import { HIDDEN_VIEWS_POSITION } from 'constants/common';
 import { LOCATION_SHAPE, TOPIC_SHAPE_LONG, TARGET_SHAPE } from 'constants/shapes';
 import common from 'constants/commonStyles';
 import styles from './styles';
@@ -48,7 +48,7 @@ const CreateTarget = ({
     setSelectedTarget(false);
     setTopic(false);
     animate(formPositionAnim, HIDDEN_VIEWS_POSITION);
-    mapView.current.animateToRegion({ ...location, ...DELTA_COORDS });
+    mapView.current.animateToRegion(location);
   }, [formPositionAnim, location, mapView, setFormVisible, setSelectedTarget, setTopic]);
 
   const onDeleteTarget = useDeleteTarget(
@@ -82,7 +82,7 @@ const CreateTarget = ({
         <TargetForm
           onCreate={target => {
             onCreateTarget(target);
-            mapView.current.animateToRegion({ ...location, ...DELTA_COORDS });
+            mapView.current.animateToRegion(location);
           }}
           onDelete={() => setShowDeleteConfirmation(true)}
           onShowTopics={() => animate(topicsPositionAnim, 0)}

@@ -4,7 +4,17 @@ import commonStyles from 'constants/commonStyles';
 
 const styles = StyleSheet.create({
   container: commonStyles.screenContainer,
+  mapContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   map: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
     flex: 1,
   },
   marker: {
@@ -12,7 +22,7 @@ const styles = StyleSheet.create({
     zIndex: 2,
   },
   markerCircle: {
-    bottom: 4,
+    bottom: 28,
     width: 51,
     height: 51,
     borderRadius: 26,
@@ -21,7 +31,8 @@ const styles = StyleSheet.create({
     backgroundColor: LIGHT_YELLOW,
   },
   markerImage: {
-    top: 25,
+    position: 'absolute',
+    top: -50,
     zIndex: 1,
   },
 });

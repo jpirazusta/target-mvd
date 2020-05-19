@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { object } from 'prop-types';
 import { View, Image, Animated, SafeAreaView } from 'react-native';
-import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
 import { MAIN_SCREEN } from 'constants/screens';
 import CreateTarget from 'components/CreateTarget';
@@ -12,10 +12,18 @@ import useSelectTarget from 'hooks/useSelectTarget';
 import TargetMarker from 'components/TargetMarker';
 import { animate } from 'utils/helpers';
 import locationMap from 'assets/images/locationMap.png';
+import { BLACK } from 'constants/colors';
 import styles from './styles';
 
+const INITIAL_COORDS = {
+  latitude: 37.78825,
+  longitude: -122.4324,
+  ...DELTA_COORDS,
+};
+
 const MainScreen = ({ navigation }) => {
-  const location = useLocation();
+  const [location, setLocation] = useState(INITIAL_COORDS);
+  useLocation(setLocation);
   const { targets, topics, requestTargets } = useGetTargets();
   const [selectedTarget, setSelectedTarget] = useState(false);
   const [formVisible, setFormVisible] = useState(false);
@@ -38,34 +46,36 @@ const MainScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container} testID={MAIN_SCREEN}>
-      <MapView
-        ref={mapView}
-        onLayout={() => setIsMapRendered(true)}
-        provider={PROVIDER_GOOGLE}
-        style={styles.map}
-        initialRegion={{
-          ...location,
-          ...DELTA_COORDS,
-        }}
-        showUserLocation
-        followUserLocation>
-        {topics &&
-          targets.map(({ target: { id, lat, lng, topicId } }) => (
-            <TargetMarker
-              key={id}
-              id={id.toString()}
-              lat={lat}
-              lng={lng}
-              topicId={topicId}
-              onPress={() => onSelectTarget(id, targets)}
-              selected={selectedTarget?.id === id}
-            />
-          ))}
-        <Marker coordinate={location} style={styles.marker}>
-          <Image source={locationMap} style={styles.markerImage} />
-          <View style={styles.markerCircle} />
-        </Marker>
-      </MapView>
+      <View style={styles.mapContainer}>
+        <MapView
+          ref={mapView}
+          onLayout={() => setIsMapRendered(true)}
+          onMapReady={() => mapView.current.animateToRegion(location)}
+          provider={PROVIDER_GOOGLE}
+          style={styles.map}
+          onRegionChangeComplete={region => !formVisible && setLocation(region)}
+          loadingEnabled
+          loadingIndicatorColor={BLACK}>
+          {topics &&
+            targets.map(({ target: { id, lat, lng, topicId } }) => (
+              <TargetMarker
+                key={id}
+                id={id.toString()}
+                lat={lat}
+                lng={lng}
+                topicId={topicId}
+                onPress={() => onSelectTarget(id, targets)}
+                selected={selectedTarget?.id === id}
+              />
+            ))}
+        </MapView>
+        {!selectedTarget && (
+          <View style={styles.marker}>
+            <Image source={locationMap} style={styles.markerImage} />
+            <View style={styles.markerCircle} />
+          </View>
+        )}
+      </View>
       <CreateTarget
         navigation={navigation}
         formPositionAnim={formPositionAnim}

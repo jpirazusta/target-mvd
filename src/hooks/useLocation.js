@@ -1,27 +1,22 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import RNLocation from 'react-native-location';
+import { DELTA_COORDS } from 'constants/common';
 
-const DISTANCE_FILTER = 1.0;
-const INITIAL_COORDS = {
-  latitude: 37.78825,
-  longitude: -122.4324,
-};
+const DISTANCE_FILTER = 10.0;
 const PERMISSIONS = {
   ios: 'whenInUse',
   android: {
     detail: 'coarse',
   },
 };
+const TIMEOUT = 6000;
 
 RNLocation.configure({
   distanceFilter: DISTANCE_FILTER,
 });
 
-const useLocation = () => {
-  const [location, setLocation] = useState(INITIAL_COORDS);
-
+const useLocation = setLocation => {
   useEffect(() => {
-    let unsubscribe = () => null;
     async function requestLocation() {
       try {
         let granted = await RNLocation.checkPermission(PERMISSIONS);
@@ -29,20 +24,19 @@ const useLocation = () => {
           granted = await RNLocation.requestPermission(PERMISSIONS);
         }
         if (granted) {
-          unsubscribe = RNLocation.subscribeToLocationUpdates(location => {
-            const { latitude, longitude } = location[location.length - 1];
-            setLocation({ latitude, longitude });
-          });
+          const coords = await RNLocation.getLatestLocation({ timeout: TIMEOUT });
+          if (coords) {
+            const { latitude, longitude } = coords;
+            setLocation({ latitude, longitude, ...DELTA_COORDS });
+          }
         }
       } catch (error) {
         throw error;
       }
     }
-    requestLocation();
-    return unsubscribe;
-  }, []);
 
-  return location;
+    requestLocation();
+  }, []);
 };
 
 export default useLocation;
