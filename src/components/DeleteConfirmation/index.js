@@ -4,10 +4,10 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { useStatus, LOADING } from '@rootstrap/redux-tools';
 
 import useTopicIcon from 'hooks/useTopicIcon';
-import Modal from 'components/common/Modal';
+import ModalWrapper from 'components/common/ModalWrapper';
 import MarkerView from 'components/common/MarkerView';
 import ErrorView from 'components/common/ErrorView';
-import Button from 'components/common/Button';
+import CustomButton from 'components/common/CustomButton';
 import { deleteTarget } from 'actions/targetActions';
 import strings from 'locale';
 import { TARGET_SHAPE } from 'constants/shapes';
@@ -21,7 +21,7 @@ const DeleteConfirmation = ({ target, onDelete, onHide }) => {
   const { deleteQuestion, deleteReminder, deleteButton } = TARGET;
 
   return (
-    <Modal>
+    <ModalWrapper>
       <Text style={styles.question}>{deleteQuestion}</Text>
       <View style={styles.marker}>
         <MarkerView icon={icon} />
@@ -29,7 +29,7 @@ const DeleteConfirmation = ({ target, onDelete, onHide }) => {
       <Text style={styles.targetTitle}>{title}</Text>
       <Text style={styles.reminder}>{deleteReminder}</Text>
       <ErrorView errors={{ error }} />
-      <Button
+      <CustomButton
         handleOnPress={() => onDelete(id)}
         additionalStyles={styles.deleteButton}
         title={deleteButton}
@@ -38,7 +38,7 @@ const DeleteConfirmation = ({ target, onDelete, onHide }) => {
       <TouchableOpacity onPress={onHide} style={styles.cancelButton}>
         <Text style={styles.cancelText}>{COMMON.cancel}</Text>
       </TouchableOpacity>
-    </Modal>
+    </ModalWrapper>
   );
 };
 

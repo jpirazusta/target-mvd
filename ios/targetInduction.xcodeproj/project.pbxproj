@@ -20,6 +20,9 @@
 		5537A5DE24376A1800F9B9FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5537A5DB24376A1800F9B9FE /* LaunchScreen.storyboard */; };
 		6B61A298D68A4F6DFD9FDBCC /* libPods-targetInduction.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C7C84CAE6734BF690017FE /* libPods-targetInduction.a */; };
 		7D7A3C4F244A4B61008C9674 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D7A3C4E244A4B61008C9674 /* CoreLocation.framework */; };
+		7DA1D166246F240800D8A42C /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DA1D165246F240800D8A42C /* OpenSans-Bold.ttf */; };
+		7DA1D168246F243700D8A42C /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DA1D167246F243700D8A42C /* OpenSans-SemiBold.ttf */; };
+		7DA1D16A246F249B00D8A42C /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DA1D169246F249A00D8A42C /* OpenSans-Regular.ttf */; };
 		9B0243531F270CBB6E36495A /* libPods-targetInduction-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFF1A0A0D79A52FA343994E /* libPods-targetInduction-tvOSTests.a */; };
 		9CEB73B58FB152FDD74F0720 /* libPods-targetInduction-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44697982F9284E7E43F44305 /* libPods-targetInduction-tvOS.a */; };
 		A1BFCA82C7AE2AF4664AFB38 /* libPods-targetInductionTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C7EBC07A2F299DF317F411 /* libPods-targetInductionTests.a */; };
@@ -72,6 +75,9 @@
 		5FFF1A0A0D79A52FA343994E /* libPods-targetInduction-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-targetInduction-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D37A124244A3FD5006B11A5 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		7D7A3C4E244A4B61008C9674 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		7DA1D165246F240800D8A42C /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		7DA1D167246F243700D8A42C /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		7DA1D169246F249A00D8A42C /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		83ACE6892685D8C6AAE6DA9C /* Pods-targetInduction.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-targetInduction.release.xcconfig"; path = "Target Support Files/Pods-targetInduction/Pods-targetInduction.release.xcconfig"; sourceTree = "<group>"; };
 		8BE8208158E18B7F778E5A71 /* Pods-targetInduction-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-targetInduction-tvOS.release.xcconfig"; path = "Target Support Files/Pods-targetInduction-tvOS/Pods-targetInduction-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		972824CB458A25B53AC1EFEA /* Pods-targetInduction-Staging.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-targetInduction-Staging.release.xcconfig"; path = "Target Support Files/Pods-targetInduction-Staging/Pods-targetInduction-Staging.release.xcconfig"; sourceTree = "<group>"; };
@@ -167,6 +173,7 @@
 		13B07FAE1A68108700A75B9A /* targetInduction */ = {
 			isa = PBXGroup;
 			children = (
+				7DA1D164246F239900D8A42C /* Fonts */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -192,6 +199,16 @@
 				5194B9636EC5B962F89DA5B8 /* libPods-targetInduction-Staging.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7DA1D164246F239900D8A42C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7DA1D165246F240800D8A42C /* OpenSans-Bold.ttf */,
+				7DA1D167246F243700D8A42C /* OpenSans-SemiBold.ttf */,
+				7DA1D169246F249A00D8A42C /* OpenSans-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -438,8 +455,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DA1D16A246F249B00D8A42C /* OpenSans-Regular.ttf in Resources */,
+				7DA1D168246F243700D8A42C /* OpenSans-SemiBold.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				5537A5DC24376A1800F9B9FE /* LaunchScreen.storyboard in Resources */,
+				7DA1D166246F240800D8A42C /* OpenSans-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

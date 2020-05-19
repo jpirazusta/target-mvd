@@ -6,20 +6,17 @@ import { LOADING } from '@rootstrap/redux-tools';
 import useTargetForm from 'hooks/useTargetForm';
 import { getStringWithCondition } from 'utils/helpers';
 import ErrorView from 'components/common/ErrorView';
-import Button from 'components/common/Button';
+import CustomButton from 'components/common/CustomButton';
 import Input from 'components/common/Input';
 import strings from 'locale';
 import { BLACK } from 'constants/colors';
-import { IS_ANDROID } from 'constants/common';
 import { TOPIC_SHAPE, TARGET_SHAPE } from 'constants/shapes';
 import common from 'constants/commonStyles';
-import fonts from 'constants/fonts';
 import styles from './styles';
 
 const {
   TARGET: {
     emptyTopic,
-    topicsError,
     topicLabel,
     topicLabelEdit,
     loadingTopics,
@@ -69,7 +66,6 @@ const TargetFormContent = ({
     selectedTopic,
     emptyTopic,
     FIELDS,
-    topicsError,
     loadingTopics,
     topicPlaceholder,
     visible,
@@ -130,21 +126,19 @@ const TargetFormContent = ({
           style={[styles.topic, (topicError || targetError) && common.inputBorderError]}
           onPress={onShowTopics}
           disabled={Boolean(existent)}>
-          <Text style={[styles.topicInput, IS_ANDROID && fonts.bold]}>
-            {actualTopic || topicText()}
-          </Text>
+          <Text style={styles.topicInput}>{actualTopic || topicText()}</Text>
         </TouchableOpacity>
       </>
       <ErrorView errors={allErrors} />
       {existent ? (
-        <Button
+        <CustomButton
           handleOnPress={onDelete}
           additionalStyles={styles.deleteButton}
           title={deleteButton}
           isLoading={targetStatus === LOADING}
         />
       ) : (
-        <Button
+        <CustomButton
           testID="save-target-button"
           handleOnPress={handleOnPress}
           additionalStyles={styles.createButton}

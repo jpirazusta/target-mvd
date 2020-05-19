@@ -12,8 +12,6 @@ import useGetProfile from 'hooks/useGetProfile';
 import strings from 'locale';
 import commonStyles from 'constants/commonStyles';
 
-const { PROFILE, CONTACT } = strings;
-
 const ProfileScreen = ({ navigation }) => {
   const { profile, error, status } = useGetProfile();
   const [showChangePassword, setShowChangePassword] = useState(false);
@@ -25,7 +23,7 @@ const ProfileScreen = ({ navigation }) => {
       headerLeft: () => (
         <HeaderButton
           onPress={() => setShowContact(true)}
-          title={CONTACT.button}
+          title={strings.CONTACT.button}
           style={commonStyles.leftButton}
         />
       ),
@@ -38,7 +36,7 @@ const ProfileScreen = ({ navigation }) => {
       {status === SUCCESS && (
         <ProfileForm profile={profile} onShowChangePassword={() => setShowChangePassword(true)} />
       )}
-      {error && <Text>{PROFILE.errorGet}</Text>}
+      {error && <Text>{error}</Text>}
       {showChangePassword && <ChangePassword onHide={() => setShowChangePassword(false)} />}
       {showContact && <Contact onHide={() => setShowContact(false)} />}
     </SafeAreaView>

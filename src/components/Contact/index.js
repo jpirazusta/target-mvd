@@ -3,10 +3,10 @@ import { Text, View, TextInput } from 'react-native';
 import { func } from 'prop-types';
 import { LOADING, SUCCESS } from '@rootstrap/redux-tools';
 
-import Modal from 'components/common/Modal';
+import ModalWrapper from 'components/common/ModalWrapper';
 import Input from 'components/common/Input';
 import ErrorView from 'components/common/ErrorView';
-import Button from 'components/common/Button';
+import CustomButton from 'components/common/CustomButton';
 import useQuestions from 'hooks/useQuestions';
 import useForm from 'hooks/useForm';
 import useTextInputProps from 'hooks/useTextInputProps';
@@ -41,7 +41,7 @@ const Contact = ({ onHide }) => {
   const inputProps = useTextInputProps(handleValueChange, handleBlur, values);
 
   return (
-    <Modal>
+    <ModalWrapper>
       {status !== SUCCESS ? (
         <>
           <Input
@@ -69,13 +69,13 @@ const Contact = ({ onHide }) => {
             </View>
           </View>
           <ErrorView errors={{ error }} />
-          <Button
+          <CustomButton
             handleOnPress={() => handleSubmit(values)}
             additionalStyles={styles.save}
             title={send}
             isLoading={status === LOADING}
           />
-          <Button
+          <CustomButton
             handleOnPress={() => {
               reset();
               onHide();
@@ -87,7 +87,7 @@ const Contact = ({ onHide }) => {
       ) : (
         <>
           <Text style={commonStyles.successText}>{success}</Text>
-          <Button
+          <CustomButton
             handleOnPress={() => {
               reset();
               onHide();
@@ -97,7 +97,7 @@ const Contact = ({ onHide }) => {
           />
         </>
       )}
-    </Modal>
+    </ModalWrapper>
   );
 };
 

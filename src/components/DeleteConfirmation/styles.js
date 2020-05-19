@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native';
 import { BLACK } from 'constants/colors';
-import fonts from 'constants/fonts';
+import { OPEN_SANS_REGULAR, OPEN_SANS_SEMIBOLD, OPEN_SANS_BOLD } from 'constants/fonts';
 
 const styles = StyleSheet.create({
   question: {
-    ...fonts.semibold,
+    fontFamily: OPEN_SANS_SEMIBOLD,
     fontSize: 13,
     color: BLACK,
   },
@@ -12,13 +12,13 @@ const styles = StyleSheet.create({
     marginVertical: 15,
   },
   targetTitle: {
-    ...fonts.semibold,
+    fontFamily: OPEN_SANS_SEMIBOLD,
     fontSize: 11,
     marginBottom: 25,
     color: BLACK,
   },
   reminder: {
-    ...fonts.regular,
+    fontFamily: OPEN_SANS_REGULAR,
     fontSize: 11,
     textAlign: 'center',
     color: BLACK,
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     marginTop: 25,
   },
   cancelText: {
-    ...fonts.bold,
+    fontFamily: OPEN_SANS_BOLD,
     fontSize: 12,
     color: BLACK,
     textAlign: 'center',

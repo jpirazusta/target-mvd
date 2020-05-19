@@ -17,7 +17,6 @@ const useTargetForm = ({
   selectedTopic,
   emptyTopic,
   FIELDS,
-  topicsError,
   loadingTopics,
   topicPlaceholder,
   visible,
@@ -66,7 +65,7 @@ const useTargetForm = ({
   const titleInputProps = { ...inputProps(FIELDS.title) };
 
   const topicText = () => {
-    if (getTopicsError) return topicsError;
+    if (getTopicsError) return getTopicsError;
     if (getTopicsStatus === LOADING) return loadingTopics;
     return (selectedTopic && selectedTopic.label) || topicPlaceholder;
   };

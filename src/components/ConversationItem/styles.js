@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import typography from 'constants/typography';
-import fonts from 'constants/fonts';
+import { OPEN_SANS_SEMIBOLD, OPEN_SANS_REGULAR } from 'constants/fonts';
 import { BLACK } from 'constants/colors';
 
 const styles = StyleSheet.create({
@@ -22,12 +22,12 @@ const styles = StyleSheet.create({
   },
   name: {
     ...typography.conversations,
-    ...fonts.semibold,
+    fontFamily: OPEN_SANS_SEMIBOLD,
     marginBottom: 2,
   },
   lastMessage: {
     ...typography.conversations,
-    ...fonts.regular,
+    fontFamily: OPEN_SANS_REGULAR,
     maxWidth: '80%',
   },
   topicIcon: {

@@ -1,33 +1,33 @@
 import { StyleSheet } from 'react-native';
-import fonts from './fonts';
+import { OPEN_SANS_BOLD, OPEN_SANS_SEMIBOLD } from './fonts';
 import { RED_ERROR, WHITE, BLACK } from './colors';
 
 export default StyleSheet.create({
   title: {
-    ...fonts.bold,
+    fontFamily: OPEN_SANS_BOLD,
     fontSize: 20,
     lineHeight: 27,
     color: BLACK,
   },
   inputLabel: {
-    ...fonts.semibold,
+    fontFamily: OPEN_SANS_SEMIBOLD,
     fontSize: 11,
     lineHeight: 15,
   },
   input: {
-    ...fonts.semibold,
+    fontFamily: OPEN_SANS_SEMIBOLD,
     fontSize: 14,
     lineHeight: 19,
   },
   inputError: {
-    ...fonts.semibold,
+    fontFamily: OPEN_SANS_SEMIBOLD,
     fontSize: 10,
     lineHeight: 14,
     color: RED_ERROR,
     textAlign: 'center',
   },
   buttonTitle: {
-    ...fonts.semibold,
+    fontFamily: OPEN_SANS_SEMIBOLD,
     fontSize: 11,
     lineHeight: 15,
     color: WHITE,

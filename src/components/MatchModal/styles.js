@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import typography from 'constants/typography';
-import fonts from 'constants/fonts';
+import { OPEN_SANS_SEMIBOLD } from 'constants/fonts';
 import { BLACK, YELLOW } from 'constants/colors';
 
 const styles = StyleSheet.create({
@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     marginVertical: 15,
   },
   message: {
-    ...fonts.semibold,
+    fontFamily: OPEN_SANS_SEMIBOLD,
     fontSize: 18,
     lineHeight: 25,
     textAlign: 'center',
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   name: {
-    ...fonts.semibold,
+    fontFamily: OPEN_SANS_SEMIBOLD,
     fontSize: 12,
     lineHeight: 16,
     color: BLACK,
