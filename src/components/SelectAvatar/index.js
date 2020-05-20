@@ -39,7 +39,7 @@ const SelectAvatar = ({ avatarUrl, setAvatarData }) => {
   return (
     <>
       <View style={styles.container}>
-        <Image source={profileCircles} />
+        <Image source={profileCircles} style={styles.circles} />
         <Avatar uri={avatarSource || avatarUrl} style={styles.profileImage} />
       </View>
       <CustomButton

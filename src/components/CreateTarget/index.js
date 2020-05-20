@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { View, Animated } from 'react-native';
 import { func, object, bool, arrayOf, oneOfType } from 'prop-types';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import TargetForm from 'components/TargetForm';
 import TopicPicker from 'components/TopicPicker';
@@ -31,6 +32,7 @@ const CreateTarget = ({
 }) => {
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   const [showMatch, setShowMatch] = useState(false);
+  const { bottom } = useSafeAreaInsets();
 
   const { onCreateTarget, onSelectTopic, topic, setTopic, createdTarget } = useCreateTarget({
     animate,
@@ -91,6 +93,7 @@ const CreateTarget = ({
           topics={topics}
           existent={selectedTarget}
           visible={formVisible}
+          paddingBottom={bottom}
         />
       </Animated.View>
       {topics && (
@@ -99,6 +102,7 @@ const CreateTarget = ({
             topics={topics}
             onHide={() => animate(topicsPositionAnim, HIDDEN_VIEWS_POSITION)}
             onSelectTopic={onSelectTopic}
+            paddingBottom={bottom}
           />
         </Animated.View>
       )}
