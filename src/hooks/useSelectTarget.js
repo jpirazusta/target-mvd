@@ -13,13 +13,9 @@ const useSelectTarget = (
   setFormVisible,
 ) => {
   useEffect(() => {
-    const coords = selectedTarget
-      ? { latitude: selectedTarget.lat, longitude: selectedTarget.lng }
+    const region = selectedTarget
+      ? { latitude: selectedTarget.lat, longitude: selectedTarget.lng, ...DELTA_COORDS }
       : location;
-    const region = {
-      ...coords,
-      ...DELTA_COORDS,
-    };
     isMapRendered && mapView.current.animateToRegion(region);
   }, [isMapRendered, location, mapView, selectedTarget]);
 

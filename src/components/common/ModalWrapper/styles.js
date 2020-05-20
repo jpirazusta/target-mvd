@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     backgroundColor: BLACK_40_ALPHA,
+    zIndex: 4,
   },
   modalContainer: {
     flex: 1,

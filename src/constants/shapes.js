@@ -36,6 +36,8 @@ export const MATCH_SHAPE = shape({
 export const LOCATION_SHAPE = shape({
   latitude: number,
   longitude: number,
+  latitudeDelta: number,
+  longitudeDelta: number,
 });
 
 export const USER_SHAPE = shape({
