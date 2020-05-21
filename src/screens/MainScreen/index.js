@@ -50,7 +50,7 @@ const MainScreen = ({ navigation }) => {
         <MapView
           ref={mapView}
           onLayout={() => setIsMapRendered(true)}
-          onMapReady={() => mapView.current.animateToRegion(location)}
+          initialRegion={location}
           provider={PROVIDER_GOOGLE}
           style={styles.map}
           onRegionChangeComplete={region => !formVisible && setLocation(region)}

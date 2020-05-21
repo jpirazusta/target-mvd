@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { func, oneOfType, bool, arrayOf } from 'prop-types';
+import { func, oneOfType, bool, arrayOf, number } from 'prop-types';
 import { View, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
@@ -17,6 +17,7 @@ const TargetForm = ({
   topics,
   existent,
   visible,
+  paddingBottom,
 }) => {
   const [actualTopic, setActualTopic] = useState('');
 
@@ -46,7 +47,7 @@ const TargetForm = ({
           />
         </KeyboardAwareScrollView>
       ) : (
-        <KeyboardAvoidingView behavior="position" style={styles.mainContainer}>
+        <KeyboardAvoidingView behavior="position" style={[styles.mainContainer, { paddingBottom }]}>
           <View style={styles.container}>
             <TargetFormContent
               onCreate={onCreate}
@@ -75,6 +76,11 @@ TargetForm.propTypes = {
   topics: oneOfType([arrayOf(TOPIC_SHAPE), bool]).isRequired,
   existent: oneOfType([TARGET_SHAPE, bool]).isRequired,
   visible: bool.isRequired,
+  paddingBottom: number,
+};
+
+TargetForm.defaultProps = {
+  paddingBottom: 0,
 };
 
 export default TargetForm;
