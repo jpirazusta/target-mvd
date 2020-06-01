@@ -5,10 +5,20 @@ import strings from 'locale';
 import { WHITE } from 'constants/colors';
 import styles from './styles';
 
-const CustomButton = ({ handleOnPress, additionalStyles, title, isLoading, titleColor }) => {
+const CustomButton = ({
+  handleOnPress,
+  additionalStyles,
+  title,
+  isLoading,
+  titleColor,
+  ...restProps
+}) => {
   const buttonTitle = isLoading ? strings.COMMON.loading : title;
   return (
-    <TouchableOpacity onPress={handleOnPress} style={[styles.button, additionalStyles]}>
+    <TouchableOpacity
+      onPress={handleOnPress}
+      style={[styles.button, additionalStyles]}
+      {...restProps}>
       <Text style={[styles.buttonTitle, { color: titleColor }]}>{buttonTitle}</Text>
     </TouchableOpacity>
   );

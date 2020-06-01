@@ -5,11 +5,12 @@ import { thunkMiddleware } from '@rootstrap/redux-tools';
 import { Provider } from 'react-redux';
 import { render } from '@testing-library/react-native';
 import { createStore, applyMiddleware } from 'redux';
-import MockAdapter from 'axios-mock-adapter';
+import fetchMock from 'fetch-mock-jest';
 
 import reducer from 'reducers';
-import httpClient from 'httpClient';
-import applyDefaultInterceptors from 'httpClient/applyDefaultInterceptors';
+import api from 'api';
+import applyDefaultInterceptors from 'api/utils/applyDefaultInterceptors';
+import parseError from 'utils/parseError';
 
 const TEST_NAVIGATOR = 'TestNavigator';
 
@@ -22,7 +23,7 @@ export const AUTHENTICATED_RESPONSE_HEADERS = {
 const Stack = createStackNavigator();
 
 export const configureStore = (initialState = {}) => {
-  const middlewares = [thunkMiddleware];
+  const middlewares = [thunkMiddleware(error => parseError(error))];
 
   const store = createStore(reducer, initialState, applyMiddleware(...middlewares));
 
@@ -34,6 +35,7 @@ export const configureAuthenticatedStore = (initialState = {}) =>
     session: {
       user: {
         email: 'example@rootstrap.com',
+        id: '1',
       },
       info: {
         token: 'token',
@@ -63,8 +65,8 @@ export const renderWithNavigation = (component, store, { navigatorConfig = {} } 
   return { ...render(<App />) };
 };
 
-export const mockedHttpClient = (store, options = {}) => {
-  applyDefaultInterceptors(store, httpClient);
+export const mockedHttpClient = store => {
+  applyDefaultInterceptors(store, api);
 
-  return new MockAdapter(httpClient, options);
+  return fetchMock;
 };

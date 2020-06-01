@@ -17,7 +17,11 @@ const Input = ({ label, invalid, error, showErrorMessage, short, additionalStyle
       />
       {showErrorMessage && (
         <View style={styles.errorContainer}>
-          {error && <Text style={styles.error}>{error}</Text>}
+          {error && (
+            <Text style={styles.error} accessibilityLabel="input-error">
+              {error}
+            </Text>
+          )}
         </View>
       )}
     </View>

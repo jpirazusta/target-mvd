@@ -45,7 +45,7 @@ describe('<SignUpForm />', () => {
       });
 
       it('should show a required error', () => {
-        expect(wrapper.queryAllByLabelText('form-error')).toHaveLength(1);
+        expect(wrapper.queryAllByLabelText('input-error')).toHaveLength(1);
         expect(wrapper.queryByText("Email can't be blank")).toBeTruthy();
       });
     });
@@ -57,7 +57,7 @@ describe('<SignUpForm />', () => {
       });
 
       it('should show a email is not valid error', () => {
-        expect(wrapper.queryAllByLabelText('form-error')).toHaveLength(1);
+        expect(wrapper.queryAllByLabelText('input-error')).toHaveLength(1);
         expect(wrapper.queryByText('Email is not a valid email')).toBeTruthy();
       });
     });
@@ -80,7 +80,7 @@ describe('<SignUpForm />', () => {
       });
 
       it('should not show a required error', () => {
-        expect(wrapper.queryAllByLabelText('form-error')).toHaveLength(0);
+        expect(wrapper.queryAllByLabelText('input-error')).toHaveLength(0);
         expect(wrapper.queryByText("Password can't be blank")).toBeNull();
       });
     });
@@ -91,7 +91,7 @@ describe('<SignUpForm />', () => {
       });
 
       it('should show a required error', () => {
-        expect(wrapper.queryAllByLabelText('form-error')).toHaveLength(1);
+        expect(wrapper.queryAllByLabelText('input-error')).toHaveLength(1);
         expect(wrapper.queryByText("Password can't be blank")).toBeTruthy();
       });
     });
@@ -124,7 +124,7 @@ describe('<SignUpForm />', () => {
       });
 
       it('should show a required error', () => {
-        expect(wrapper.queryAllByLabelText('form-error')).toHaveLength(1);
+        expect(wrapper.queryAllByLabelText('input-error')).toHaveLength(1);
         expect(wrapper.queryByText("Password confirmation can't be blank")).toBeTruthy();
       });
     });
@@ -154,6 +154,8 @@ describe('<SignUpForm />', () => {
         fireEvent.changeText(wrapper.queryByTestId('email-input'), 'example@rootstrap.com');
         fireEvent.changeText(wrapper.queryByTestId('password-input'), 'password');
         fireEvent.changeText(wrapper.queryByTestId('confirm-password-input'), 'confirm-password');
+        fireEvent.changeText(wrapper.queryByTestId('name-input'), 'Example');
+        fireEvent.valueChange(wrapper.queryByTestId('ios_picker'), 'male');
         fireEvent.press(submitButton);
       });
 
@@ -162,7 +164,7 @@ describe('<SignUpForm />', () => {
 
         await wait(() => {
           expect(props.onSubmit).toHaveBeenCalledTimes(0);
-          expect(wrapper.queryAllByLabelText('form-error')).toHaveLength(1);
+          expect(wrapper.queryAllByLabelText('input-error')).toHaveLength(1);
           expect(
             wrapper.queryByText('Password confirmation is not equal to password'),
           ).toBeTruthy();
@@ -175,6 +177,8 @@ describe('<SignUpForm />', () => {
         fireEvent.changeText(wrapper.queryByTestId('email-input'), 'example@rootstrap.com');
         fireEvent.changeText(wrapper.queryByTestId('password-input'), 'password');
         fireEvent.changeText(wrapper.queryByTestId('confirm-password-input'), 'password');
+        fireEvent.changeText(wrapper.queryByTestId('name-input'), 'Example');
+        fireEvent.valueChange(wrapper.queryByTestId('ios_picker'), 'male');
         fireEvent.press(submitButton);
       });
 

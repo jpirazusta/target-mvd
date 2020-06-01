@@ -88,7 +88,6 @@ const SignUpForm = ({ onSubmit }) => {
         <View style={commonStyles.shortInputWidth}>
           <Dropdown
             label={gender}
-            testID="gender-input"
             items={options}
             error={errors[FIELDS.gender]}
             invalid={error || errors[FIELDS.gender]}

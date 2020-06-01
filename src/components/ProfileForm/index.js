@@ -97,6 +97,7 @@ const ProfileForm = ({ profile, onShowChangePassword }) => {
       />
       <ErrorView errors={{ error }} />
       <CustomButton
+        testID="update-profile-button"
         handleOnPress={handleSubmit}
         additionalStyles={styles.saveButton}
         title={button}
@@ -106,6 +107,7 @@ const ProfileForm = ({ profile, onShowChangePassword }) => {
         {status === SUCCESS && <Text style={styles.successText}>{success}</Text>}
       </View>
       <CustomButton
+        testID="logout-button"
         handleOnPress={logoutRequest}
         title={strings.PROFILE.logout}
         titleColor={BLACK}
