@@ -4,6 +4,7 @@ import { SafeAreaView, Text } from 'react-native';
 import { LOADING, SUCCESS } from '@rootstrap/redux-tools';
 
 import ProfileForm from 'components/ProfileForm';
+import { PROFILE_SCREEN } from 'constants/screens';
 import ChangePassword from 'components/ChangePassword';
 import Contact from 'components/Contact';
 import Loader from 'components/common/Loader';
@@ -31,7 +32,9 @@ const ProfileScreen = ({ navigation }) => {
   }, [navigation]);
 
   return (
-    <SafeAreaView style={[commonStyles.screenContainer, commonStyles.centerChilds]}>
+    <SafeAreaView
+      style={[commonStyles.screenContainer, commonStyles.centerChilds]}
+      testID={PROFILE_SCREEN}>
       {status === LOADING && <Loader />}
       {status === SUCCESS && (
         <ProfileForm profile={profile} onShowChangePassword={() => setShowChangePassword(true)} />

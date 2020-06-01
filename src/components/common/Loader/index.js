@@ -3,7 +3,9 @@ import { ActivityIndicator } from 'react-native';
 import { string } from 'prop-types';
 import { BLACK } from 'constants/colors';
 
-const Loader = ({ size, color }) => <ActivityIndicator size={size} color={color} />;
+const Loader = ({ size, color }) => (
+  <ActivityIndicator size={size} color={color} testID="spinner" />
+);
 
 Loader.propTypes = {
   size: string,
